@@ -51,6 +51,7 @@
       </form>
     </v-card>
   </v-container>
+  <ErrorComponent ref="error" />
 </template>
 
 <script setup lang="ts">
@@ -60,8 +61,9 @@ import { useValidationErrors } from "@/services/handlers";
 import { useAuthModule } from "@/store";
 import { useRouter } from "vue-router";
 
+import ErrorComponent from "../../components/dialog/ErrorComponent.vue";
 import Login from "@/types/Login";
-import rules from "../../helpers/rules/rules_login";
+import rules from "@/helpers/rules/rules_login";
 
 const authModule = useAuthModule();
 const router = useRouter();

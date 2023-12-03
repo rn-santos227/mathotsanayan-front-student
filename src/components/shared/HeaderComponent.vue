@@ -51,6 +51,8 @@ import { ref, defineProps } from "vue";
 import { useAuthModule } from "../../store";
 import { useRouter } from "vue-router";
 
+import QuestionComponent from "../dialog/QuestionComponent.vue";
+
 const confirm = ref({
   show: (message: string) => {
     return message;

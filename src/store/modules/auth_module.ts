@@ -32,7 +32,9 @@ export const useAuthModule = defineStore("auth", {
 
         const data = await response.json();
         const { token } = data;
-        this.setToken(token);
+        if (token) {
+          this.setToken(token);
+        }
       } catch (error) {
         console.error("Error logging in:", error);
         throw error;

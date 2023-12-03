@@ -4,6 +4,7 @@ import AuthView from "@/views/auth/MainView.vue";
 import ExamsView from "@/views/exams/MainView.vue";
 import ProfileView from "@/views/profile/MainView.vue";
 import ProgressView from "@/views/progress/MainView.vue";
+import SettingsView from "@/views/settings/MainView.vue";
 
 import { useAuthModule } from "@/store";
 
@@ -28,6 +29,14 @@ const routes: Array<RouteRecordRaw> = [
     path: "/exams",
     name: "exams",
     component: ExamsView,
+    meta: {
+      forAuth: true,
+    },
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: SettingsView,
     meta: {
       forAuth: true,
     },

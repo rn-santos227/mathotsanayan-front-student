@@ -52,6 +52,7 @@
     </v-card>
   </v-container>
   <ErrorComponent ref="error" />
+  <InformationComponent ref="info" />
 </template>
 
 <script setup lang="ts">
@@ -61,7 +62,8 @@ import { useValidationErrors } from "@/services/handlers";
 import { useAuthModule } from "@/store";
 import { useRouter } from "vue-router";
 
-import ErrorComponent from "../../components/dialog/ErrorComponent.vue";
+import ErrorComponent from "../../components/dialogs/ErrorComponent.vue";
+import InformationComponent from "../../components/dialogs/InformationComponent.vue";
 import Login from "@/types/Login";
 import rules from "@/helpers/rules/rules_login";
 
@@ -73,6 +75,13 @@ const error = ref({
     return message;
   },
 });
+
+const info = ref({
+  show: (message: string) => {
+    return message;
+  },
+});
+
 const show = ref<boolean>(false);
 const state = reactive<Login>({
   email: "",
@@ -90,7 +99,9 @@ const submitForm = async () => {
       if (authModule.isAuthenticated) {
         router.push("/");
       } else {
-        //
+        info.value.show(
+          "Bad Credentials, please check your email and password."
+        );
       }
     } catch (err) {
       error.value.show("The server has not able to process request.");

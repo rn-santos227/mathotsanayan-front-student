@@ -10,7 +10,7 @@
           <v-row>
             <v-col>
               <span class="text-h5 font-weight-bold">
-                My Progress / Results
+                List of Available Modules
               </span>
             </v-col>
             <v-col class="d-flex">

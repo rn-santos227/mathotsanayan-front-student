@@ -5,9 +5,9 @@ export default [
     route: "/",
   },
   {
-    text: "Exams",
+    text: "Modules",
     icon: "mdi-checkbox-marked-outline",
-    route: "/exams",
+    route: "/modules",
   },
   {
     text: "Progress",

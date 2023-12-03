@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import AuthView from "@/views/auth/MainView.vue";
-import ExamsView from "@/views/exams/MainView.vue";
+import ModulesView from "@/views/modules/MainView.vue";
 import ProfileView from "@/views/profile/MainView.vue";
 import ProgressView from "@/views/progress/MainView.vue";
 import SettingsView from "@/views/settings/MainView.vue";
@@ -18,17 +18,17 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/progress",
-    name: "progress",
-    component: ProgressView,
+    path: "/modules",
+    name: "modules",
+    component: ModulesView,
     meta: {
       forAuth: true,
     },
   },
   {
-    path: "/exams",
-    name: "exams",
-    component: ExamsView,
+    path: "/progress",
+    name: "progress",
+    component: ProgressView,
     meta: {
       forAuth: true,
     },

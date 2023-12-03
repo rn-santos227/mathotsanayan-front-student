@@ -32,7 +32,7 @@ const tab = ref<number>(props.tab);
 
 <style scoped>
 .tab {
-  position: absolute;
+  position: fixed;
   top: 65px;
   width: 100%;
 }

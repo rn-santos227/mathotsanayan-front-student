@@ -1,4 +1,4 @@
-import User from "@/types/User";
+import Student from "@/types/Student";
 import api from "@/helpers/api";
 
 import { defineStore } from "pinia";
@@ -6,13 +6,19 @@ import { authenticatedFetch } from "@/services/api";
 
 export const useAuthModule = defineStore("auth", {
   state: () => ({
-    user: {} as User,
+    id: localStorage.getItem("userID"),
+    type: 2 as number,
+    student: {} as Student,
     accessToken: localStorage.getItem("accessToken") || null,
     isAuthenticated: !!localStorage.getItem("accessToken"),
     isLoading: false,
   }),
 
   actions: {
+    setStudent(student: Student): void {
+      this.student = student;
+    },
+
     setToken(token: string): void {
       this.accessToken = token;
       this.isAuthenticated = true;
@@ -31,12 +37,29 @@ export const useAuthModule = defineStore("auth", {
         });
 
         const data = await response.json();
-        const { token } = data;
+        const { token, student } = data;
         if (token) {
+          this.setStudent(student);
           this.setToken(token);
         }
       } catch (error) {
         console.error("Error logging in:", error);
+        throw error;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async fetchUserData(): Promise<void> {
+      if (!this.isAuthenticated) return;
+      try {
+        this.isLoading = true;
+        const response = await authenticatedFetch(api.AUTH.USER);
+        const data = await response.json();
+        const { student } = data;
+        this.setStudent(student);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
         throw error;
       } finally {
         this.isLoading = false;

@@ -20,6 +20,16 @@ import LoadingComponent from "./components/dialogs/LoadingComponent.vue";
 const authModule = useAuthModule();
 const title = ref<string>("Mathotsanayan CAA");
 const tab = ref<number>(0);
+
+async function fetchUserData() {
+  try {
+    await authModule.fetchUserData();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchUserData();
 </script>
 
 <style>

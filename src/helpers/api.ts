@@ -5,6 +5,6 @@ export default {
     AUTH: `${BACKEND}auth`,
     LOGIN: `${BACKEND}student`,
     LOGOUT: `${BACKEND}logout`,
-    USER: `${BACKEND}user`,
+    USER: `${BACKEND}user/3`,
   },
 };

@@ -17,9 +17,13 @@
           </v-row>
         </v-card-title>
       </v-card>
-      <v-card-text> </v-card-text>
+      <v-card-text>
+        <ProfileView />
+      </v-card-text>
     </v-card>
   </v-container>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ProfileView from "./ProfileView.vue";
+</script>

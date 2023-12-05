@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useAuthModule } from "./store";
 
 import HeaderComponent from "./components/shared/HeaderComponent.vue";
@@ -29,7 +29,9 @@ async function fetchUserData() {
   }
 }
 
-fetchUserData();
+onMounted(async () => {
+  fetchUserData();
+});
 </script>
 
 <style>

@@ -40,7 +40,7 @@
       <v-col>
         <v-text-field
           v-model.trim="course"
-          label="Student Email"
+          label="Student Course"
           hide-details
           readonly
         />
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useAuthModule } from "@/store";
 import {
   getCourseName,
@@ -70,8 +70,38 @@ import {
 } from "@/helpers/instance";
 
 const useAuth = useAuthModule();
-const course = ref<string>(getCourseName(useAuth.student.course));
-const school = ref<string>(getSchoolName(useAuth.student.school));
-const section = ref<string>(getSectionName(useAuth.student.section));
-const teacher = ref<string | undefined>(getTeacher(useAuth.student.section));
+const course = ref<string>("");
+const school = ref<string>("");
+const section = ref<string>("");
+const teacher = ref<string>();
+
+watch(
+  () => getCourseName(useAuth.student.course),
+  () => {
+    course.value = getCourseName(useAuth.student.course);
+  }
+);
+
+watch(
+  () => getSchoolName(useAuth.student.school),
+  () => {
+    school.value = getSchoolName(useAuth.student.school);
+  }
+);
+
+watch(
+  () => getSectionName(useAuth.student.section),
+  () => {
+    section.value = getSectionName(useAuth.student.section);
+  }
+);
+
+watch(
+  () => getTeacher(useAuth.student.section),
+  () => {
+    if (useAuth.student.section) {
+      teacher.value = getTeacher(useAuth.student.section);
+    }
+  }
+);
 </script>

@@ -37,6 +37,8 @@ import { computed, onMounted } from "vue";
 import { useModuleModule } from "@/store";
 import { getSubjectName } from "@/helpers/instance";
 
+import LoadingComponent from "@/components/dialogs/LoadingComponent.vue";
+
 import headers from "@/helpers/headers/header_modules";
 import Module from "@/types/Module";
 

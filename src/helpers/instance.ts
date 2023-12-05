@@ -32,7 +32,11 @@ export function getTeacher(section: number | string | Section) {
 }
 
 export function getTeacherName(teacher: number | string | Teacher) {
-  if (typeof teacher === "object" && teacher !== null && "name" in teacher) {
+  if (
+    typeof teacher === "object" &&
+    teacher !== null &&
+    "full_name" in teacher
+  ) {
     return (teacher as Teacher).full_name;
   }
   return "DefaultName";

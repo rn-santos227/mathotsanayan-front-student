@@ -1,6 +1,7 @@
 import Course from "@/types/Course";
 import School from "@/types/School";
 import Section from "@/types/Section";
+import Subject from "@/types/Subject";
 import Teacher from "@/types/Teacher";
 
 export function getCourseName(course: number | string | Course) {
@@ -38,6 +39,13 @@ export function getTeacherName(teacher: number | string | Teacher) {
     "full_name" in teacher
   ) {
     return (teacher as Teacher).full_name;
+  }
+  return "DefaultName";
+}
+
+export function getSubjectName(subject: number | string | Subject) {
+  if (typeof subject === "object" && subject !== null && "name" in subject) {
+    return (subject as Subject).name;
   }
   return "DefaultName";
 }

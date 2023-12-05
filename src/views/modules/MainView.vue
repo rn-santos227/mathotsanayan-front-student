@@ -19,9 +19,19 @@
           </v-row>
         </v-card-title>
       </v-card>
-      <v-card-text> </v-card-text>
+      <v-card-text class="auto-scroll">
+        <TableViewVue />
+      </v-card-text>
     </v-card>
   </v-container>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TableViewVue from "./TableView.vue";
+</script>
+
+<style scoped>
+.auto-scroll {
+  overflow-y: auto;
+}
+</style>

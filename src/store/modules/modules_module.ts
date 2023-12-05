@@ -1,6 +1,8 @@
 import Module from "@/types/Module";
+import api from "@/helpers/api";
 
 import { defineStore } from "pinia";
+import { authenticatedFetch } from "@/services/api";
 
 export const useModuleModule = defineStore("modules", {
   state: () => ({
@@ -8,4 +10,38 @@ export const useModuleModule = defineStore("modules", {
     isLoading: false as boolean,
     isTableLoading: false,
   }),
+
+  actions: {
+    setModules(modules: Module[]) {
+      this.modules = modules;
+    },
+
+    async read(): Promise<boolean> {
+      try {
+        this.isTableLoading = true;
+        const response = await authenticatedFetch(api.MODULES.READ);
+        const data = await response.json();
+        const { modules } = data;
+        if (modules) {
+          modules.forEach((item: Module) => {
+            if (item.active) item.active = true;
+            else item.active = false;
+          });
+        }
+        this.setModules(modules);
+        return true;
+      } catch (error) {
+        console.error("Error Module in:", error);
+        return false;
+      } finally {
+        this.isTableLoading = false;
+      }
+    },
+  },
+
+  getters: {
+    getModules(): Module[] {
+      return this.modules;
+    },
+  },
 });

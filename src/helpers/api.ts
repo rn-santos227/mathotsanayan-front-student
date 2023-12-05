@@ -7,4 +7,8 @@ export default {
     LOGOUT: `${BACKEND}logout`,
     USER: `${BACKEND}user/3`,
   },
+
+  MODULES: {
+    READ: `${BACKEND}student/modules`,
+  },
 };

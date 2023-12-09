@@ -29,7 +29,7 @@
       </tr>
     </template>
   </v-data-table>
-  <LoadingComponent v-bind:activate="useModuleModule().isLoading" />
+  <LoadingDialogComponent v-bind:activate="useModuleModule().isLoading" />
 </template>
 
 <script setup lang="ts">
@@ -37,7 +37,7 @@ import { computed } from "vue";
 import { useModuleModule } from "@/store";
 import { getSubjectName } from "@/helpers/instance";
 
-import LoadingComponent from "@/components/dialogs/LoadingComponent.vue";
+import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 
 import headers from "@/helpers/headers/header_modules";
 import Module from "@/types/Module";

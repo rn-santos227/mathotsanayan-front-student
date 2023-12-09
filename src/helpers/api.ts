@@ -13,6 +13,6 @@ export default {
   },
 
   SUBJECTS: {
-    READ: `${BACKEND}student/subjects`,
+    READ: `${BACKEND}student/subjects/`,
   },
 };

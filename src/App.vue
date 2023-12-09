@@ -5,7 +5,7 @@
       <TabComponent :tab="tab" />
       <router-view />
     </v-main>
-    <LoadingComponent v-bind:activate="authModule.isLoading" />
+    <LoadingDialogComponent v-bind:activate="authModule.isLoading" />
   </v-app>
 </template>
 
@@ -15,7 +15,7 @@ import { useAuthModule } from "./store";
 
 import HeaderComponent from "./components/shared/HeaderComponent.vue";
 import TabComponent from "./components/shared/TabComponent.vue";
-import LoadingComponent from "./components/dialogs/LoadingComponent.vue";
+import LoadingDialogComponent from "./components/dialogs/LoadingDialogComponent.vue";
 
 const authModule = useAuthModule();
 const title = ref<string>("Mathotsanayan CAA");

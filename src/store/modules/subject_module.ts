@@ -15,10 +15,12 @@ export const useSubjectModule = defineStore("subject", {
       this.subjects = subjects;
     },
 
-    async read(): Promise<boolean> {
+    async read(id: number, student_id: number): Promise<boolean> {
       try {
         this.isLoading = true;
-        const response = await authenticatedFetch(api.SUBJECTS.READ);
+        const response = await authenticatedFetch(
+          `${api.SUBJECTS.READ}${id}?student_id=${student_id}`
+        );
         const data = await response.json();
         const { subjects } = data;
 

@@ -32,6 +32,7 @@
               item-title="name"
               item-value="id"
               :items="useSubjectModule().getSubjects"
+              @update:modelValue="handleUpdateModule($event)"
             />
           </v-col>
         </v-row>
@@ -43,7 +44,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useSubjectModule } from "@/store";
+import { useSubjectModule, useAuthModule, useModuleModule } from "@/store";
 
 import TableViewVue from "./TableView.vue";
 
@@ -52,6 +53,13 @@ const subject = ref<number | string>("");
 onMounted(async () => {
   await useSubjectModule().read();
 });
+
+const handleUpdateModule = async (subject_id: number | string) => {
+  const student_id = useAuthModule().student.id;
+  if (student_id && typeof subject_id === "number") {
+    await useModuleModule().read(subject_id, student_id);
+  }
+};
 </script>
 
 <style scoped>

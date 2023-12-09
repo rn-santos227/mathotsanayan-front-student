@@ -11,6 +11,7 @@
         <td class="text-xs-left">
           {{ item.name }}
         </td>
+        <td class="text-xs-left">Stage {{ item.step }}</td>
         <td class="text-xs-left">
           {{ item?.questions?.length }}
         </td>

@@ -1,6 +1,6 @@
 <template>
   <v-container class="base fill-height" fluid>
-    <v-card class="ma-4" width="100%" height="60%">
+    <v-card class="ma-4 pb-12" width="100%">
       <v-card
         class="rounded-0 rounded-t mb-3 py-2"
         color="purple-darken-3"

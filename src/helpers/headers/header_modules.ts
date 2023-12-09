@@ -7,6 +7,12 @@ const headers: Array<any> = [
     key: "name",
   },
   {
+    title: "Module Stage",
+    align: "start",
+    sortable: true,
+    key: "step",
+  },
+  {
     title: "Number of Items",
     align: "start",
     sortable: true,

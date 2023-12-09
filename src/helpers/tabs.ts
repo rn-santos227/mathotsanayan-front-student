@@ -14,9 +14,4 @@ export default [
     icon: "mdi-chart-histogram",
     route: "/progress",
   },
-  {
-    text: "Settings",
-    icon: "mdi-cog",
-    route: "/settings",
-  },
 ];

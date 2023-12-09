@@ -9,10 +9,10 @@ export default {
   },
 
   MODULES: {
-    READ: `${BACKEND}student/modules`,
+    READ: `${BACKEND}student/modules/`,
   },
 
   SUBJECTS: {
-    READ: `${BACKEND}student/subjects/`,
+    READ: `${BACKEND}student/subjects`,
   },
 };

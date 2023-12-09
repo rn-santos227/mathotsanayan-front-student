@@ -1,36 +1,40 @@
 <template>
   <div class="mt-4">
     <v-row class="mx-4">
-      <v-col>
+      <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="useAuth.student.full_name"
           label="Student Full Name"
+          variant="outlined"
           hide-details
           readonly
         />
       </v-col>
-      <v-col>
+      <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="useAuth.student.email"
-          label="Student Full Name"
+          label="Student Email"
+          variant="outlined"
           hide-details
           readonly
         />
       </v-col>
     </v-row>
     <v-row class="mx-4">
-      <v-col>
+      <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="section"
           label="Student Section"
+          variant="outlined"
           hide-details
           readonly
         />
       </v-col>
-      <v-col>
+      <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="teacher"
           label="Teacher assigned"
+          variant="outlined"
           hide-details
           readonly
         />
@@ -41,6 +45,7 @@
         <v-text-field
           v-model.trim="course"
           label="Student Course"
+          variant="outlined"
           hide-details
           readonly
         />
@@ -51,6 +56,7 @@
         <v-text-field
           v-model.trim="school"
           label="Student School"
+          variant="outlined"
           hide-details
           readonly
         />

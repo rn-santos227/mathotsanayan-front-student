@@ -20,6 +20,21 @@
         </v-card-title>
       </v-card>
       <v-card-text class="auto-scroll">
+        <v-row>
+          <v-col>
+            <v-select
+              class="mx-4"
+              v-model="subject"
+              prepend-inner-icon="mdi-book"
+              label="Select Subject"
+              density="compact"
+              variant="outlined"
+              item-title="name"
+              item-value="id"
+              :items="useSubjectModule().getSubjects"
+            />
+          </v-col>
+        </v-row>
         <TableViewVue />
       </v-card-text>
     </v-card>
@@ -27,7 +42,16 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { useSubjectModule } from "@/store";
+
 import TableViewVue from "./TableView.vue";
+
+const subject = ref<number | string>("");
+
+onMounted(async () => {
+  await useSubjectModule().read();
+});
 </script>
 
 <style scoped>

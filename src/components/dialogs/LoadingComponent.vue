@@ -16,7 +16,7 @@
           </span>
         </v-card-text>
       </v-card>
-      <div class="py-12 my-3">
+      <div class="d-flex align-center justify-center">
         <v-progress-circular
           color="purple-darken-3"
           width="16"

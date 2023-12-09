@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import { useModuleModule } from "@/store";
 import { getSubjectName } from "@/helpers/instance";
 
@@ -44,8 +44,4 @@ import Module from "@/types/Module";
 
 const moduleModule = useModuleModule();
 const modules = computed<Module[]>(() => moduleModule.getModules);
-
-onMounted(async () => {
-  await useModuleModule().read();
-});
 </script>

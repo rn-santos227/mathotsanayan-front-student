@@ -57,7 +57,6 @@ export const useAuthModule = defineStore("auth", {
         const response = await authenticatedFetch(api.AUTH.USER);
         const data = await response.json();
         const { student } = data;
-        console.log(student);
         this.setStudent(student);
       } catch (error) {
         console.error("Error fetching user data:", error);

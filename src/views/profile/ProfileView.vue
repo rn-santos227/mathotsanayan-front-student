@@ -70,10 +70,10 @@ import {
 } from "@/helpers/instance";
 
 const useAuth = useAuthModule();
-const course = ref<string>("");
-const school = ref<string>("");
-const section = ref<string>("");
-const teacher = ref<string>();
+const course = ref<string>(getCourseName(useAuth.student.course));
+const school = ref<string>(getSchoolName(useAuth.student.school));
+const section = ref<string>(getSectionName(useAuth.student.section));
+const teacher = ref<string | undefined>(getTeacher(useAuth.student.section));
 
 watch(
   () => getCourseName(useAuth.student.course),
@@ -99,9 +99,7 @@ watch(
 watch(
   () => getTeacher(useAuth.student.section),
   () => {
-    if (useAuth.student.section) {
-      teacher.value = getTeacher(useAuth.student.section);
-    }
+    teacher.value = getTeacher(useAuth.student.section);
   }
 );
 </script>

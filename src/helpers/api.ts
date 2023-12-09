@@ -11,4 +11,8 @@ export default {
   MODULES: {
     READ: `${BACKEND}student/modules`,
   },
+
+  SUBJECTS: {
+    READ: `${BACKEND}student/subjects`,
+  },
 };

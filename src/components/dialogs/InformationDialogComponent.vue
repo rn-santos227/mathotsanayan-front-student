@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineExpose } from "vue";
+import { ref } from "vue";
 
 const dialog = ref<boolean>(false);
 const text = ref<string>("");

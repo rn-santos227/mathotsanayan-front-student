@@ -34,27 +34,30 @@
     </template>
   </v-data-table>
   <LoadingDialogComponent v-bind:activate="useModuleModule().isLoading" />
+  <BriefingView ref="briefing" />
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useModuleModule } from "@/store";
 import { getSubjectName } from "@/helpers/instance";
-import { useRouter } from "vue-router";
 
+import BriefingView from "./BriefingView.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 
 import headers from "@/helpers/headers/header_modules";
 import Module from "@/types/Module";
 
-const router = useRouter();
+const briefing = ref({
+  show: (module: Module) => {
+    return module;
+  },
+});
+
 const moduleModule = useModuleModule();
 const modules = computed<Module[]>(() => moduleModule.getModules);
 
 const takeExam = (module: Module) => {
-  const id = module.id;
-  if (id) {
-    router.push(`/exam/${id}`);
-  }
+  briefing.value.show(module);
 };
 </script>

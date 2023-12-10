@@ -15,4 +15,8 @@ export default {
   SUBJECTS: {
     READ: `${BACKEND}student/subjects`,
   },
+
+  IMAGE: {
+    IMAGE: `${BACKEND}image`,
+  },
 };

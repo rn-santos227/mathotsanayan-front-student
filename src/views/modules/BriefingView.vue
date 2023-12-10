@@ -51,6 +51,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useExamModule } from "@/store";
 import { useRouter } from "vue-router";
 
 import Module from "@/types/Module";
@@ -64,6 +65,7 @@ const confirm = () => {
   const id = module.value.id;
 
   if (id) {
+    useExamModule().isTakingExam = true;
     router.push(`/exam/${id}`);
   }
 };

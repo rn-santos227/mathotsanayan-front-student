@@ -20,7 +20,7 @@ export const useExamModule = defineStore("exam", {
       try {
         this.isLoading = true;
         const response = await authenticatedFetch(
-          `${api.MODULES.READ}${id}?student_id=${student_id}`
+          `${api.EXAM.QUESTION}${id}?student_id=${student_id}`
         );
         const data = await response.json();
         const { question } = data;

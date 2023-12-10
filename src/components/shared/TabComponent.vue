@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authModule.isAuthenticated">
+  <div v-if="authModule.isAuthenticated && !useExamModule().isTakingExam">
     <v-card elevation="3" class="tab">
       <v-tabs v-model="tab" bg-color="purple-darken-3" grow>
         <v-tab
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAuthModule } from "@/store";
+import { useAuthModule, useExamModule } from "@/store";
 
 import tabs from "@/helpers/tabs";
 

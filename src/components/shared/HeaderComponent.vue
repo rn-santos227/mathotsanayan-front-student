@@ -15,7 +15,19 @@
           </v-btn>
         </template>
       </v-menu>
-      <v-menu>
+      <v-menu v-if="useExamModule().isTakingExam">
+        <template v-slot:activator="{ props }">
+          <v-btn
+            v-bind="props"
+            density="comfortable"
+            icon="mdi-arrow-left-bold-circle-outline"
+            size="x-large"
+            @click.prevent="leave()"
+          >
+          </v-btn>
+        </template>
+      </v-menu>
+      <v-menu v-else>
         <template v-slot:activator="{ props }">
           <v-btn
             v-bind="props"
@@ -43,21 +55,29 @@
       </v-menu>
     </div>
   </v-app-bar>
-  <QuestionDialogComponent ref="confirm" @confirm="handeConfirm" />
+  <QuestionDialogComponent ref="refLogout" @confirm="handeConfirm" />
+  <QuestionDialogComponent ref="refLeave" @confirm="handleBack" />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAuthModule } from "../../store";
+import { useAuthModule, useExamModule } from "../../store";
 import { useRouter } from "vue-router";
 
 import QuestionDialogComponent from "../dialogs/QuestionDialogComponent.vue";
 
-const confirm = ref({
+const refLogout = ref({
   show: (message: string) => {
     return message;
   },
 });
+
+const refLeave = ref({
+  show: (message: string) => {
+    return message;
+  },
+});
+
 const router = useRouter();
 
 const authModule = useAuthModule();
@@ -75,7 +95,15 @@ const handeConfirm = async () => {
   }
 };
 
+const handleBack = async () => {
+  router.push("/modules");
+};
+
 const logout = () => {
-  confirm.value.show("Are you sure you want to log off?");
+  refLogout.value.show("Are you sure you want to log off?");
+};
+
+const leave = () => {
+  refLeave.value.show("Do you want to leave your curret exam?");
 };
 </script>

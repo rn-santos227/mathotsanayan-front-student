@@ -8,15 +8,20 @@ export default {
     USER: `${BACKEND}user/3`,
   },
 
+  EXAM: {
+    QUESTION: `${BACKEND}student/question/`,
+    ANSWER: `${BACKEND}student/ANSWER/`,
+  },
+
+  IMAGE: {
+    IMAGE: `${BACKEND}image`,
+  },
+
   MODULES: {
     READ: `${BACKEND}student/modules/`,
   },
 
   SUBJECTS: {
     READ: `${BACKEND}student/subjects`,
-  },
-
-  IMAGE: {
-    IMAGE: `${BACKEND}image`,
   },
 };

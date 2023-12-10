@@ -6,8 +6,8 @@ import { authenticatedFetch } from "@/services/api";
 
 export const useSubjectModule = defineStore("subject", {
   state: () => ({
+    isLoading: false,
     subjects: [] as Subject[],
-    isLoading: false as boolean,
   }),
 
   actions: {

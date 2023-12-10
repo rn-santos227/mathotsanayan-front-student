@@ -20,11 +20,14 @@
         </td>
 
         <td>
-          <v-btn block color="purple-darken-3" variant="outlined">
-            <v-icon size="large">mdi-dots-horizontal</v-icon>
-            <v-menu activator="parent">
-              <v-list density="compact" variant="plain"> </v-list>
-            </v-menu>
+          <v-btn
+            block
+            color="purple-darken-3"
+            variant="outlined"
+            prepend-icon="mdi-lead-pencil"
+            @click.prevent="takeExam(item)"
+          >
+            Take Exam
           </v-btn>
         </td>
       </tr>
@@ -37,12 +40,21 @@
 import { computed } from "vue";
 import { useModuleModule } from "@/store";
 import { getSubjectName } from "@/helpers/instance";
+import { useRouter } from "vue-router";
 
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 
 import headers from "@/helpers/headers/header_modules";
 import Module from "@/types/Module";
 
+const router = useRouter();
 const moduleModule = useModuleModule();
 const modules = computed<Module[]>(() => moduleModule.getModules);
+
+const takeExam = (module: Module) => {
+  const id = module.id;
+  if (id) {
+    router.push(`/exam/${id}`);
+  }
+};
 </script>

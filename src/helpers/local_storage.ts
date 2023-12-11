@@ -13,7 +13,7 @@ export const retrieveAndDecryptFromLocalStorage = async (
 ): Promise<string | null> => {
   const encryptedData = retrieveDataFromLocalStorage(key);
   if (encryptedData) {
-    return decryptData(new Uint8Array(Buffer.from(encryptedData, "base64")));
+    return decryptData(encryptedData);
   }
   return null;
 };

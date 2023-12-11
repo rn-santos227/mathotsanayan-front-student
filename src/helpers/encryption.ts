@@ -1,44 +1,15 @@
 import { getSecretKey } from "./keys";
+import * as CryptoJS from "crypto-js";
 
-export const encryptData = async (data: string): Promise<ArrayBuffer> => {
-  const encodedData = new TextEncoder().encode(data);
-  const secretKey = getSecretKey();
-
-  const cryptoKey = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secretKey),
-    { name: "AES-GCM" },
-    false,
-    ["encrypt"]
-  );
-
-  const encryptedData = await crypto.subtle.encrypt(
-    { name: "AES-GCM", iv: crypto.getRandomValues(new Uint8Array(12)) },
-    cryptoKey,
-    encodedData
-  );
-
+export const encryptData = (data: string): string => {
+  const encryptedData = CryptoJS.AES.encrypt(data, getSecretKey()).toString();
   return encryptedData;
 };
 
-export const decryptData = async (
-  encryptedData: ArrayBuffer
-): Promise<string> => {
-  const secretKey = getSecretKey();
-
-  const cryptoKey = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secretKey),
-    { name: "AES-GCM" },
-    false,
-    ["decrypt"]
-  );
-
-  const decryptedData = await crypto.subtle.decrypt(
-    { name: "AES-GCM", iv: crypto.getRandomValues(new Uint8Array(12)) },
-    cryptoKey,
-    encryptedData
-  );
-
-  return new TextDecoder().decode(decryptedData);
+export const decryptData = (encryptedData: string): string => {
+  const decryptedData = CryptoJS.AES.decrypt(
+    encryptedData,
+    getSecretKey()
+  ).toString(CryptoJS.enc.Utf8);
+  return decryptedData;
 };

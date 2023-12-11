@@ -16,6 +16,7 @@
 import { onMounted, onBeforeUnmount, ref } from "vue";
 import { useAuthModule, useExamModule, useModuleModule } from "@/store";
 import { useRoute, useRouter } from "vue-router";
+import { encryptAndStoreToLocalStorage } from "@/helpers/local_storage";
 
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 
@@ -42,7 +43,11 @@ onBeforeUnmount(() => {
   clearInterval(intervalId);
 });
 
-const tickSeconds = () => {
+const tickSeconds = async () => {
   timer.value += 1;
+  await encryptAndStoreToLocalStorage(
+    "encryptedData",
+    JSON.stringify({ seconds: timer.value })
+  );
 };
 </script>

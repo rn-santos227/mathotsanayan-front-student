@@ -34,7 +34,6 @@ import { useImageModule } from "@/store";
 
 const imageModule = useImageModule();
 const props = defineProps<{
-  trigger: boolean | undefined;
   id: number | undefined;
   file: string | File | null;
   height: number;
@@ -44,17 +43,9 @@ const props = defineProps<{
 const url = ref<string>("");
 
 const id = ref<number | undefined>(props.id);
-const trigger = ref<boolean>(props.trigger);
 const loading = ref<boolean>(false);
 
 const emit = defineEmits(["update:trigger"]);
-
-watch(
-  () => trigger.value,
-  async () => {
-    getImage();
-  }
-);
 
 watch(
   () => id.value,

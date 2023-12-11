@@ -5,7 +5,7 @@
       <TabComponent :tab="tab" />
       <router-view />
     </v-main>
-    <LoadingDialogComponent v-bind:activate="authModule.isLoading" />
+    <LoadingDialogComponent v-bind:activate="useAuthModule().isLoading" />
   </v-app>
 </template>
 
@@ -17,20 +17,11 @@ import HeaderComponent from "./components/shared/HeaderComponent.vue";
 import TabComponent from "./components/shared/TabComponent.vue";
 import LoadingDialogComponent from "./components/dialogs/LoadingDialogComponent.vue";
 
-const authModule = useAuthModule();
 const title = ref<string>("Mathotsanayan CAA");
 const tab = ref<number>(0);
 
-async function fetchUserData() {
-  try {
-    await authModule.fetchUserData();
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-
 onMounted(async () => {
-  fetchUserData();
+  await useAuthModule().fetchUserData();
 });
 </script>
 

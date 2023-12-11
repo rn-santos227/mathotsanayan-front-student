@@ -39,6 +39,19 @@ export const useModuleModule = defineStore("modules", {
         this.isTableLoading = false;
       }
     },
+
+    async check(id: number): Promise<boolean> {
+      try {
+        const response = await authenticatedFetch(`${api.MODULES.CHECK}${id}}`);
+        const data = await response.json();
+        const { module } = data;
+
+        return !!module;
+      } catch (error) {
+        console.error("Error Module in:", error);
+        return false;
+      }
+    },
   },
 
   getters: {

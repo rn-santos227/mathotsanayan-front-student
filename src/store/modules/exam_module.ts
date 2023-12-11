@@ -16,7 +16,7 @@ export const useExamModule = defineStore("exam", {
       this.question = subjects;
     },
 
-    async readQuestion(id: number, student_id: number) {
+    async fetchQuestion(id: number, student_id: number) {
       try {
         this.isLoading = true;
         const response = await authenticatedFetch(

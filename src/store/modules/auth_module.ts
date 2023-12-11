@@ -53,7 +53,6 @@ export const useAuthModule = defineStore("auth", {
     async fetchUserData(): Promise<void> {
       if (!this.isAuthenticated) return;
       try {
-        this.isLoading = true;
         const response = await authenticatedFetch(api.AUTH.USER);
         const data = await response.json();
         const { student } = data;
@@ -61,8 +60,6 @@ export const useAuthModule = defineStore("auth", {
       } catch (error) {
         console.error("Error fetching user data:", error);
         throw error;
-      } finally {
-        this.isLoading = false;
       }
     },
 

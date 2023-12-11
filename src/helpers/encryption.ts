@@ -1,10 +1,9 @@
-export const encryptData = async (
-  data: string,
-  secretKey: string
-): Promise<ArrayBuffer> => {
-  const encodedData = new TextEncoder().encode(data);
+import { getSecretKey } from "./keys";
 
-  // Import the crypto key
+export const encryptData = async (data: string): Promise<ArrayBuffer> => {
+  const encodedData = new TextEncoder().encode(data);
+  const secretKey = getSecretKey();
+
   const cryptoKey = await crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(secretKey),
@@ -13,7 +12,6 @@ export const encryptData = async (
     ["encrypt"]
   );
 
-  // Encrypt the data using AES-GCM algorithm
   const encryptedData = await crypto.subtle.encrypt(
     { name: "AES-GCM", iv: crypto.getRandomValues(new Uint8Array(12)) },
     cryptoKey,
@@ -24,9 +22,10 @@ export const encryptData = async (
 };
 
 export const decryptData = async (
-  encryptedData: ArrayBuffer,
-  secretKey: string
+  encryptedData: ArrayBuffer
 ): Promise<string> => {
+  const secretKey = getSecretKey();
+
   const cryptoKey = await crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(secretKey),

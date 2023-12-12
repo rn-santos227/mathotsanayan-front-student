@@ -12,6 +12,7 @@ interface Question {
   deleted_at?: string;
   module?: number | Module;
   subject?: number | Subject;
+  module_id?: number;
   has_file?: number;
   options: Option[];
   trigger?: boolean;

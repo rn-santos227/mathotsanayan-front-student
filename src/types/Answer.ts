@@ -5,6 +5,7 @@ import Student from "./Student";
 interface Answer {
   id?: number;
   content: string;
+  timer: number;
   created_at?: string;
   updated_at?: string;
   deleted_at?: string;

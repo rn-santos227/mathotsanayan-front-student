@@ -17,7 +17,7 @@ import HeaderComponent from "./components/shared/HeaderComponent.vue";
 import TabComponent from "./components/shared/TabComponent.vue";
 import LoadingDialogComponent from "./components/dialogs/LoadingDialogComponent.vue";
 
-const title = ref<string>("Mathotsanayan CAA");
+const title = ref<string>("MatHOTSanayan CAA");
 const tab = ref<number>(0);
 
 onMounted(async () => {

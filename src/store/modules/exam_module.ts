@@ -8,12 +8,12 @@ export const useExamModule = defineStore("exam", {
   state: () => ({
     isTakingExam: false,
     isLoading: false,
-    question: {} as Question,
+    questions: [] as Question[],
   }),
 
   actions: {
-    setSubjects(subjects: Question) {
-      this.question = subjects;
+    setQuestions(questions: Question[]) {
+      this.questions = questions;
     },
 
     async fetchQuestion(id: number, student_id: number) {
@@ -25,7 +25,7 @@ export const useExamModule = defineStore("exam", {
         const data = await response.json();
         const { question } = data;
 
-        this.setSubjects(question);
+        this.setQuestions(question);
         return true;
       } catch (error) {
         console.error("Error Subject in:", error);
@@ -37,8 +37,8 @@ export const useExamModule = defineStore("exam", {
   },
 
   getters: {
-    getQuestion(): Question {
-      return this.question;
+    getQuestions(): Question[] {
+      return this.questions;
     },
   },
 });

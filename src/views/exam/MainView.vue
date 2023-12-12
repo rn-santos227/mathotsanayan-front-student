@@ -4,18 +4,20 @@
       <v-card-text>
         <span class="text-h6">Question: </span>
         <p class="ma-4">
-          {{ useExamModule().getQuestion?.content }}
+          {{ useExamModule().getQuestions[index].content }}
         </p>
         <ImageComponent
-          v-if="useExamModule().getQuestion.file"
+          v-if="useExamModule().getQuestions[index].file"
           class="ma-4"
-          v-bind:id="useExamModule().getQuestion.id"
-          v-bind:file="useExamModule().getQuestion.file"
+          v-bind:id="useExamModule().getQuestions[index].id"
+          v-bind:file="useExamModule().getQuestions[index].file"
           v-bind:height="300"
           v-bind:width="300"
         />
         <v-divider class="my-4" />
-        <v-row v-if="useExamModule().getQuestion.type == 'word problem'">
+        <v-row
+          v-if="useExamModule().getQuestions[index].type == 'word problem'"
+        >
           <v-col>
             <v-text-field
               class="mx-4"
@@ -26,12 +28,18 @@
             />
           </v-col>
         </v-row>
-        <v-row v-else-if="useExamModule().getQuestion.type == 'single correct'">
+        <v-row
+          v-else-if="
+            useExamModule().getQuestions[index].type == 'single correct'
+          "
+        >
           <v-radio-group class="ma-6" v-model.trim="state.content">
             <v-card
               class="outlined-border ma-2"
-              v-for="(option, index) in useExamModule().getQuestion.options"
-              :key="index"
+              v-for="(option, option_index) in useExamModule().getQuestions[
+                index
+              ].options"
+              :key="option_index"
               :color="changeColor(option.content)"
             >
               <v-card-text>
@@ -85,17 +93,18 @@ import ImageComponent from "@/components/ImageComponent.vue";
 
 import Answer from "@/types/Answer";
 
+const router = useRouter();
+const route = useRoute();
+const index = ref<number>(0);
+const timer = ref<number>(0);
+let intervalId: ReturnType<typeof setInterval>;
+
 const state = reactive<Answer>({
   content: "",
   timer: 0,
-  module: useExamModule().getQuestion.module_id,
-  question: useExamModule().getQuestion.id,
+  module: useExamModule().getQuestions[index.value].module_id,
+  question: useExamModule().getQuestions[index.value].id,
 });
-
-const router = useRouter();
-const route = useRoute();
-const timer = ref<number>(0);
-let intervalId: ReturnType<typeof setInterval>;
 
 const info = ref({
   show: (message: string) => {

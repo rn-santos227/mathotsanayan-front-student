@@ -9,8 +9,8 @@ export default {
   },
 
   EXAM: {
-    QUESTION: `${BACKEND}student/question/`,
-    ANSWER: `${BACKEND}student/ANSWER/`,
+    QUESTION: `${BACKEND}student/questions/`,
+    ANSWER: `${BACKEND}student/answer/`,
   },
 
   IMAGE: {

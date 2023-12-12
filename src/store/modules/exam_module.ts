@@ -16,6 +16,14 @@ export const useExamModule = defineStore("exam", {
       this.questions = questions;
     },
 
+    getQuestion(index: number) {
+      if (this.questions && index < this.questions.length) {
+        return this.questions[index];
+      } else {
+        return null;
+      }
+    },
+
     async fetchQuestion(id: number, student_id: number) {
       try {
         this.isLoading = true;
@@ -23,9 +31,9 @@ export const useExamModule = defineStore("exam", {
           `${api.EXAM.QUESTION}${id}?student_id=${student_id}`
         );
         const data = await response.json();
-        const { question } = data;
+        const { questions } = data;
 
-        this.setQuestions(question);
+        this.setQuestions(questions);
         return true;
       } catch (error) {
         console.error("Error Subject in:", error);

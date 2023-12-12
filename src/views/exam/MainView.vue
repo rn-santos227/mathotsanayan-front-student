@@ -1,6 +1,6 @@
 <template>
   <v-container class="base fill-height" fluid>
-    <v-card class="outlined-border-outer" width="100%">
+    <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text>
         <span class="text-h6">Question: </span>
         <p class="ma-4">
@@ -93,17 +93,19 @@ import ImageComponent from "@/components/ImageComponent.vue";
 
 import Answer from "@/types/Answer";
 
+const examModule = useExamModule();
 const router = useRouter();
 const route = useRoute();
 const index = ref<number>(0);
 const timer = ref<number>(0);
+const loaded = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
 
 const state = reactive<Answer>({
   content: "",
   timer: 0,
-  module: useExamModule().getQuestions[index.value].module_id,
-  question: useExamModule().getQuestions[index.value].id,
+  module: 0,
+  question: 0,
 });
 
 const info = ref({
@@ -133,6 +135,7 @@ onMounted(async () => {
     if (!exists) router.push(`/modules`);
     await useExamModule().fetchQuestion(parseInt(id), student_id);
     intervalId = setInterval(tickSeconds, 1000);
+    loaded.value = true;
   }
 });
 
@@ -154,13 +157,10 @@ const changeColor = (content: string) => {
 
 const submit = async () => {
   if (state.content) {
-    const module_id = route.params.id;
-    const student_id = useAuthModule().student.id;
-    useExamModule().isLoading = true;
-    if (typeof module_id === "string" && student_id) {
-      state.timer = timer.value;
-      timer.value = 0;
-      await useExamModule().fetchQuestion(parseInt(module_id), student_id);
+    state.timer = timer.value;
+    timer.value = 0;
+    if (useExamModule().getQuestions.length > index.value) {
+      index.value += 1;
     }
   } else {
     info.value.show("You have not provided an answer.");

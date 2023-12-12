@@ -77,7 +77,6 @@ import { useRoute, useRouter } from "vue-router";
 import {
   encryptAndStoreToLocalStorage,
   retrieveAndDecryptFromLocalStorage,
-  removeDataFromLocalStorage,
 } from "@/helpers/local_storage";
 
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
@@ -151,6 +150,7 @@ const submit = async () => {
     useExamModule().isLoading = true;
     if (typeof module_id === "string" && student_id) {
       state.timer = timer.value;
+      timer.value = 0;
       await useExamModule().fetchQuestion(parseInt(module_id), student_id);
     }
   } else {

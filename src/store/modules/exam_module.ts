@@ -1,6 +1,7 @@
 import api from "@/helpers/api";
-import Question from "@/types/Question";
 import Answer from "@/types/Answer";
+import Question from "@/types/Question";
+import Result from "@/types/Result";
 
 import { defineStore } from "pinia";
 import { authenticatedFetch } from "@/services/api";
@@ -9,12 +10,17 @@ export const useExamModule = defineStore("exam", {
   state: () => ({
     isTakingExam: false,
     isLoading: false,
+    result: {} as Result,
     questions: [] as Question[],
   }),
 
   actions: {
     setQuestions(questions: Question[]) {
       this.questions = questions;
+    },
+
+    setResult(result: Result) {
+      this.result = result;
     },
 
     getQuestion(index: number) {
@@ -32,9 +38,11 @@ export const useExamModule = defineStore("exam", {
           `${api.EXAM.QUESTION}${id}?student_id=${student_id}`
         );
         const data = await response.json();
-        const { questions } = data;
+        const { questions, result } = data;
 
         this.setQuestions(questions);
+        this.setResult(result);
+
         return true;
       } catch (error) {
         console.error("Error Subject in:", error);
@@ -72,6 +80,10 @@ export const useExamModule = defineStore("exam", {
   getters: {
     getQuestions(): Question[] {
       return this.questions;
+    },
+
+    getResult(): Result {
+      return this.result;
     },
   },
 });

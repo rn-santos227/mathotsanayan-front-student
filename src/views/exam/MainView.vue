@@ -112,6 +112,7 @@ const index = ref<number>(0);
 const timer = ref<number>(0);
 const tries = ref<number>(0);
 const loaded = ref<boolean>(false);
+// const completed = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
 
 const info = ref({
@@ -135,7 +136,7 @@ const wrong = ref({
 const state = reactive<Answer>({
   content: "",
   timer: 0,
-  tries: 0,
+  attempts: 0,
   module: 0,
   question: 0,
 });
@@ -204,8 +205,10 @@ const submit = async () => {
     clearInterval(intervalId);
     state.timer = timer.value;
     state.module = examModule.getQuestions[index.value].module_id;
-    state.tries = tries.value + 1;
+    state.attempts = tries.value + 1;
     state.question = examModule.getQuestions[index.value].id;
+    state.result = examModule.getResult.id;
+
     useExamModule()
       .submitAnswer(state)
       .then((response) => {

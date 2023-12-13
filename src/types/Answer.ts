@@ -6,6 +6,7 @@ interface Answer {
   id?: number;
   content: string;
   timer: number;
+  tries: number;
   created_at?: string;
   updated_at?: string;
   deleted_at?: string;

@@ -81,10 +81,10 @@
       </v-card-actions>
     </v-card>
   </v-container>
-  <CorrectDialogComponent ref="correct" />
+  <CorrectDialogComponent ref="correct" @confirm="handleConfirm" />
   <InformationDialogComponent ref="info" />
   <LoadingDialogComponent v-bind:activate="useExamModule().isLoading" />
-  <WrongDialogComponent ref="wrong" />
+  <WrongDialogComponent ref="wrong" @confirm="timerReset" />
 </template>
 
 <script setup lang="ts">
@@ -94,6 +94,7 @@ import { useRoute, useRouter } from "vue-router";
 import {
   encryptAndStoreToLocalStorage,
   retrieveAndDecryptFromLocalStorage,
+  removeDataFromLocalStorage,
 } from "@/helpers/local_storage";
 
 import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
@@ -134,6 +135,7 @@ const wrong = ref({
 const state = reactive<Answer>({
   content: "",
   timer: 0,
+  tries: 0,
   module: 0,
   question: 0,
 });
@@ -186,20 +188,31 @@ const skip = () => {
   }
 };
 
+const handleConfirm = () => {
+  index.value += 1;
+  timerReset();
+};
+
+const timerReset = () => {
+  removeDataFromLocalStorage("encryptedData");
+  timer.value = 0;
+  intervalId = setInterval(tickSeconds, 1000);
+};
+
 const submit = async () => {
   if (state.content) {
+    clearInterval(intervalId);
     state.timer = timer.value;
     state.module = examModule.getQuestions[index.value].module_id;
+    state.tries = tries.value + 1;
     state.question = examModule.getQuestions[index.value].id;
-    timer.value = 0;
-
     useExamModule()
       .submitAnswer(state)
       .then((response) => {
+        state.content = "";
         if (response?.correct) {
           correct.value.show(response?.solution);
           if (examModule.getQuestions.length > index.value) {
-            index.value += 1;
             tries.value = 0;
           }
         } else {

@@ -21,7 +21,7 @@
         icon="mdi-check-circle"
         size="112"
       ></v-icon>
-      <h2 class="text-h4 mb-6 text-green-darken-4">THE ANSWER IS CORRECT</h2>
+      <h2 class="text-h5 mb-6 text-green-darken-4">THE ANSWER IS CORRECT</h2>
       <ImageComponent
         class="mx-auto my-12"
         v-if="url"
@@ -57,8 +57,11 @@ const id = ref<number | undefined>(0);
 const text = ref<string>("");
 const url = ref<string | File | null>(null);
 
+const emit = defineEmits(["confirm"]);
+
 const confirm = () => {
   dialog.value = false;
+  emit("confirm");
 };
 
 const show = (correct: Correct) => {

@@ -4,20 +4,18 @@
       <v-card-text>
         <span class="text-h6">Question: </span>
         <p class="ma-4">
-          {{ useExamModule().getQuestions[index].content }}
+          {{ examModule.getQuestions[index].content }}
         </p>
         <ImageComponent
-          v-if="useExamModule().getQuestions[index].file"
+          v-if="examModule.getQuestions[index].file"
           class="ma-4"
-          v-bind:id="useExamModule().getQuestions[index].id"
-          v-bind:file="useExamModule().getQuestions[index].file"
+          v-bind:id="examModule.getQuestions[index].id"
+          v-bind:file="examModule.getQuestions[index].file"
           v-bind:height="300"
           v-bind:width="300"
         />
         <v-divider class="my-4" />
-        <v-row
-          v-if="useExamModule().getQuestions[index].type == 'word problem'"
-        >
+        <v-row v-if="examModule.getQuestions[index].type == 'word problem'">
           <v-col>
             <v-text-field
               class="mx-4"
@@ -29,16 +27,13 @@
           </v-col>
         </v-row>
         <v-row
-          v-else-if="
-            useExamModule().getQuestions[index].type == 'single correct'
-          "
+          v-else-if="examModule.getQuestions[index].type == 'single correct'"
         >
           <v-radio-group class="ma-6" v-model.trim="state.content">
             <v-card
               class="outlined-border ma-2"
-              v-for="(option, option_index) in useExamModule().getQuestions[
-                index
-              ].options"
+              v-for="(option, option_index) in examModule.getQuestions[index]
+                .options"
               :key="option_index"
               :color="changeColor(option.content)"
             >
@@ -59,12 +54,24 @@
         <v-row>
           <v-col>
             <v-btn
+              v-if="tries > 2"
+              class="mb-2"
+              variant="elevated"
+              @click.prevent="skip"
+              color="purple-darken-3"
+              width="200"
+              size="x-large"
+            >
+              Skip
+            </v-btn>
+            <v-btn
               class="mb-1 mr-4"
               variant="elevated"
               width="200"
               dark
               color="success"
               prepend-icon="mdi-check"
+              size="x-large"
               @click.prevent="submit"
             >
               Submit
@@ -74,8 +81,10 @@
       </v-card-actions>
     </v-card>
   </v-container>
+  <CorrectDialogComponent ref="correct" />
   <InformationDialogComponent ref="info" />
   <LoadingDialogComponent v-bind:activate="useExamModule().isLoading" />
+  <WrongDialogComponent ref="wrong" />
 </template>
 
 <script setup lang="ts">
@@ -87,8 +96,10 @@ import {
   retrieveAndDecryptFromLocalStorage,
 } from "@/helpers/local_storage";
 
+import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 import InformationDialogComponent from "@/components/dialogs/InformationDialogComponent.vue";
+import WrongDialogComponent from "@/components/dialogs/WrongDialogComponent.vue";
 import ImageComponent from "@/components/ImageComponent.vue";
 
 import Answer from "@/types/Answer";
@@ -98,20 +109,33 @@ const router = useRouter();
 const route = useRoute();
 const index = ref<number>(0);
 const timer = ref<number>(0);
+const tries = ref<number>(0);
 const loaded = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
+
+const info = ref({
+  show: (message: string) => {
+    return message;
+  },
+});
+
+const correct = ref({
+  show: (message: string) => {
+    return message;
+  },
+});
+
+const wrong = ref({
+  show: (message: string) => {
+    return message;
+  },
+});
 
 const state = reactive<Answer>({
   content: "",
   timer: 0,
   module: 0,
   question: 0,
-});
-
-const info = ref({
-  show: (message: string) => {
-    return message;
-  },
 });
 
 onMounted(async () => {
@@ -155,13 +179,34 @@ const changeColor = (content: string) => {
   return content === state.content ? "purple-darken-3" : "white";
 };
 
+const skip = () => {
+  if (examModule.getQuestions.length > index.value) {
+    index.value += 1;
+    tries.value = 0;
+  }
+};
+
 const submit = async () => {
   if (state.content) {
     state.timer = timer.value;
+    state.module = examModule.getQuestions[index.value].module_id;
+    state.question = examModule.getQuestions[index.value].id;
     timer.value = 0;
-    if (useExamModule().getQuestions.length > index.value) {
-      index.value += 1;
-    }
+
+    useExamModule()
+      .submitAnswer(state)
+      .then((response) => {
+        if (response?.correct) {
+          correct.value.show(response?.solution);
+          if (examModule.getQuestions.length > index.value) {
+            index.value += 1;
+            tries.value = 0;
+          }
+        } else {
+          wrong.value.show(response?.solution);
+          tries.value += 1;
+        }
+      });
   } else {
     info.value.show("You have not provided an answer.");
   }

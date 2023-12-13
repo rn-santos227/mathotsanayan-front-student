@@ -1,5 +1,6 @@
 import api from "@/helpers/api";
 import Question from "@/types/Question";
+import Answer from "@/types/Answer";
 
 import { defineStore } from "pinia";
 import { authenticatedFetch } from "@/services/api";
@@ -38,6 +39,30 @@ export const useExamModule = defineStore("exam", {
       } catch (error) {
         console.error("Error Subject in:", error);
         return false;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async submitAnswer(payload: Answer) {
+      try {
+        this.isLoading = true;
+        const response = await authenticatedFetch(
+          api.EXAM.ANSWER + payload.question,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
+        const data = await response.json();
+        const { correct, solution } = data;
+
+        return { correct, solution };
+      } catch (error) {
+        console.error("Error Test in:", error);
       } finally {
         this.isLoading = false;
       }

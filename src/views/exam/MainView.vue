@@ -70,11 +70,24 @@
               width="200"
               dark
               color="success"
-              prepend-icon="mdi-check"
+              prepend-icon="mdi-pencil"
               size="x-large"
               @click.prevent="answer"
             >
               Answer
+            </v-btn>
+            <v-btn
+              v-if="completed"
+              class="mb-1 mr-4"
+              variant="elevated"
+              width="200"
+              dark
+              color="success"
+              prepend-icon="mdi-check"
+              size="x-large"
+              @click.prevent="submit"
+            >
+              Submit
             </v-btn>
           </v-col>
         </v-row>
@@ -115,7 +128,7 @@ const tries = ref<number>(0);
 const loaded = ref<boolean>(false);
 
 const skipped = ref<number[]>([]);
-// const completed = ref<boolean>(false);
+const completed = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
 
 const info = ref({
@@ -221,31 +234,32 @@ const timerReset = () => {
 };
 
 const answer = async () => {
-  if (state.content) {
-    clearInterval(intervalId);
-    state.timer = timer.value;
-    state.module = examModule.getQuestions[index.value].module_id;
-    state.attempts = tries.value + 1;
-    state.question = examModule.getQuestions[index.value].id;
-    state.result = examModule.getResult.id;
+  if (!state.content) info.value.show("You have not provided an answer.");
+  clearInterval(intervalId);
+  state.timer = timer.value;
+  state.module = examModule.getQuestions[index.value].module_id;
+  state.attempts = tries.value + 1;
+  state.question = examModule.getQuestions[index.value].id;
+  state.result = examModule.getResult.id;
 
-    useExamModule()
-      .submitAnswer(state)
-      .then((response) => {
-        state.content = "";
-        if (response?.correct) {
-          correct.value.show(response?.solution);
-          if (examModule.getQuestions.length > index.value) {
-            tries.value = 0;
-          }
-        } else {
-          wrong.value.show(response?.solution);
-          tries.value += 1;
+  useExamModule()
+    .submitAnswer(state)
+    .then((response) => {
+      state.content = "";
+      if (response?.correct) {
+        correct.value.show(response?.solution);
+        if (examModule.getQuestions.length > index.value) {
+          tries.value = 0;
         }
-      });
-  } else {
-    info.value.show("You have not provided an answer.");
-  }
+      } else {
+        wrong.value.show(response?.solution);
+        tries.value += 1;
+      }
+    });
+};
+
+const submit = async () => {
+  if (!completed.value) return;
 };
 </script>
 

@@ -250,6 +250,8 @@ const answer = async () => {
         correct.value.show(response?.solution);
         if (examModule.getQuestions.length > index.value) {
           tries.value = 0;
+        } else {
+          loaded.value = true;
         }
       } else {
         wrong.value.show(response?.solution);

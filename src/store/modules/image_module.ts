@@ -27,8 +27,8 @@ export const useImageModule = defineStore("image", {
         const { url } = data;
         return url;
       } catch (error) {
-        console.error("Error Course in:", error);
-        return "";
+        console.error("Error Image in:", error);
+        throw error;
       } finally {
         this.isLoading = false;
       }

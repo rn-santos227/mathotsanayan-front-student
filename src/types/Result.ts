@@ -1,4 +1,5 @@
 import Module from "./Module";
+import Answer from "./Answer";
 interface Result {
   id?: number;
   progress?: number;
@@ -9,5 +10,6 @@ interface Result {
   updated_at?: string;
   deleted_at?: string;
   module?: number | Module;
+  answers?: Answer[];
 }
 export default Result;

@@ -45,8 +45,8 @@ export const useExamModule = defineStore("exam", {
 
         return true;
       } catch (error) {
-        console.error("Error Subject in:", error);
-        return false;
+        console.error("Error Exam in:", error);
+        throw error;
       } finally {
         this.isLoading = false;
       }
@@ -70,7 +70,23 @@ export const useExamModule = defineStore("exam", {
 
         return { correct, solution };
       } catch (error) {
-        console.error("Error Test in:", error);
+        console.error("Error Exam in:", error);
+        throw error;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async finishExam(id: number) {
+      try {
+        this.isLoading = true;
+        const response = await authenticatedFetch(api.EXAM.SUBMIT + id);
+        const data = await response.json();
+        const { result } = data;
+        this.setResult(result);
+      } catch (error) {
+        console.error("Error Exam in:", error);
+        throw error;
       } finally {
         this.isLoading = false;
       }

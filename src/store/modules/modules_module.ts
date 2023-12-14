@@ -34,7 +34,7 @@ export const useModuleModule = defineStore("modules", {
         return true;
       } catch (error) {
         console.error("Error Module in:", error);
-        return false;
+        throw error;
       } finally {
         this.isTableLoading = false;
       }
@@ -49,7 +49,7 @@ export const useModuleModule = defineStore("modules", {
         return !!module;
       } catch (error) {
         console.error("Error Module in:", error);
-        return false;
+        throw error;
       }
     },
   },

@@ -48,9 +48,11 @@
 </template>
 
 <script setup lang="ts">
-import Correct from "@/types/Correct";
-import ImageComponent from "../ImageComponent.vue";
 import { ref } from "vue";
+
+import ImageComponent from "../ImageComponent.vue";
+
+import Correct from "@/types/Correct";
 
 const dialog = ref<boolean>(false);
 const id = ref<number | undefined>(0);

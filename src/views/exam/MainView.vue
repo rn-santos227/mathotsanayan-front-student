@@ -73,9 +73,9 @@
               color="success"
               prepend-icon="mdi-check"
               size="x-large"
-              @click.prevent="submit"
+              @click.prevent="answer"
             >
-              Submit
+              Answer
             </v-btn>
           </v-col>
         </v-row>
@@ -209,7 +209,7 @@ const timerReset = () => {
   intervalId = setInterval(tickSeconds, 1000);
 };
 
-const submit = async () => {
+const answer = async () => {
   if (state.content) {
     clearInterval(intervalId);
     state.timer = timer.value;

@@ -11,6 +11,7 @@ export default {
   EXAM: {
     QUESTION: `${BACKEND}student/questions/`,
     ANSWER: `${BACKEND}student/answer/`,
+    SUBMIT: `${BACKEND}student/submit/`,
   },
 
   IMAGE: {

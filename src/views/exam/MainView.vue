@@ -65,6 +65,7 @@
               Skip
             </v-btn>
             <v-btn
+              v-if="!completed"
               class="mb-1 mr-4"
               variant="elevated"
               width="200"
@@ -98,6 +99,7 @@
   <InformationDialogComponent ref="info" />
   <LoadingDialogComponent v-bind:activate="useExamModule().isLoading" />
   <WrongDialogComponent ref="wrong" @confirm="timerReset" />
+  <ResultView ref="result" />
 </template>
 
 <script setup lang="ts">
@@ -110,6 +112,8 @@ import {
   removeDataFromLocalStorage,
 } from "@/helpers/local_storage";
 import { shuffleOptions } from "@/helpers/utils";
+
+import ResultView from "./ResultView.vue";
 
 import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
@@ -146,6 +150,12 @@ const correct = ref({
 const wrong = ref({
   show: (message: string) => {
     return message;
+  },
+});
+
+const result = ref({
+  show: () => {
+    return true;
   },
 });
 
@@ -187,7 +197,8 @@ onMounted(async () => {
 
 watch(
   () => index.value,
-  () => {
+  (val: number) => {
+    if (val >= examModule.getQuestions.length - 1) return;
     examModule.getQuestions[index.value].options = shuffleOptions(
       examModule.getQuestions[index.value].options
     );
@@ -211,7 +222,7 @@ const changeColor = (content: string) => {
 };
 
 const skip = () => {
-  if (examModule.getQuestions.length > index.value) {
+  if (index.value < examModule.getQuestions.length - 1) {
     skipped.value.push(index.value);
     index.value += 1;
     tries.value = 0;
@@ -223,7 +234,12 @@ const skip = () => {
 };
 
 const handleConfirm = () => {
-  index.value += 1;
+  if (index.value < examModule.getQuestions.length - 1) {
+    tries.value = 0;
+    index.value += 1;
+  } else {
+    loaded.value = true;
+  }
   timerReset();
 };
 
@@ -248,11 +264,6 @@ const answer = async () => {
       state.content = "";
       if (response?.correct) {
         correct.value.show(response?.solution);
-        if (examModule.getQuestions.length > index.value) {
-          tries.value = 0;
-        } else {
-          loaded.value = true;
-        }
       } else {
         wrong.value.show(response?.solution);
         tries.value += 1;
@@ -262,6 +273,14 @@ const answer = async () => {
 
 const submit = async () => {
   if (!completed.value) return;
+  const id = examModule.getResult.id;
+  if (id) {
+    await useExamModule()
+      .finishExam(id)
+      .then(() => {
+        result.value.show();
+      });
+  }
 };
 </script>
 

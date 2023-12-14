@@ -32,8 +32,9 @@
           <v-radio-group class="ma-6" v-model.trim="state.content">
             <v-card
               class="outlined-border ma-2"
-              v-for="(option, option_index) in examModule.getQuestions[index]
-                .options"
+              v-for="(option, option_index) in shuffleOptions(
+                examModule.getQuestions[index].options
+              )"
               :key="option_index"
               :color="changeColor(option.content)"
             >
@@ -96,6 +97,7 @@ import {
   retrieveAndDecryptFromLocalStorage,
   removeDataFromLocalStorage,
 } from "@/helpers/local_storage";
+import { shuffleOptions } from "@/helpers/utils";
 
 import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
@@ -112,6 +114,8 @@ const index = ref<number>(0);
 const timer = ref<number>(0);
 const tries = ref<number>(0);
 const loaded = ref<boolean>(false);
+
+const skipped = ref<number[]>([]);
 // const completed = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
 
@@ -184,8 +188,13 @@ const changeColor = (content: string) => {
 
 const skip = () => {
   if (examModule.getQuestions.length > index.value) {
+    skipped.value.push(index.value);
     index.value += 1;
     tries.value = 0;
+  } else {
+    if (skipped.value.length > 0) {
+      //
+    }
   }
 };
 

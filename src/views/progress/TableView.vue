@@ -16,7 +16,6 @@
           {{ getModuleCount(item.module) }}
         </td>
         <td class="text-xs-left">{{ evaluation(item) }}</td>
-        <td class="text-xs-left">{{ formatDate(item.created_at) }}</td>
         <td class="text-xs-left">
           <v-btn
             block
@@ -40,7 +39,6 @@ import {
   getModuleStage,
   getModuleCount,
 } from "@/helpers/instance";
-import { formatDate } from "@/helpers/utils";
 
 import headers from "@/helpers/headers/header_results";
 import Result from "@/types/Result";

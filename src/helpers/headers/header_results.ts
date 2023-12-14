@@ -21,12 +21,6 @@ const headers: Array<any> = [
     align: "start",
   },
   {
-    title: "Exam Date Taken",
-    align: "start",
-    sortable: true,
-    key: "craeted_at",
-  },
-  {
     title: "Action",
     align: "end",
     sortable: false,

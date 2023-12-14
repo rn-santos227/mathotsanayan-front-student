@@ -1,4 +1,5 @@
 import Course from "@/types/Course";
+import Module from "@/types/Module";
 import School from "@/types/School";
 import Section from "@/types/Section";
 import Subject from "@/types/Subject";
@@ -46,6 +47,27 @@ export function getTeacherName(teacher: number | string | Teacher) {
 export function getSubjectName(subject: number | string | Subject) {
   if (typeof subject === "object" && subject !== null && "name" in subject) {
     return (subject as Subject).name;
+  }
+  return "DefaultName";
+}
+
+export function getModuleName(section: number | Module | undefined) {
+  if (typeof section === "object" && section !== null && "name" in section) {
+    return (section as Module).name;
+  }
+  return "DefaultName";
+}
+
+export function getModuleStage(section: number | Module | undefined) {
+  if (typeof section === "object" && section !== null && "name" in section) {
+    return (section as Module).step;
+  }
+  return "DefaultName";
+}
+
+export function getModuleCount(section: number | Module | undefined) {
+  if (typeof section === "object" && section !== null && "name" in section) {
+    return (section as Module).count;
   }
   return "DefaultName";
 }

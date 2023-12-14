@@ -23,6 +23,10 @@ export default {
     CHECK: `${BACKEND}modules/check/`,
   },
 
+  RESULTS: {
+    READ: `${BACKEND}student/results/`,
+  },
+
   SUBJECTS: {
     READ: `${BACKEND}student/subjects`,
   },

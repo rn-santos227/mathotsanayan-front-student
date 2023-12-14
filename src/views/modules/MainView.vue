@@ -36,7 +36,7 @@
             />
           </v-col>
         </v-row>
-        <TableViewVue />
+        <TableView />
       </v-card-text>
     </v-card>
   </v-container>
@@ -46,7 +46,7 @@
 import { onMounted, ref } from "vue";
 import { useSubjectModule, useAuthModule, useModuleModule } from "@/store";
 
-import TableViewVue from "./TableView.vue";
+import TableView from "./TableView.vue";
 
 const subject = ref<number | string>("");
 

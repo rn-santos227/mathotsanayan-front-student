@@ -99,7 +99,7 @@
   <InformationDialogComponent ref="info" />
   <LoadingDialogComponent v-bind:activate="useExamModule().isLoading" />
   <WrongDialogComponent ref="wrong" @confirm="timerReset" />
-  <ResultView ref="result" />
+  <ResultView ref="openResult" />
 </template>
 
 <script setup lang="ts">
@@ -153,7 +153,7 @@ const wrong = ref({
   },
 });
 
-const result = ref({
+const openResult = ref({
   show: () => {
     return true;
   },
@@ -238,7 +238,7 @@ const handleConfirm = () => {
     tries.value = 0;
     index.value += 1;
   } else {
-    loaded.value = true;
+    completed.value = true;
   }
   timerReset();
 };
@@ -278,7 +278,7 @@ const submit = async () => {
     await useExamModule()
       .finishExam(id)
       .then(() => {
-        result.value.show();
+        openResult.value.show();
       });
   }
 };

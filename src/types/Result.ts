@@ -9,7 +9,7 @@ interface Result {
   created_at?: string;
   updated_at?: string;
   deleted_at?: string;
-  module?: number | Module;
+  module?: Module;
   answers?: Answer[];
 }
 export default Result;

@@ -9,6 +9,7 @@ interface Module {
   direction: string;
   step: number | string | null | undefined;
   passing: number;
+  count?: number;
   active?: boolean;
   created_at?: string;
   updated_at?: string;

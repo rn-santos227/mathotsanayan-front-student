@@ -1,22 +1,34 @@
 <template>
-  <v-dialog
-    class="ma-auto"
-    persistent
-    v-model="dialog"
-    activator="parent"
-    width="80%"
-  >
-    <v-card>
+  <v-dialog class="ma-auto" persistent v-model="dialog" width="80%">
+    <v-card v-if="loaded">
       <v-card
         absolute
         class="rounded-0 rounded-t py-2"
         color="purple-darken-3"
         flat
       >
-        <v-list-item-title class="text-button">
-          <v-icon icon="mdi-help-circle-outline"></v-icon> Exan Result
-        </v-list-item-title>
+        <v-card-title>
+          <v-row>
+            <v-col>
+              <span class="text-h6">
+                <v-icon icon="mdi-help-circle-outline" />
+                Exam Result
+              </span>
+            </v-col>
+          </v-row>
+        </v-card-title>
       </v-card>
+      <v-card-text class="text--primary">
+        <v-row>
+          <v-col cols="2">
+            <span class="text-h2">
+              {{ examModule.getResult.total_score }} /
+              {{ examModule.getQuestions.length }}
+            </span>
+          </v-col>
+        </v-row>
+      </v-card-text>
+      <v-divider class="mb-2 mt-auto" />
       <v-card-actions class="text-right">
         <v-row>
           <v-col>
@@ -49,6 +61,7 @@ const loaded = ref<boolean>(false);
 const dialog = ref<boolean>(false);
 const result = ref<Result>({});
 
+const examModule = useExamModule();
 const router = useRouter();
 
 const show = () => {
@@ -67,3 +80,10 @@ defineExpose({
   show,
 });
 </script>
+
+<style scoped>
+.result-height {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+</style>

@@ -78,4 +78,10 @@ export const useAuthModule = defineStore("auth", {
       }
     },
   },
+
+  getters: {
+    getStudent(): Student {
+      return this.student;
+    },
+  },
 });

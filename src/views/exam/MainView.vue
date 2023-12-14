@@ -32,9 +32,8 @@
           <v-radio-group class="ma-6" v-model.trim="state.content">
             <v-card
               class="outlined-border ma-2"
-              v-for="(option, option_index) in shuffleOptions(
-                examModule.getQuestions[index].options
-              )"
+              v-for="(option, option_index) in examModule.getQuestions[index]
+                .options"
               :key="option_index"
               :color="changeColor(option.content)"
             >
@@ -89,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, reactive, ref } from "vue";
+import { onMounted, onBeforeUnmount, reactive, ref, watch } from "vue";
 import { useAuthModule, useExamModule, useModuleModule } from "@/store";
 import { useRoute, useRouter } from "vue-router";
 import {
@@ -166,9 +165,21 @@ onMounted(async () => {
     if (!exists) router.push(`/modules`);
     await useExamModule().fetchQuestion(parseInt(id), student_id);
     intervalId = setInterval(tickSeconds, 1000);
+    examModule.getQuestions[index.value].options = shuffleOptions(
+      examModule.getQuestions[index.value].options
+    );
     loaded.value = true;
   }
 });
+
+watch(
+  () => index.value,
+  () => {
+    examModule.getQuestions[index.value].options = shuffleOptions(
+      examModule.getQuestions[index.value].options
+    );
+  }
+);
 
 onBeforeUnmount(() => {
   clearInterval(intervalId);

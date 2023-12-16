@@ -2,7 +2,7 @@ import Subject from "./Subject";
 import Module from "./Module";
 import Option from "./Option";
 
-interface Question {
+type Question = {
   id?: number;
   content: string;
   type: string;
@@ -16,5 +16,6 @@ interface Question {
   has_file?: number;
   options: Option[];
   trigger?: boolean;
-}
+};
+
 export default Question;

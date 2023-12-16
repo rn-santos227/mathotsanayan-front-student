@@ -1,7 +1,7 @@
 import Question from "./Question";
 import Subject from "./Subject";
 
-interface Module {
+type Module = {
   id?: number;
   name: string;
   objective: string;
@@ -16,5 +16,5 @@ interface Module {
   deleted_at?: string;
   subject: number | string | Subject;
   questions?: Question[];
-}
+};
 export default Module;

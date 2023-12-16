@@ -1,6 +1,7 @@
 import Module from "./Module";
 import Answer from "./Answer";
-interface Result {
+
+type Result = {
   id?: number;
   progress?: number;
   timer?: number;
@@ -11,5 +12,5 @@ interface Result {
   deleted_at?: string;
   module?: Module;
   answers?: Answer[];
-}
+};
 export default Result;

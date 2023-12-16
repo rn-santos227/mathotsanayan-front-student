@@ -2,7 +2,7 @@ import Module from "./Module";
 import Question from "./Question";
 import Subject from "./Subject";
 
-interface Correct {
+type Correct = {
   id?: number;
   content: string;
   solution: string;
@@ -14,5 +14,5 @@ interface Correct {
   module?: number | string | Module;
   question?: number | string | Question;
   subject?: number | string | Subject;
-}
+};
 export default Correct;

@@ -3,7 +3,7 @@ import Question from "./Question";
 import Result from "./Result";
 import Student from "./Student";
 
-interface Answer {
+type Answer = {
   id?: number;
   content: string;
   timer: number;
@@ -15,5 +15,6 @@ interface Answer {
   question?: number | Question;
   student?: number | Student;
   result?: number | Result;
-}
+};
+
 export default Answer;

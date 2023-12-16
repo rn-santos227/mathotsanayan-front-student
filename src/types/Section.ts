@@ -1,7 +1,7 @@
 import School from "./School";
 import Teacher from "./Teacher";
 
-interface Section {
+type Section = {
   id?: number;
   name: string;
   description: string;
@@ -10,5 +10,6 @@ interface Section {
   deleted_at?: string;
   school: number | string | School;
   teacher: number | string | Teacher;
-}
+};
+
 export default Section;

@@ -13,7 +13,7 @@
         <td class="text-xs-left">Stage {{ getModuleStage(item.module) }}</td>
         <td class="text-xs-left">
           {{ item.total_score }} /
-          {{ getModuleCount(item.module) }}
+          {{ item.items }}
         </td>
         <td class="text-xs-left">{{ evaluation(item) }}</td>
         <td class="text-xs-left">
@@ -32,13 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from "vue";
+import { computed, onMounted, watch } from "vue";
 import { useResultModule, useAuthModule } from "@/store";
-import {
-  getModuleName,
-  getModuleStage,
-  getModuleCount,
-} from "@/helpers/instance";
+import { getModuleName, getModuleStage } from "@/helpers/instance";
 
 import headers from "@/helpers/headers/header_results";
 import Result from "@/types/Result";
@@ -55,6 +51,13 @@ watch(
     }
   }
 );
+
+onMounted(async () => {
+  const id = useAuthModule().student.id;
+  if (id) {
+    await useResultModule().read(id);
+  }
+});
 
 const evaluation = (result: Result) => {
   const module = result.module;

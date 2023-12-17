@@ -113,7 +113,7 @@ import {
 } from "@/helpers/local_storage";
 import { shuffleOptions } from "@/helpers/utils";
 
-import ResultView from "./ResultView.vue";
+import ResultView from "./result/DialogView.vue";
 
 import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";

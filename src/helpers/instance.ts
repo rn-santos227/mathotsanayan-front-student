@@ -64,10 +64,3 @@ export function getModuleStage(section: number | Module | undefined) {
   }
   return "DefaultName";
 }
-
-export function getModuleCount(section: number | Module | undefined) {
-  if (typeof section === "object" && section !== null && "name" in section) {
-    return (section as Module).count;
-  }
-  return "DefaultName";
-}

@@ -6,6 +6,7 @@ type Result = {
   progress?: number;
   timer?: number;
   total_score?: number;
+  items?: number;
   average?: number;
   created_at?: string;
   updated_at?: string;

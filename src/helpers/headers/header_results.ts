@@ -1,5 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const headers: Array<any> = [
+import type { VDataTable } from "vuetify/lib/components/index.mjs";
+type ReadonlyHeaders = InstanceType<typeof VDataTable>["headers"];
+const headers: ReadonlyHeaders = [
   {
     title: "Module Name",
     align: "start",
@@ -15,10 +16,14 @@ const headers: Array<any> = [
   {
     title: "Score Result",
     align: "start",
+    sortable: false,
+    key: "score",
   },
   {
     title: "Grade",
     align: "start",
+    sortable: false,
+    key: "grade",
   },
   {
     title: "Action",

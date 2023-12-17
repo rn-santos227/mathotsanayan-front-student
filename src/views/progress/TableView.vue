@@ -22,6 +22,7 @@
             color="purple-darken-3"
             variant="outlined"
             prepend-icon="mdi-magnify"
+            @click.prevent="details(item)"
           >
             Details
           </v-btn>
@@ -66,7 +67,10 @@ const evaluation = (result: Result) => {
 
   const average = (result.total_score / module.count) * 100;
   const passing = module.passing;
-
   return average >= passing ? "Passed" : "Failed";
+};
+
+const details = (result: Result) => {
+  console.log(result);
 };
 </script>

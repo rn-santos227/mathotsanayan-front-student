@@ -11,7 +11,7 @@
       persistent
       v-model="dialog"
       activator="parent"
-      width="50%"
+      width="60%"
     >
       <v-card>
         <v-card
@@ -38,17 +38,73 @@
             </v-row>
           </v-card-title>
         </v-card>
+
+        <v-card-text>
+          <div class="d-flex flex-wrap">
+            <v-div class="flex-1 ma-2 pa-2">
+              <v-card
+                class="outlined-border pa-3 rounded-lg"
+                variant="outlined"
+              >
+                <p class="text-h5 font-weight-bold">Score:</p>
+                <p class="mt-4 text-h2 font-weight-bold text-center">
+                  {{ props.result.total_score }} /
+                  {{ props.result.items }}
+                </p>
+              </v-card>
+            </v-div>
+            <v-div class="flex-1-0 ma-2 pa-2">
+              <v-card
+                fluid
+                class="outlined-border pa-3 rounded-lg"
+                variant="outlined"
+              >
+                <p class="text-h5 font-weight-bold">Status:</p>
+                <p class="mt-2">Module Name: {{ props.result.module?.name }}</p>
+                <p class="mt-2">Evaluation: {{ evaluation() }}</p>
+                <p class="mt-2">Total Time: {{ props.result.timer }}</p>
+                <p class="mt-2">Accuracy: {{ accuracy() }}</p>
+              </v-card>
+            </v-div>
+          </div>
+        </v-card-text>
+        <v-divider />
       </v-card>
     </v-dialog>
   </v-btn>
 </template>
 
 <script setup lang="ts">
+import Result from "@/types/Result";
 import { ref } from "vue";
 
 const dialog = ref<boolean>(false);
+const props = defineProps<{
+  result: Result;
+}>();
 
 const close = () => {
   dialog.value = !dialog.value;
 };
+
+const evaluation = () => {
+  const module = props.result.module;
+  if (typeof module != "object") return;
+  if (!(module.count && props.result.total_score)) return;
+
+  const average = (props.result.total_score / module.count) * 100;
+  const passing = module.passing;
+  return average >= passing ? "Passed" : "Failed";
+};
+
+const accuracy = () => {
+  const total_answers = props.result.answers?.length;
+  return total_answers;
+};
 </script>
+
+<style scoped>
+.outlined-border {
+  border: 2px solid #6a1b9a;
+}
+</style>

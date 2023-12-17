@@ -17,15 +17,7 @@
         </td>
         <td class="text-xs-left">{{ evaluation(item) }}</td>
         <td class="text-xs-left">
-          <v-btn
-            block
-            color="purple-darken-3"
-            variant="outlined"
-            prepend-icon="mdi-magnify"
-            @click.prevent="details(item)"
-          >
-            Details
-          </v-btn>
+          <ResultView v-bind:result="item" />
         </td>
       </tr>
     </template>
@@ -36,6 +28,8 @@
 import { computed, onMounted, watch } from "vue";
 import { useResultModule, useAuthModule } from "@/store";
 import { getModuleName, getModuleStage } from "@/helpers/instance";
+
+import ResultView from "./result/DialogView.vue";
 
 import headers from "@/helpers/headers/header_results";
 import Result from "@/types/Result";
@@ -68,9 +62,5 @@ const evaluation = (result: Result) => {
   const average = (result.total_score / module.count) * 100;
   const passing = module.passing;
   return average >= passing ? "Passed" : "Failed";
-};
-
-const details = (result: Result) => {
-  console.log(result);
 };
 </script>

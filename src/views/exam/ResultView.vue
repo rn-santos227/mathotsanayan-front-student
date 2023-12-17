@@ -73,6 +73,7 @@ const show = () => {
 const proceed = () => {
   loaded.value = false;
   dialog.value = false;
+  useExamModule().isTakingExam = false;
   router.push("/modules");
 };
 

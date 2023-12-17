@@ -30,21 +30,18 @@
       </v-card-text>
       <v-divider class="mb-2 mt-auto" />
       <v-card-actions class="text-right">
-        <v-row>
-          <v-col>
-            <v-btn
-              class="mb-3"
-              @click.prevent="proceed"
-              variant="elevated"
-              width="200"
-              dark
-              color="success"
-              prepend-icon="mdi-check"
-            >
-              Return to Module
-            </v-btn>
-          </v-col>
-        </v-row>
+        <v-spacer />
+        <v-btn
+          class="mb-3"
+          @click.prevent="proceed"
+          variant="elevated"
+          width="200"
+          dark
+          color="success"
+          prepend-icon="mdi-check"
+        >
+          Return to Module
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

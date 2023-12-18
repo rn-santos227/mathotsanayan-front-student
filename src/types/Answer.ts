@@ -1,3 +1,4 @@
+import Grade from "./Grade";
 import Module from "./Module";
 import Question from "./Question";
 import Result from "./Result";
@@ -13,6 +14,7 @@ type Answer = {
   deleted_at?: string;
   module?: number | Module;
   question?: number | Question;
+  grade?: number | Grade;
   student?: number | Student;
   result?: number | Result;
 };

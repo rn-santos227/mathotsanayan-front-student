@@ -1,32 +1,72 @@
 <template>
-  <v-dialog class="ma-auto" persistent v-model="dialog" width="80%">
+  <v-dialog class="ma-auto" persistent v-model="dialog" width="60%">
     <v-card v-if="loaded">
       <v-card
         absolute
         class="rounded-0 rounded-t py-2"
         color="purple-darken-3"
-        flat
+        variant="flat"
       >
         <v-card-title>
           <v-row>
             <v-col>
-              <span class="text-h6">
-                <v-icon icon="mdi-help-circle-outline" />
-                Exam Result
-              </span>
+              <span class="text-h6"> Examination Result </span>
             </v-col>
           </v-row>
         </v-card-title>
       </v-card>
-      <v-card-text class="text--primary">
-        <v-row>
-          <v-col cols="2">
-            <span class="text-h2">
-              {{ examModule.getResult.total_score }} /
-              {{ examModule.getQuestions.length }}
-            </span>
-          </v-col>
-        </v-row>
+      <v-card-text class="answers-height">
+        <p>Module Name: {{ examModule.getResult.module?.name }}</p>
+        <p class="mt-2">
+          Result:
+          <span
+            :class="`font-weight-bold text-${
+              evaluateExam(examModule.getResult) === 'Passed' ? 'green' : 'red'
+            }`"
+          >
+            {{ evaluateExam(examModule.getResult) }}</span
+          >
+        </p>
+        <p class="mt-2">Total Time: {{ examModule.getResult.timer }}</p>
+        <v-divider class="my-4" />
+        <div class="d-flex justify-center flex-wrap">
+          <div class="ma-2">
+            <ResultComponent
+              v-bind:color="'cyan'"
+              v-bind:title="'Score'"
+              v-bind:data="`${examModule.getResult.total_score} / ${examModule.getResult.items}`"
+              v-bind:value="grade(examModule.getResult)"
+            />
+          </div>
+          <div class="ma-2">
+            <ResultComponent
+              v-bind:color="'teal'"
+              v-bind:title="'Grade'"
+              v-bind:data="`${grade(examModule.getResult).toFixed(2)}%`"
+              v-bind:value="grade(examModule.getResult)"
+            />
+          </div>
+          <div class="ma-2">
+            <ResultComponent
+              v-bind:color="'green'"
+              v-bind:title="'Total Attempts'"
+              v-bind:data="`${examModule.getResult.answers?.length}`"
+              v-bind:value="accuracy(examModule.getResult)"
+            />
+          </div>
+          <div class="ma-2">
+            <ResultComponent
+              v-bind:color="'light-green'"
+              v-bind:title="'Accuracy'"
+              v-bind:data="`${accuracy(examModule.getResult).toFixed(2)}%`"
+              v-bind:value="accuracy(examModule.getResult)"
+            />
+          </div>
+        </div>
+        <v-divider class="mt-4" />
+        <div>
+          <TableView v-bind:answers="examModule.getResult.answers" />
+        </div>
       </v-card-text>
       <v-divider class="mb-2 mt-auto" />
       <v-card-actions class="text-right">
@@ -52,17 +92,18 @@ import { ref } from "vue";
 import { useExamModule } from "@/store";
 import { useRouter } from "vue-router";
 
-import Result from "@/types/Result";
+import { grade, accuracy, evaluateExam } from "@/helpers/evaluation";
+
+import ResultComponent from "@/components/ResultComponent.vue";
+import TableView from "./TableView.vue";
 
 const loaded = ref<boolean>(false);
 const dialog = ref<boolean>(false);
-const result = ref<Result>({});
 
 const examModule = useExamModule();
 const router = useRouter();
 
 const show = () => {
-  result.value = useExamModule().getResult;
   loaded.value = true;
   dialog.value = true;
 };

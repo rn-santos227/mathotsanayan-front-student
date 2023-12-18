@@ -18,7 +18,7 @@
           absolute
           class="rounded-0 rounded-t py-2"
           color="purple-darken-3"
-          flat
+          variant="flat"
         >
           <v-card-title>
             <v-row>
@@ -99,12 +99,13 @@
 </template>
 
 <script setup lang="ts">
-import Result from "@/types/Result";
 import { ref } from "vue";
 import { grade, accuracy, evaluateExam } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
 import TableView from "./TableView.vue";
+
+import Result from "@/types/Result";
 
 const dialog = ref<boolean>(false);
 const props = defineProps<{

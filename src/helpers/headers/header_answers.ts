@@ -11,7 +11,7 @@ const headers: ReadonlyHeaders = [
     title: "Question Content",
     align: "start",
     sortable: true,
-    width: "50%",
+    width: "40%",
     key: "question.content",
   },
   {
@@ -25,6 +25,12 @@ const headers: ReadonlyHeaders = [
     align: "start",
     sortable: true,
     key: "tries",
+  },
+  {
+    title: "Time",
+    align: "start",
+    sortable: true,
+    key: "time",
   },
 ];
 

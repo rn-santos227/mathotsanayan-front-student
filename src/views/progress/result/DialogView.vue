@@ -39,40 +39,57 @@
           </v-card-title>
         </v-card>
 
-        <v-card-text>
+        <v-card-text class="answers-height">
+          <p>Module Name: {{ props.result.module?.name }}</p>
+          <p class="mt-2">
+            Result:
+            <span
+              :class="`font-weight-bold text-${
+                evaluateExam(props.result) === 'Passed' ? 'green' : 'red'
+              }`"
+            >
+              {{ evaluateExam(props.result) }}</span
+            >
+          </p>
+          <p class="mt-2">Total Time: {{ props.result.timer }}</p>
+          <v-divider class="my-4" />
           <div class="d-flex justify-center flex-wrap">
-            <div class="ma-2 pa-2">
+            <div class="ma-2">
               <ResultComponent
                 v-bind:color="'cyan'"
                 v-bind:title="'Score'"
                 v-bind:data="`${props.result.total_score} / ${props.result.items}`"
-                v-bind:value="grade()"
+                v-bind:value="grade(props.result)"
               />
             </div>
-            <div class="ma-2 pa-2">
+            <div class="ma-2">
               <ResultComponent
                 v-bind:color="'teal'"
-                v-bind:title="'Total Answers'"
-                v-bind:data="`${props.result.answers?.length}`"
-                v-bind:value="accuracy()"
+                v-bind:title="'Grade'"
+                v-bind:data="`${grade(props.result).toFixed(2)}%`"
+                v-bind:value="grade(props.result)"
               />
             </div>
-            <div class="ma-2 pa-2">
+            <div class="ma-2">
               <ResultComponent
                 v-bind:color="'green'"
-                v-bind:title="'Accuracy'"
-                v-bind:data="`${accuracy().toFixed(2)}%`"
-                v-bind:value="accuracy()"
+                v-bind:title="'Total Attempts'"
+                v-bind:data="`${props.result.answers?.length}`"
+                v-bind:value="accuracy(props.result)"
               />
             </div>
-            <div class="ma-2 pa-2">
+            <div class="ma-2">
               <ResultComponent
                 v-bind:color="'light-green'"
-                v-bind:title="'Grade'"
-                v-bind:data="`${grade().toFixed(2)}%`"
-                v-bind:value="grade()"
+                v-bind:title="'Accuracy'"
+                v-bind:data="`${accuracy(props.result).toFixed(2)}%`"
+                v-bind:value="accuracy(props.result)"
               />
             </div>
+          </div>
+          <v-divider class="mt-4" />
+          <div>
+            <TableView v-bind:answers="result.answers" />
           </div>
         </v-card-text>
         <v-divider />
@@ -84,8 +101,10 @@
 <script setup lang="ts">
 import Result from "@/types/Result";
 import { ref } from "vue";
+import { grade, accuracy, evaluateExam } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
+import TableView from "./TableView.vue";
 
 const dialog = ref<boolean>(false);
 const props = defineProps<{
@@ -95,42 +114,11 @@ const props = defineProps<{
 const close = () => {
   dialog.value = !dialog.value;
 };
-
-// const evaluation = () => {
-//   const module = props.result.module;
-//   if (typeof module != "object") return;
-//   if (!(module.count && props.result.total_score)) return;
-
-//   const average = (props.result.total_score / module.count) * 100;
-//   const passing = module.passing;
-//   return average >= passing ? "Passed" : "Failed";
-// };
-
-const accuracy = (): number => {
-  const total_answers = props.result.answers?.length;
-  if (props.result.total_score && total_answers && props.result.items) {
-    const average = (props.result.total_score / total_answers) * 100;
-    const grade = (props.result.total_score / props.result.items) * 100;
-    const accuracy = (average + grade) / 2;
-
-    return accuracy;
-  } else {
-    return 0;
-  }
-};
-
-const grade = (): number => {
-  if (props.result.total_score && props.result.items) {
-    const grade = (props.result.total_score / props.result.items) * 100;
-    return grade;
-  } else {
-    return 0;
-  }
-};
 </script>
 
 <style scoped>
-.outlined-border {
-  border: 2px solid #6a1b9a;
+.answers-height {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 </style>

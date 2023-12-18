@@ -15,7 +15,15 @@
           {{ item.total_score }} /
           {{ item.items }}
         </td>
-        <td class="text-xs-left">{{ evaluation(item) }}</td>
+        <td class="text-xs-left">
+          <span
+            :class="`font-weight-bold text-${
+              evaluateExam(item) === 'Passed' ? 'green' : 'red'
+            }`"
+          >
+            {{ evaluateExam(item) }}</span
+          >
+        </td>
         <td class="text-xs-left">
           <ResultView v-bind:result="item" />
         </td>
@@ -28,6 +36,7 @@
 import { computed, onMounted, watch } from "vue";
 import { useResultModule, useAuthModule } from "@/store";
 import { getModuleName, getModuleStage } from "@/helpers/instance";
+import { evaluateExam } from "@/helpers/evaluation";
 
 import ResultView from "./result/DialogView.vue";
 
@@ -53,14 +62,4 @@ onMounted(async () => {
     await useResultModule().read(id);
   }
 });
-
-const evaluation = (result: Result) => {
-  const module = result.module;
-  if (typeof module != "object") return;
-  if (!(module.count && result.total_score)) return;
-
-  const average = (result.total_score / module.count) * 100;
-  const passing = module.passing;
-  return average >= passing ? "Passed" : "Failed";
-};
 </script>

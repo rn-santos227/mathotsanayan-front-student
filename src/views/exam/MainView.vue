@@ -2,7 +2,7 @@
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text>
-        <span class="text-h6">Question: </span>
+        <span class="text-h6">Question {{ index + 1 }}: </span>
         <p class="ma-4">
           {{ examModule.getQuestions[index].content }}
         </p>

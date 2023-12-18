@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authModule.isAuthenticated && !useExamModule().isTakingExam">
+  <div v-if="authModule.isAuthenticated && !hideTab">
     <v-card elevation="3" class="tab">
       <v-tabs v-model="tab" bg-color="purple-darken-3" grow>
         <v-tab
@@ -17,17 +17,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useAuthModule, useExamModule } from "@/store";
+import { ref, onMounted } from "vue";
+import { useAuthModule } from "@/store";
 
 import tabs from "@/helpers/tabs";
+import { useRoute } from "vue-router";
 
 const props = defineProps<{
   tab: number;
 }>();
 
 const authModule = useAuthModule();
+const hideTab = ref<boolean>(false);
+
 const tab = ref<number>(props.tab);
+const route = useRoute();
+const meta = ref(route.meta);
+
+onMounted(() => {
+  if (meta.value.isExam) {
+    hideTab.value = true;
+  }
+});
 </script>
 
 <style scoped>

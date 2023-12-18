@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ProfileView,
     meta: {
       forAuth: true,
+      isExam: false,
     },
   },
   {
@@ -22,6 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ExamModule,
     meta: {
       forAuth: true,
+      isExam: true,
     },
   },
   {
@@ -30,6 +32,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ModulesView,
     meta: {
       forAuth: true,
+      isExam: false,
     },
   },
   {
@@ -38,6 +41,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ProgressView,
     meta: {
       forAuth: true,
+      isExam: false,
     },
   },
   {
@@ -46,6 +50,7 @@ const routes: Array<RouteRecordRaw> = [
     component: AuthView,
     meta: {
       forVisitors: true,
+      isExam: false,
     },
   },
 ];

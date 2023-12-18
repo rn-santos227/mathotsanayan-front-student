@@ -41,7 +41,7 @@
 
         <v-card-text>
           <div class="d-flex flex-wrap">
-            <v-div class="flex-1 ma-2 pa-2">
+            <div class="flex-1 ma-2 pa-2">
               <v-card
                 class="outlined-border pa-3 rounded-lg"
                 variant="outlined"
@@ -52,8 +52,17 @@
                   {{ props.result.items }}
                 </p>
               </v-card>
-            </v-div>
-            <v-div class="flex-1-0 ma-2 pa-2">
+              <v-card
+                class="outlined-border pa-3 rounded-lg mt-4"
+                variant="outlined"
+              >
+                <p class="text-h5 font-weight-bold">Total Answers:</p>
+                <p class="mt-4 text-h2 font-weight-bold text-center">
+                  {{ props.result.answers?.length }}
+                </p>
+              </v-card>
+            </div>
+            <div class="flex-1-0 ma-2 pa-2">
               <v-card
                 fluid
                 class="outlined-border pa-3 rounded-lg"
@@ -61,11 +70,21 @@
               >
                 <p class="text-h5 font-weight-bold">Status:</p>
                 <p class="mt-2">Module Name: {{ props.result.module?.name }}</p>
-                <p class="mt-2">Evaluation: {{ evaluation() }}</p>
+                <p class="mt-2">
+                  Result:
+                  <span
+                    :class="`font-weight-bold text-${
+                      evaluation() === 'Passed' ? 'green' : 'red'
+                    }`"
+                  >
+                    {{ evaluation() }}</span
+                  >
+                </p>
                 <p class="mt-2">Total Time: {{ props.result.timer }}</p>
+                <p class="mt-2">Grade: {{ grade() }}</p>
                 <p class="mt-2">Accuracy: {{ accuracy() }}</p>
               </v-card>
-            </v-div>
+            </div>
           </div>
         </v-card-text>
         <v-divider />
@@ -99,7 +118,24 @@ const evaluation = () => {
 
 const accuracy = () => {
   const total_answers = props.result.answers?.length;
-  return total_answers;
+  if (props.result.total_score && total_answers && props.result.items) {
+    const average = (props.result.total_score / total_answers) * 100;
+    const grade = (props.result.total_score / props.result.items) * 100;
+    const accuracy = (average + grade) / 2;
+
+    return `${accuracy.toFixed(2)}%`;
+  } else {
+    return "Undefined Data";
+  }
+};
+
+const grade = () => {
+  if (props.result.total_score && props.result.items) {
+    const grade = (props.result.total_score / props.result.items) * 100;
+    return `${grade.toFixed(2)}%`;
+  } else {
+    return "Undefined Data";
+  }
 };
 </script>
 

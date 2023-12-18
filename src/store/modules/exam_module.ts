@@ -8,7 +8,6 @@ import { authenticatedFetch } from "@/services/api";
 
 export const useExamModule = defineStore("exam", {
   state: () => ({
-    isTakingExam: false,
     isLoading: false,
     result: {} as Result,
     questions: [] as Question[],

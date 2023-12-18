@@ -168,7 +168,6 @@ const state = reactive<Answer>({
 });
 
 onMounted(async () => {
-  useExamModule().isTakingExam = true;
   useExamModule().isLoading = true;
 
   const decryptedData = await retrieveAndDecryptFromLocalStorage(

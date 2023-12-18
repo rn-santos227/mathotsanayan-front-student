@@ -15,7 +15,7 @@
           </v-btn>
         </template>
       </v-menu>
-      <v-menu v-if="useExamModule().isTakingExam">
+      <v-menu v-if="showBack">
         <template v-slot:activator="{ props }">
           <v-btn
             v-bind="props"
@@ -60,9 +60,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useAuthModule, useExamModule } from "../../store";
-import { useRouter } from "vue-router";
+import { ref, watch } from "vue";
+import { useAuthModule } from "../../store";
+import { useRouter, useRoute } from "vue-router";
 
 import QuestionDialogComponent from "../dialogs/QuestionDialogComponent.vue";
 
@@ -78,7 +78,9 @@ const refLeave = ref({
   },
 });
 
+const showBack = ref<boolean>(false);
 const router = useRouter();
+const route = useRoute();
 
 const authModule = useAuthModule();
 const props = defineProps({
@@ -87,6 +89,17 @@ const props = defineProps({
     required: true,
   },
 });
+
+watch(
+  () => route.path,
+  () => {
+    if (route.name === "exam") {
+      showBack.value = true;
+    } else {
+      showBack.value = false;
+    }
+  }
+);
 
 const handeConfirm = async () => {
   await authModule.logout();

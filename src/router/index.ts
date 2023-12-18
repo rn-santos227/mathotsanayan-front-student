@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ProgressView,
     meta: {
       forAuth: true,
-      isExam: false,
+      isExam: true,
     },
   },
   {

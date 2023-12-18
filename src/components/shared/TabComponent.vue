@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, watch } from "vue";
 import { useAuthModule } from "@/store";
 
 import tabs from "@/helpers/tabs";
@@ -32,13 +32,13 @@ const hideTab = ref<boolean>(false);
 
 const tab = ref<number>(props.tab);
 const route = useRoute();
-const meta = ref(route.meta);
 
-onMounted(() => {
-  if (meta.value.isExam) {
-    hideTab.value = true;
+watch(
+  () => route.path,
+  () => {
+    hideTab.value = route.name === "exam";
   }
-});
+);
 </script>
 
 <style scoped>

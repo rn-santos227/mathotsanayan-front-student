@@ -40,50 +40,38 @@
         </v-card>
 
         <v-card-text>
-          <div class="d-flex flex-wrap">
-            <div class="flex-1 ma-2 pa-2">
-              <v-card
-                class="outlined-border pa-3 rounded-lg"
-                variant="outlined"
-              >
-                <p class="text-h5 font-weight-bold">Score:</p>
-                <p class="mt-4 text-h2 font-weight-bold text-center">
-                  {{ props.result.total_score }} /
-                  {{ props.result.items }}
-                </p>
-              </v-card>
-              <v-card
-                class="outlined-border pa-3 rounded-lg mt-4"
-                variant="outlined"
-              >
-                <p class="text-h5 font-weight-bold">Total Answers:</p>
-                <p class="mt-4 text-h2 font-weight-bold text-center">
-                  {{ props.result.answers?.length }}
-                </p>
-              </v-card>
+          <div class="d-flex justify-center flex-wrap">
+            <div class="ma-2 pa-2">
+              <ResultComponent
+                v-bind:color="'cyan'"
+                v-bind:title="'Score'"
+                v-bind:data="`${props.result.total_score} / ${props.result.items}`"
+                v-bind:value="grade()"
+              />
             </div>
-            <div class="flex-1-0 ma-2 pa-2">
-              <v-card
-                fluid
-                class="outlined-border pa-3 rounded-lg"
-                variant="outlined"
-              >
-                <p class="text-h5 font-weight-bold">Status:</p>
-                <p class="mt-2">Module Name: {{ props.result.module?.name }}</p>
-                <p class="mt-2">
-                  Result:
-                  <span
-                    :class="`font-weight-bold text-${
-                      evaluation() === 'Passed' ? 'green' : 'red'
-                    }`"
-                  >
-                    {{ evaluation() }}</span
-                  >
-                </p>
-                <p class="mt-2">Total Time: {{ props.result.timer }}</p>
-                <p class="mt-2">Grade: {{ grade() }}</p>
-                <p class="mt-2">Accuracy: {{ accuracy() }}</p>
-              </v-card>
+            <div class="ma-2 pa-2">
+              <ResultComponent
+                v-bind:color="'teal'"
+                v-bind:title="'Total Answers'"
+                v-bind:data="`${props.result.answers?.length}`"
+                v-bind:value="accuracy()"
+              />
+            </div>
+            <div class="ma-2 pa-2">
+              <ResultComponent
+                v-bind:color="'green'"
+                v-bind:title="'Accuracy'"
+                v-bind:data="`${accuracy().toFixed(2)}%`"
+                v-bind:value="accuracy()"
+              />
+            </div>
+            <div class="ma-2 pa-2">
+              <ResultComponent
+                v-bind:color="'light-green'"
+                v-bind:title="'Grade'"
+                v-bind:data="`${grade().toFixed(2)}%`"
+                v-bind:value="grade()"
+              />
             </div>
           </div>
         </v-card-text>
@@ -97,6 +85,8 @@
 import Result from "@/types/Result";
 import { ref } from "vue";
 
+import ResultComponent from "@/components/ResultComponent.vue";
+
 const dialog = ref<boolean>(false);
 const props = defineProps<{
   result: Result;
@@ -106,35 +96,35 @@ const close = () => {
   dialog.value = !dialog.value;
 };
 
-const evaluation = () => {
-  const module = props.result.module;
-  if (typeof module != "object") return;
-  if (!(module.count && props.result.total_score)) return;
+// const evaluation = () => {
+//   const module = props.result.module;
+//   if (typeof module != "object") return;
+//   if (!(module.count && props.result.total_score)) return;
 
-  const average = (props.result.total_score / module.count) * 100;
-  const passing = module.passing;
-  return average >= passing ? "Passed" : "Failed";
-};
+//   const average = (props.result.total_score / module.count) * 100;
+//   const passing = module.passing;
+//   return average >= passing ? "Passed" : "Failed";
+// };
 
-const accuracy = () => {
+const accuracy = (): number => {
   const total_answers = props.result.answers?.length;
   if (props.result.total_score && total_answers && props.result.items) {
     const average = (props.result.total_score / total_answers) * 100;
     const grade = (props.result.total_score / props.result.items) * 100;
     const accuracy = (average + grade) / 2;
 
-    return `${accuracy.toFixed(2)}%`;
+    return accuracy;
   } else {
-    return "Undefined Data";
+    return 0;
   }
 };
 
-const grade = () => {
+const grade = (): number => {
   if (props.result.total_score && props.result.items) {
     const grade = (props.result.total_score / props.result.items) * 100;
-    return `${grade.toFixed(2)}%`;
+    return grade;
   } else {
-    return "Undefined Data";
+    return 0;
   }
 };
 </script>

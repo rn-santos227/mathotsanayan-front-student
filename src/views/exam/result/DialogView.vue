@@ -29,7 +29,7 @@
         </p>
         <p class="mt-2">Total Time: {{ examModule.getResult.timer }}</p>
         <v-divider class="my-4" />
-        <div class="d-flex justify-center flex-wrap">
+        <div class="d-flex justify-space-around flex-wrap">
           <div class="ma-2">
             <ResultComponent
               v-bind:color="'cyan'"

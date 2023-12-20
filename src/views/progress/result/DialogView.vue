@@ -6,13 +6,7 @@
     prepend-icon="mdi-magnify"
   >
     View Details
-    <v-dialog
-      class="ma-auto"
-      persistent
-      v-model="dialog"
-      activator="parent"
-      width="60%"
-    >
+    <v-dialog class="ma-auto" persistent v-model="dialog" activator="parent">
       <v-card>
         <v-card
           absolute
@@ -53,7 +47,7 @@
           </p>
           <p class="mt-2">Total Time: {{ props.result.timer }}</p>
           <v-divider class="my-4" />
-          <div class="d-flex justify-center flex-wrap">
+          <div class="d-flex justify-space-around flex-wrap">
             <div class="ma-2">
               <ResultComponent
                 v-bind:color="'cyan'"

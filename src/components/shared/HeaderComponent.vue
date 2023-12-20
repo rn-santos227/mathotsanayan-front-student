@@ -93,11 +93,7 @@ const props = defineProps({
 watch(
   () => route.path,
   () => {
-    if (route.name === "exam") {
-      showBack.value = true;
-    } else {
-      showBack.value = false;
-    }
+    showBack.value = route.name === "exam";
   }
 );
 

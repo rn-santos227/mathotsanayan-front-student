@@ -1,7 +1,7 @@
 <template>
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
-      <v-card-text>
+      <v-card-text v-if="index <= examModule.getQuestions.length">
         <span class="text-h6">Question {{ index + 1 }}: </span>
         <p class="ma-4">
           {{ examModule.getQuestions[index].content }}
@@ -30,68 +30,73 @@
           v-else-if="examModule.getQuestions[index].type == 'single correct'"
         >
           <v-radio-group class="ma-6" v-model.trim="state.content">
-            <v-card
-              class="outlined-border ma-2"
-              v-for="(option, option_index) in examModule.getQuestions[index]
-                .options"
-              :key="option_index"
-              :color="changeColor(option.content)"
-            >
-              <v-card-text>
-                <v-row>
-                  <v-col v-if="option.file" cols="1"></v-col>
-                  <v-col>
-                    <v-radio :label="option.content" :value="option.content"
-                  /></v-col>
-                </v-row>
-              </v-card-text>
-            </v-card>
+            <div class="d-flex justify-space-around flex-wrap">
+              <v-card
+                width="400"
+                class="outlined-border ma-4"
+                v-for="(option, option_index) in examModule.getQuestions[index]
+                  .options"
+                :key="option_index"
+                :color="changeColor(option.content)"
+                @click.prevent="selectAnswer(option.content)"
+              >
+                <v-radio :value="option.content" />
+                <ImageComponent
+                  class="mx-auto"
+                  v-if="option.file"
+                  v-bind:id="state.id"
+                  v-bind:file="option.file"
+                  v-bind:height="200"
+                  v-bind:width="250"
+                />
+                <v-card-text class="mx-4 mb-4">
+                  {{ option.content }}
+                </v-card-text>
+              </v-card>
+            </div>
           </v-radio-group>
         </v-row>
       </v-card-text>
       <v-divider />
       <v-card-actions class="text-right">
-        <v-row>
-          <v-col>
-            <v-btn
-              v-if="tries > 2"
-              class="mb-2"
-              variant="elevated"
-              @click.prevent="skip"
-              color="purple-darken-3"
-              width="200"
-              size="x-large"
-            >
-              Skip
-            </v-btn>
-            <v-btn
-              v-if="!completed"
-              class="mb-1 mr-4"
-              variant="elevated"
-              width="200"
-              dark
-              color="success"
-              prepend-icon="mdi-pencil"
-              size="x-large"
-              @click.prevent="answer"
-            >
-              Answer
-            </v-btn>
-            <v-btn
-              v-if="completed"
-              class="mb-1 mr-4"
-              variant="elevated"
-              width="200"
-              dark
-              color="success"
-              prepend-icon="mdi-check"
-              size="x-large"
-              @click.prevent="submit"
-            >
-              Submit
-            </v-btn>
-          </v-col>
-        </v-row>
+        <v-spacer />
+        <v-btn
+          v-if="tries > 2"
+          class="mb-2"
+          variant="elevated"
+          @click.prevent="skip"
+          color="purple-darken-3"
+          width="200"
+          size="x-large"
+        >
+          Skip
+        </v-btn>
+        <v-btn
+          v-if="!completed"
+          class="mb-1 mr-4"
+          variant="elevated"
+          width="200"
+          dark
+          color="success"
+          prepend-icon="mdi-pencil"
+          size="x-large"
+          @click.prevent="answer"
+        >
+          Answer
+        </v-btn>
+        <v-btn
+          v-if="completed"
+          class="mb-1 mr-4"
+          variant="elevated"
+          width="200"
+          dark
+          color="success"
+          prepend-icon="mdi-check"
+          size="x-large"
+          @click.prevent="submit"
+        >
+          Submit
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -183,6 +188,7 @@ onMounted(async () => {
   const id = route.params.id;
   const student_id = useAuthModule().student.id;
   if (typeof id === "string" && student_id) {
+    console.log(id);
     const exists = await useModuleModule().check(parseInt(id));
     if (!exists) router.push(`/modules`);
     await useExamModule().fetchQuestion(parseInt(id), student_id);
@@ -218,6 +224,10 @@ const tickSeconds = async () => {
 
 const changeColor = (content: string) => {
   return content === state.content ? "purple-darken-3" : "white";
+};
+
+const selectAnswer = (answer: string) => {
+  state.content = answer;
 };
 
 const skip = () => {

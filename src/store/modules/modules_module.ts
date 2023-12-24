@@ -42,7 +42,7 @@ export const useModuleModule = defineStore("modules", {
 
     async check(id: number): Promise<boolean> {
       try {
-        const response = await authenticatedFetch(`${api.MODULES.CHECK}${id}}`);
+        const response = await authenticatedFetch(`${api.MODULES.CHECK}${id}`);
         const data = await response.json();
         const { module } = data;
 

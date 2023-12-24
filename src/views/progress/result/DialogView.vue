@@ -45,7 +45,9 @@
               {{ evaluateExam(props.result) }}</span
             >
           </p>
-          <p class="mt-2">Total Time: {{ props.result.timer }}</p>
+          <p class="mt-2">
+            Total Time: {{ secondsToMinutes(props.result.timer) }}
+          </p>
           <v-divider class="my-4" />
           <div class="d-flex justify-space-around flex-wrap">
             <div class="ma-2">
@@ -94,7 +96,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { grade, accuracy, evaluateExam } from "@/helpers/evaluation";
+import {
+  grade,
+  accuracy,
+  evaluateExam,
+  secondsToMinutes,
+} from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
 import TableView from "./TableView.vue";

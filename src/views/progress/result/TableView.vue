@@ -22,7 +22,7 @@
           {{ item.attempts }}
         </td>
         <td class="text-xs-left">
-          {{ item.timer }}
+          {{ secondsToMinutes(item.timer) }}
         </td>
       </tr>
     </template>
@@ -31,6 +31,7 @@
 
 <script setup lang="ts">
 import { getQuestionContent, getGradeEvaluation } from "@/helpers/instance";
+import { secondsToMinutes } from "@/helpers/evaluation";
 import headers from "@/helpers/headers/header_answers";
 import Answer from "@/types/Answer";
 

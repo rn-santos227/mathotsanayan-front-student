@@ -9,45 +9,25 @@
     <v-dialog class="ma-auto" persistent v-model="dialog" activator="parent">
       <v-card>
         <v-card
-          absolute
-          class="rounded-0 rounded-t py-2"
+          class="rounded-0 rounded-t mb-6 py-2"
           color="purple-darken-3"
-          variant="flat"
+          flat
         >
-          <v-card-title>
-            <v-row>
-              <v-col>
-                <span class="text-h6"> Examination Result </span>
-              </v-col>
-              <v-col class="d-flex">
-                <v-spacer />
-                <v-btn
-                  density="comfortable"
-                  variant="outlined"
-                  icon="mdi-close"
-                  @click="close"
-                >
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-card-title>
+          <v-card-actions class="mx-4">
+            <span class="text-h6"> Examination Result </span>
+            <v-spacer />
+            <v-btn
+              density="comfortable"
+              variant="outlined"
+              icon="mdi-close"
+              @click="close"
+            >
+            </v-btn>
+          </v-card-actions>
         </v-card>
 
         <v-card-text class="answers-height">
-          <p>Module Name: {{ props.result.module?.name }}</p>
-          <p class="mt-2">
-            Result:
-            <span
-              :class="`font-weight-bold text-${
-                evaluateExam(props.result) === 'Passed' ? 'green' : 'red'
-              }`"
-            >
-              {{ evaluateExam(props.result) }}</span
-            >
-          </p>
-          <p class="mt-2">
-            Total Time: {{ secondsToMinutes(props.result.timer) }}
-          </p>
+          <FormView v-bind:result="result" />
           <v-divider class="my-4" />
           <div class="d-flex justify-space-around flex-wrap">
             <div class="ma-2">
@@ -96,15 +76,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import {
-  grade,
-  accuracy,
-  evaluateExam,
-  secondsToMinutes,
-} from "@/helpers/evaluation";
+import { grade, accuracy } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
 import TableView from "./TableView.vue";
+import FormView from "./FormView.vue";
 
 import Result from "@/types/Result";
 

@@ -16,18 +16,7 @@
         </v-card-title>
       </v-card>
       <v-card-text class="answers-height">
-        <p>Module Name: {{ examModule.getResult.module?.name }}</p>
-        <p class="mt-2">
-          Result:
-          <span
-            :class="`font-weight-bold text-${
-              evaluateExam(examModule.getResult) === 'Passed' ? 'green' : 'red'
-            }`"
-          >
-            {{ evaluateExam(examModule.getResult) }}</span
-          >
-        </p>
-        <p class="mt-2">Total Time: {{ examModule.getResult.timer }}</p>
+        <FormView v-bind:result="examModule.getResult" />
         <v-divider class="my-4" />
         <div class="d-flex justify-space-around flex-wrap">
           <div class="ma-2">
@@ -92,9 +81,11 @@ import { ref } from "vue";
 import { useExamModule } from "@/store";
 import { useRouter } from "vue-router";
 
-import { grade, accuracy, evaluateExam } from "@/helpers/evaluation";
+import { grade, accuracy } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
+
+import FormView from "./FormView.vue";
 import TableView from "./TableView.vue";
 
 const loaded = ref<boolean>(false);

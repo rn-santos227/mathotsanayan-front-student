@@ -79,8 +79,9 @@ import { ref } from "vue";
 import { grade, accuracy } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
-import TableView from "./TableView.vue";
+
 import FormView from "./FormView.vue";
+import TableView from "./TableView.vue";
 
 import Result from "@/types/Result";
 

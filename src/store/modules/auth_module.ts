@@ -1,3 +1,4 @@
+import Password from "@/interfaces/Password";
 import Student from "@/types/Student";
 import api from "@/helpers/api";
 
@@ -60,6 +61,25 @@ export const useAuthModule = defineStore("auth", {
       } catch (error) {
         console.error("Error fetching user data:", error);
         throw error;
+      }
+    },
+
+    async changePassword(payload: Password): Promise<boolean> {
+      try {
+        this.isLoading = true;
+        await authenticatedFetch(api.AUTH.PASSWORD, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+        return true;
+      } catch (error) {
+        console.error("Error Course in:", error);
+        return false;
+      } finally {
+        this.isLoading = false;
       }
     },
 

@@ -6,16 +6,9 @@
         color="purple-darken-3"
         flat
       >
-        <v-card-title>
-          <v-row>
-            <v-col>
-              <span class="text-h5 font-weight-bold"> My Student Profile </span>
-            </v-col>
-            <v-col class="d-flex">
-              <v-spacer />
-            </v-col>
-          </v-row>
-        </v-card-title>
+        <v-card-actions class="mx-4">
+          <span class="text-h5 font-weight-bold"> My Student Profile </span>
+        </v-card-actions>
       </v-card>
       <v-card-text>
         <ProfileView />

@@ -1,6 +1,8 @@
 <template>
   <v-app-bar color="purple-darken-3" dark elevation="1" app>
-    <v-toolbar-title class="text-h5 font-weight-bold">
+    <v-toolbar-title
+      :class="mdAndUp ? 'text-h5 font-weight-bold' : 'text-6 font-weight-bold'"
+    >
       {{ props.title }}
     </v-toolbar-title>
     <div v-if="authModule.isAuthenticated" class="mr-1">
@@ -58,9 +60,15 @@
 import { ref, watch } from "vue";
 import { useAuthModule } from "../../store";
 import { useRouter, useRoute } from "vue-router";
+import { useDisplay } from "vuetify";
 
 import QuestionDialogComponent from "../dialogs/QuestionDialogComponent.vue";
 import PasswordView from "@/views/auth/PasswordView.vue";
+
+const { mdAndUp } = useDisplay();
+const showBack = ref<boolean>(false);
+const router = useRouter();
+const route = useRoute();
 
 const refLogout = ref({
   show: (message: string) => {
@@ -73,10 +81,6 @@ const refLeave = ref({
     return message;
   },
 });
-
-const showBack = ref<boolean>(false);
-const router = useRouter();
-const route = useRoute();
 
 const authModule = useAuthModule();
 const props = defineProps({

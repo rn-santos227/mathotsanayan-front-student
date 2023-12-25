@@ -45,6 +45,7 @@ watch(
 
 <style scoped>
 .tab {
+  z-index: 100;
   position: fixed;
   top: 65px;
   width: 100%;

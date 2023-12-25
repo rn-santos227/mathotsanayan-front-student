@@ -1,7 +1,7 @@
 <template>
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
-      <v-card-text v-if="index <= examModule.getQuestions.length">
+      <v-card-text v-if="index < examModule.getQuestions.length">
         <span class="text-h6 font-weight-bold">Question {{ index + 1 }}: </span>
         <p class="ma-4">
           {{ examModule.getQuestions[index].content }}

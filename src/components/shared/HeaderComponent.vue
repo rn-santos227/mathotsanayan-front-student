@@ -3,7 +3,7 @@
     <v-toolbar-title class="text-h5 font-weight-bold">
       {{ props.title }}
     </v-toolbar-title>
-    <div v-if="authModule.isAuthenticated" class="mr-10">
+    <div v-if="authModule.isAuthenticated" class="mr-1">
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn

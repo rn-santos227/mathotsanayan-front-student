@@ -7,15 +7,15 @@
   >
     <template v-slot:item="{ item }">
       <tr>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ getModuleName(item.module) }}
         </td>
-        <td class="text-xs-left">Stage {{ getModuleStage(item.module) }}</td>
-        <td class="text-xs-left">
+        <td class="text-left">Stage {{ getModuleStage(item.module) }}</td>
+        <td class="text-center">
           {{ item.total_score }} /
           {{ item.items }}
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           <span
             :class="`font-weight-bold text-${
               evaluateExam(item) === 'Passed' ? 'green' : 'red'
@@ -24,7 +24,10 @@
             {{ evaluateExam(item) }}</span
           >
         </td>
-        <td class="text-xs-left">
+        <td class="text-center">
+          {{ secondsToMinutes(item.timer) }}
+        </td>
+        <td class="text-left">
           <ResultView v-bind:result="item" />
         </td>
       </tr>
@@ -37,6 +40,7 @@ import { computed, onMounted, watch } from "vue";
 import { useResultModule, useAuthModule } from "@/store";
 import { getModuleName, getModuleStage } from "@/helpers/instance";
 import { evaluateExam } from "@/helpers/evaluation";
+import { secondsToMinutes } from "@/helpers/evaluation";
 
 import ResultView from "./result/DialogView.vue";
 

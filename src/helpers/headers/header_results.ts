@@ -18,12 +18,20 @@ const headers: ReadonlyHeaders = [
     align: "start",
     sortable: false,
     key: "score",
+    width: "140",
   },
   {
     title: "Grade",
     align: "start",
-    sortable: false,
+    sortable: true,
     key: "grade",
+  },
+  {
+    title: "Total Time",
+    align: "center",
+    sortable: true,
+    key: "timer",
+    width: "140",
   },
   {
     title: "Action",

@@ -11,7 +11,7 @@
       persistent
       v-model="dialog"
       activator="parent"
-      width="50%"
+      :width="mdAndUp ? '50%' : '100%'"
     >
       <v-card>
         <v-card class="rounded-0 rounded-t mb-3" color="purple-darken-3" flat>
@@ -43,6 +43,7 @@
           <span class="h-5 font-weight-bold">Instruction:</span>
           <p class="ma-4">{{ props.module.direction }}</p>
         </div>
+        <v-divider />
         <v-card-actions>
           <v-spacer />
           <v-btn variant="flat" width="100" color="error" dark @click="cancel">
@@ -50,7 +51,7 @@
           </v-btn>
           <v-btn
             variant="flat"
-            width="100"
+            :width="100"
             color="success"
             dark
             @click="confirm"
@@ -66,10 +67,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useDisplay } from "vuetify";
 
 import Module from "@/types/Module";
 const router = useRouter();
-
+const { mdAndUp } = useDisplay();
 const dialog = ref<boolean>(false);
 const props = defineProps<{
   module: Module;

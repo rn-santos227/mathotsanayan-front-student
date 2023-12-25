@@ -1,5 +1,10 @@
 <template>
-  <v-dialog class="ma-auto" persistent v-model="dialog" width="60%">
+  <v-dialog
+    class="ma-auto"
+    persistent
+    v-model="dialog"
+    :width="mdAndUp ? '50%' : '100%'"
+  >
     <v-card v-if="loaded">
       <v-card
         absolute
@@ -64,9 +69,10 @@
           class="mb-3"
           @click.prevent="proceed"
           variant="elevated"
-          width="200"
+          :width="mdAndUp ? 200 : '100%'"
           dark
           color="success"
+          height="65"
           prepend-icon="mdi-check"
         >
           Return to Module
@@ -80,6 +86,7 @@
 import { ref } from "vue";
 import { useExamModule } from "@/store";
 import { useRouter } from "vue-router";
+import { useDisplay } from "vuetify";
 
 import { grade, accuracy } from "@/helpers/evaluation";
 
@@ -88,6 +95,7 @@ import ResultComponent from "@/components/ResultComponent.vue";
 import FormView from "./FormView.vue";
 import TableView from "./TableView.vue";
 
+const { mdAndUp } = useDisplay();
 const loaded = ref<boolean>(false);
 const dialog = ref<boolean>(false);
 

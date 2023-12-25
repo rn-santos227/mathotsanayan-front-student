@@ -2,7 +2,7 @@
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text v-if="index <= examModule.getQuestions.length">
-        <span class="text-h6">Question {{ index + 1 }}: </span>
+        <span class="text-h6 font-weight-bold">Question {{ index + 1 }}: </span>
         <p class="ma-4">
           {{ examModule.getQuestions[index].content }}
         </p>
@@ -42,14 +42,14 @@
               >
                 <v-radio :value="option.content" />
                 <ImageComponent
-                  class="mx-auto"
+                  class="ma-auto"
                   v-if="option.file"
                   v-bind:id="state.id"
                   v-bind:file="option.file"
                   v-bind:height="200"
                   v-bind:width="250"
                 />
-                <v-card-text class="mx-4 mb-4">
+                <v-card-text class="text-subtitle-2 mx-4 mb-4">
                   {{ option.content }}
                 </v-card-text>
               </v-card>
@@ -58,41 +58,41 @@
         </v-row>
       </v-card-text>
       <v-divider />
-      <v-card-actions class="text-right">
-        <v-spacer />
+      <v-card-actions :class="mdAndUp ? '' : 'd-flex flex-wrap'">
+        <v-spacer v-if="mdAndUp" />
         <v-btn
           v-if="tries > 2"
-          class="mb-2"
+          :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
-          @click.prevent="skip"
           color="purple-darken-3"
-          width="200"
-          size="x-large"
+          :width="mdAndUp ? 200 : '100%'"
+          height="65"
+          @click.prevent="skip"
         >
           Skip
         </v-btn>
         <v-btn
           v-if="!completed"
-          class="mb-1 mr-4"
+          :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
-          width="200"
+          :width="mdAndUp ? 200 : '100%'"
           dark
           color="success"
+          height="65"
           prepend-icon="mdi-pencil"
-          size="x-large"
           @click.prevent="answer"
         >
           Answer
         </v-btn>
         <v-btn
           v-if="completed"
-          class="mb-1 mr-4"
+          :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
-          width="200"
+          :width="mdAndUp ? 200 : '100%'"
           dark
           color="success"
+          height="65"
           prepend-icon="mdi-check"
-          size="x-large"
           @click.prevent="submit"
         >
           Submit
@@ -111,6 +111,7 @@
 import { onMounted, onBeforeUnmount, reactive, ref, watch } from "vue";
 import { useAuthModule, useExamModule, useModuleModule } from "@/store";
 import { useRoute, useRouter } from "vue-router";
+import { useDisplay } from "vuetify";
 import {
   encryptAndStoreToLocalStorage,
   retrieveAndDecryptFromLocalStorage,
@@ -128,6 +129,7 @@ import ImageComponent from "@/components/ImageComponent.vue";
 
 import Answer from "@/types/Answer";
 
+const { mdAndUp } = useDisplay();
 const examModule = useExamModule();
 const router = useRouter();
 const route = useRoute();

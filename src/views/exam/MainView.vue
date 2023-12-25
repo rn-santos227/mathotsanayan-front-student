@@ -75,7 +75,7 @@
           Skip
         </v-btn>
         <v-btn
-          v-if="!completed"
+          v-if="!completed || skipped.length > 0"
           :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
           :width="mdAndUp ? 200 : '100%'"
@@ -180,11 +180,9 @@ const state = reactive<Answer>({
 
 onMounted(async () => {
   useExamModule().isLoading = true;
-
   const decryptedData = await retrieveAndDecryptFromLocalStorage(
     "encryptedData"
   );
-
   if (decryptedData) {
     const parsedData = JSON.parse(decryptedData);
     timer.value = parsedData.seconds || 0;
@@ -256,7 +254,13 @@ const handleConfirm = () => {
   if (index.value < examModule.getQuestions.length - 1) {
     tries.value = 0;
     index.value += 1;
+    display.value = index.value;
   } else {
+    if (skipped.value.length > 0) {
+      const randomIndex = Math.floor(Math.random() * skipped.value.length);
+      display.value = skipped.value[randomIndex];
+      skipped.value.splice(randomIndex, 1);
+    }
     completed.value = true;
   }
   timerReset();

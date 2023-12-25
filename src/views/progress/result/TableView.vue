@@ -7,21 +7,21 @@
   >
     <template v-slot:item="{ item }">
       <tr>
-        <td class="text-xs-left">
+        <td class="text-left">
           <span :class="getGradeEvaluation(item.grade)">
             {{ getGradeEvaluation(item.grade) }}
           </span>
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ item.content }}
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ getQuestionContent(item.question) }}
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ item.attempts }}
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ secondsToMinutes(item.timer) }}
         </td>
       </tr>

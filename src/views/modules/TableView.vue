@@ -8,14 +8,14 @@
   >
     <template v-slot:item="{ item }">
       <tr>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ item.name }}
         </td>
-        <td class="text-xs-left">Stage {{ item.step }}</td>
-        <td class="text-xs-left">
+        <td class="text-left">Stage {{ item.step }}</td>
+        <td class="text-left">
           {{ item?.questions?.length }}
         </td>
-        <td class="text-xs-left">
+        <td class="text-left">
           {{ getSubjectName(item?.subject) }}
         </td>
 

@@ -9,7 +9,7 @@
       persistent
       v-model="dialog"
       activator="parent"
-      width="30%"
+      :width="mdAndUp ? '30%' : '100%'"
     >
       <v-card>
         <v-card
@@ -84,12 +84,13 @@
             </v-row>
           </v-card-text>
           <v-divider />
-          <v-card-actions class="text-right">
+          <v-card-actions :class="mdAndUp ? '' : 'd-flex flex-wrap'">
             <v-spacer />
             <v-btn
               @click.prevent="clearForm"
+              :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
               variant="elevated"
-              width="150"
+              :width="mdAndUp ? 150 : '100%'"
               dark
               color="error"
               prepend-icon="mdi-close"
@@ -98,8 +99,9 @@
             </v-btn>
             <v-btn
               @click.prevent="submitForm"
+              :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
               variant="elevated"
-              width="150"
+              :width="mdAndUp ? 150 : '100%'"
               dark
               color="success"
               prepend-icon="mdi-check"
@@ -121,6 +123,7 @@ import { computed, ref, reactive, watch } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { useValidationErrors } from "@/services/handlers";
 import { useAuthModule } from "@/store";
+import { useDisplay } from "vuetify";
 
 import SuccessDialogComponent from "@/components/dialogs/SuccessDialogComponent.vue";
 import ErrorDialogComponent from "@/components/dialogs/ErrorDialogComponent.vue";
@@ -130,6 +133,7 @@ import Password from "@/interfaces/Password";
 import VPassword from "@/helpers/validations/v_password";
 import { rules, rules_password } from "@/helpers/rules/rules_password";
 
+const { mdAndUp } = useDisplay();
 const show = ref<boolean>(false);
 const dialog = ref<boolean>(false);
 const success = ref({

@@ -2,20 +2,22 @@
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text v-if="index < examModule.getQuestions.length">
-        <span class="text-h6 font-weight-bold">Question {{ index + 1 }}: </span>
+        <span class="text-h6 font-weight-bold"
+          >Question {{ display + 1 }}:
+        </span>
         <p class="ma-4">
-          {{ examModule.getQuestions[index].content }}
+          {{ examModule.getQuestions[display].content }}
         </p>
         <ImageComponent
-          v-if="examModule.getQuestions[index].file"
+          v-if="examModule.getQuestions[display].file"
           class="ma-4"
-          v-bind:id="examModule.getQuestions[index].id"
-          v-bind:file="examModule.getQuestions[index].file"
+          v-bind:id="examModule.getQuestions[display].id"
+          v-bind:file="examModule.getQuestions[display].file"
           v-bind:height="300"
           v-bind:width="300"
         />
         <v-divider class="my-4" />
-        <v-row v-if="examModule.getQuestions[index].type == 'word problem'">
+        <v-row v-if="examModule.getQuestions[display].type == 'word problem'">
           <v-col>
             <v-text-field
               class="mx-4"
@@ -27,15 +29,16 @@
           </v-col>
         </v-row>
         <v-row
-          v-else-if="examModule.getQuestions[index].type == 'single correct'"
+          v-else-if="examModule.getQuestions[display].type == 'single correct'"
         >
           <v-radio-group class="ma-6" v-model.trim="state.content">
             <div class="d-flex justify-space-around flex-wrap">
               <v-card
                 width="400"
                 class="outlined-border ma-4"
-                v-for="(option, option_index) in examModule.getQuestions[index]
-                  .options"
+                v-for="(option, option_index) in examModule.getQuestions[
+                  display
+                ].options"
                 :key="option_index"
                 :color="changeColor(option.content)"
                 @click.prevent="selectAnswer(option.content)"
@@ -134,6 +137,7 @@ const examModule = useExamModule();
 const router = useRouter();
 const route = useRoute();
 const index = ref<number>(0);
+const display = ref<number>(0);
 const timer = ref<number>(0);
 const tries = ref<number>(0);
 const loaded = ref<boolean>(false);
@@ -198,6 +202,7 @@ onMounted(async () => {
     examModule.getQuestions[index.value].options = shuffleOptions(
       examModule.getQuestions[index.value].options
     );
+    display.value = index.value;
     loaded.value = true;
   }
 });
@@ -237,9 +242,12 @@ const skip = () => {
     skipped.value.push(index.value);
     index.value += 1;
     tries.value = 0;
+    display.value = index.value;
   } else {
     if (skipped.value.length > 0) {
-      //
+      const randomIndex = Math.floor(Math.random() * skipped.value.length);
+      display.value = skipped.value[randomIndex];
+      skipped.value.splice(randomIndex, 1);
     }
   }
 };

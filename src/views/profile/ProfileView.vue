@@ -1,6 +1,6 @@
 <template>
   <div class="mt-4">
-    <v-row class="mx-4">
+    <v-row>
       <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="useAuth.student.full_name"
@@ -20,7 +20,7 @@
         />
       </v-col>
     </v-row>
-    <v-row class="mx-4">
+    <v-row>
       <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="section"
@@ -40,7 +40,7 @@
         />
       </v-col>
     </v-row>
-    <v-row class="mx-4">
+    <v-row>
       <v-col>
         <v-text-field
           v-model.trim="course"
@@ -51,7 +51,7 @@
         />
       </v-col>
     </v-row>
-    <v-row class="mx-4">
+    <v-row>
       <v-col>
         <v-text-field
           v-model.trim="school"

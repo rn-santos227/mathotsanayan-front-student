@@ -3,7 +3,7 @@
     class="ma-auto"
     persistent
     v-model="dialog"
-    :width="mdAndUp ? '50%' : '100%'"
+    :width="mdAndUp ? '80%' : '100%'"
   >
     <v-card v-if="loaded">
       <v-card
@@ -66,10 +66,9 @@
       <v-card-actions class="text-right">
         <v-spacer />
         <v-btn
-          class="mb-3"
           @click.prevent="proceed"
           variant="elevated"
-          :width="mdAndUp ? 200 : '100%'"
+          width="100%"
           dark
           color="success"
           height="65"
@@ -119,7 +118,7 @@ defineExpose({
 </script>
 
 <style scoped>
-.result-height {
+.answers-height {
   height: calc(100vh - 200px);
   overflow-y: auto;
 }

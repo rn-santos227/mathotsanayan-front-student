@@ -1,7 +1,7 @@
 <template>
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
-      <v-card-text v-if="index < examModule.getQuestions.length">
+      <v-card-text v-if="!completed || skipped.length > 0">
         <span class="text-h6 font-weight-bold"
           >Question {{ display + 1 }}:
         </span>
@@ -60,6 +60,11 @@
           </v-radio-group>
         </v-row>
       </v-card-text>
+      <v-card-text v-else>
+        <span class="text-h6 font-weight-bold">
+          There are no more question available, you may click submit.
+        </span>
+      </v-card-text>
       <v-divider />
       <v-card-actions :class="mdAndUp ? '' : 'd-flex flex-wrap'">
         <v-spacer v-if="mdAndUp" />
@@ -93,7 +98,7 @@
           variant="elevated"
           :width="mdAndUp ? 200 : '100%'"
           dark
-          color="success"
+          color="teal-accent-4"
           height="65"
           prepend-icon="mdi-check"
           @click.prevent="submit"
@@ -236,18 +241,24 @@ const selectAnswer = (answer: string) => {
 };
 
 const skip = () => {
-  if (index.value < examModule.getQuestions.length - 1) {
-    skipped.value.push(index.value);
-    index.value += 1;
-    tries.value = 0;
-    display.value = index.value;
-  } else {
-    if (skipped.value.length > 0) {
-      const randomIndex = Math.floor(Math.random() * skipped.value.length);
-      display.value = skipped.value[randomIndex];
-      skipped.value.splice(randomIndex, 1);
-    }
-  }
+  state.content = "Skipped Question";
+  useExamModule()
+    .skipQuestion(state)
+    .then(() => {
+      state.content = "";
+      if (index.value < examModule.getQuestions.length - 1) {
+        skipped.value.push(index.value);
+        index.value += 1;
+        tries.value = 0;
+        display.value = index.value;
+      } else {
+        if (skipped.value.length > 0) {
+          const randomIndex = Math.floor(Math.random() * skipped.value.length);
+          display.value = skipped.value[randomIndex];
+          skipped.value.splice(randomIndex, 1);
+        }
+      }
+    });
 };
 
 const handleConfirm = () => {
@@ -282,7 +293,7 @@ const answer = async () => {
   state.result = examModule.getResult.id;
 
   useExamModule()
-    .submitAnswer(state)
+    .answerQuestion(state)
     .then((response) => {
       state.content = "";
       if (response?.correct) {

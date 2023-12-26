@@ -34,7 +34,7 @@ export const useExamModule = defineStore("exam", {
       try {
         this.isLoading = true;
         const response = await authenticatedFetch(
-          `${api.EXAM.QUESTION}${id}?student_id=${student_id}`
+          `${api.EXAM.QUESTIONS}${id}?student_id=${student_id}`
         );
         const data = await response.json();
         const { questions, result } = data;
@@ -51,7 +51,25 @@ export const useExamModule = defineStore("exam", {
       }
     },
 
-    async submitAnswer(payload: Answer) {
+    async skipQuestion(payload: Answer) {
+      try {
+        this.isLoading = true;
+        await authenticatedFetch(api.EXAM.SKIP + payload.question, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      } catch (error) {
+        console.error("Error Exam in:", error);
+        throw error;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async answerQuestion(payload: Answer) {
       try {
         this.isLoading = true;
         const response = await authenticatedFetch(
@@ -66,7 +84,6 @@ export const useExamModule = defineStore("exam", {
         );
         const data = await response.json();
         const { correct, solution } = data;
-
         return { correct, solution };
       } catch (error) {
         console.error("Error Exam in:", error);

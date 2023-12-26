@@ -10,8 +10,9 @@ export default {
   },
 
   EXAM: {
-    QUESTION: `${BACKEND}student/questions/`,
+    QUESTIONS: `${BACKEND}student/questions/`,
     ANSWER: `${BACKEND}student/answer/`,
+    SKIP: `${BACKEND}student/skip/`,
     SUBMIT: `${BACKEND}student/submit/`,
   },
 

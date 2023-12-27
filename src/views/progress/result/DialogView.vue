@@ -68,7 +68,6 @@
             <TableView v-bind:answers="result.answers" />
           </div>
         </v-card-text>
-        <v-divider />
       </v-card>
     </v-dialog>
   </v-btn>

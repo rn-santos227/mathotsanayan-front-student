@@ -263,7 +263,6 @@ const skip = () => {
 
 const handleConfirm = () => {
   if (index.value < examModule.getQuestions.length - 1) {
-    tries.value = 0;
     index.value += 1;
     display.value = index.value;
   } else {
@@ -274,6 +273,7 @@ const handleConfirm = () => {
     }
     completed.value = true;
   }
+  tries.value = 0;
   timerReset();
 };
 
@@ -287,9 +287,9 @@ const answer = async () => {
   if (!state.content) info.value.show("You have not provided an answer.");
   clearInterval(intervalId);
   state.timer = timer.value;
-  state.module = examModule.getQuestions[index.value].module_id;
+  state.module = examModule.getQuestions[display.value].module_id;
   state.attempts = tries.value + 1;
-  state.question = examModule.getQuestions[index.value].id;
+  state.question = examModule.getQuestions[display.value].id;
   state.result = examModule.getResult.id;
 
   useExamModule()

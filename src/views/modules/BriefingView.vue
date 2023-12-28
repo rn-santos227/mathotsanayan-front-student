@@ -70,8 +70,9 @@ import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify";
 
 import Module from "@/types/Module";
-const router = useRouter();
+
 const { mdAndUp } = useDisplay();
+const router = useRouter();
 const dialog = ref<boolean>(false);
 const props = defineProps<{
   module: Module;

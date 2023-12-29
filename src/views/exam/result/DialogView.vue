@@ -56,6 +56,19 @@
               v-bind:value="accuracy(examModule.getResult)"
             />
           </div>
+          <div class="ma-2">
+            <ResultComponent
+              v-bind:color="'red'"
+              v-bind:title="'Total Skips'"
+              v-bind:data="`${skips(examModule.getResult.answers)}`"
+              v-bind:value="
+                skipAverage(
+                  examModule.getResult.answers,
+                  examModule.getResult.items
+                )
+              "
+            />
+          </div>
         </div>
         <v-divider class="mt-4" />
         <div>
@@ -86,8 +99,7 @@ import { ref } from "vue";
 import { useExamModule } from "@/store";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify";
-
-import { grade, accuracy } from "@/helpers/evaluation";
+import { grade, accuracy, skips, skipAverage } from "@/helpers/evaluation";
 
 import ResultComponent from "@/components/ResultComponent.vue";
 

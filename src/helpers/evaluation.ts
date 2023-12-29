@@ -1,3 +1,4 @@
+import Answer from "@/types/Answer";
 import Result from "@/types/Result";
 
 export function evaluateExam(result: Result) {
@@ -29,6 +30,26 @@ export function grade(result: Result): number {
   } else {
     return 0;
   }
+}
+
+export function skips(answers: Answer[]): number {
+  let skips = 0;
+  answers.forEach((item) => {
+    if (item.grade?.evaluation === "skipped") {
+      skips += 1;
+    }
+  });
+  return skips;
+}
+
+export function skipAverage(
+  answers: Answer[],
+  items: number | undefined
+): number {
+  if (!items) return 0;
+  const totalSkips = skips(answers);
+  const average = (totalSkips / items) * 100;
+  return average <= 100 ? average : 100;
 }
 
 export function secondsToMinutes(seconds: number | undefined): string {

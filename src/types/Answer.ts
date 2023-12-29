@@ -14,9 +14,9 @@ type Answer = {
   deleted_at?: string;
   module?: number | Module;
   question?: number | Question;
-  grade?: number | Grade;
   student?: number | Student;
   result?: number | Result;
+  grade?: Grade;
 };
 
 export default Answer;

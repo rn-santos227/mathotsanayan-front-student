@@ -32,7 +32,8 @@ export function grade(result: Result): number {
   }
 }
 
-export function skips(answers: Answer[]): number {
+export function skips(answers: Answer[] | undefined): number {
+  if (!answers) return 0;
   let skips = 0;
   answers.forEach((item) => {
     if (item.grade?.evaluation === "skipped") {
@@ -43,9 +44,10 @@ export function skips(answers: Answer[]): number {
 }
 
 export function skipAverage(
-  answers: Answer[],
+  answers: Answer[] | undefined,
   items: number | undefined
 ): number {
+  if (!answers) return 0;
   if (!items) return 0;
   const totalSkips = skips(answers);
   const average = (totalSkips / items) * 100;

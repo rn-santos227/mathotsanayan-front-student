@@ -1,7 +1,7 @@
 <template>
   <v-container class="base fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
-      <v-card-text v-if="!completed || skipped.length > 0">
+      <v-card-text v-if="!completed">
         <span class="text-h6 font-weight-bold"
           >Question {{ display + 1 }}:
         </span>
@@ -80,7 +80,7 @@
           Skip
         </v-btn>
         <v-btn
-          v-if="!completed || skipped.length > 0"
+          v-if="!completed"
           :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
           :width="mdAndUp ? 200 : '100%'"
@@ -93,7 +93,7 @@
           Answer
         </v-btn>
         <v-btn
-          v-if="completed"
+          v-if="canSubmit"
           :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
           :width="mdAndUp ? 200 : '100%'"
@@ -145,10 +145,12 @@ const index = ref<number>(0);
 const display = ref<number>(0);
 const timer = ref<number>(0);
 const tries = ref<number>(0);
+const randomIndex = ref<number>(0);
 const loaded = ref<boolean>(false);
 
 const skipped = ref<number[]>([]);
 const completed = ref<boolean>(false);
+const canSubmit = ref<boolean>(false);
 let intervalId: ReturnType<typeof setInterval>;
 
 const info = ref({
@@ -253,9 +255,8 @@ const skip = () => {
         display.value = index.value;
       } else {
         if (skipped.value.length > 0) {
-          const randomIndex = Math.floor(Math.random() * skipped.value.length);
-          display.value = skipped.value[randomIndex];
-          skipped.value.splice(randomIndex, 1);
+          randomIndex.value = Math.floor(Math.random() * skipped.value.length);
+          display.value = skipped.value[randomIndex.value];
         }
       }
     });
@@ -267,11 +268,13 @@ const handleConfirm = () => {
     display.value = index.value;
   } else {
     if (skipped.value.length > 0) {
-      const randomIndex = Math.floor(Math.random() * skipped.value.length);
-      display.value = skipped.value[randomIndex];
-      skipped.value.splice(randomIndex, 1);
+      randomIndex.value = Math.floor(Math.random() * skipped.value.length);
+      display.value = skipped.value[randomIndex.value];
+      skipped.value.splice(randomIndex.value, 1);
+    } else {
+      completed.value = true;
     }
-    completed.value = true;
+    canSubmit.value = true;
   }
   tries.value = 0;
   timerReset();

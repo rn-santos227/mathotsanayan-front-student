@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4">
+  <div class="pb-8">
     <v-row>
       <v-col cols="12" sm="6">
         <v-text-field

@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <HeaderComponent :title="title" />
-    <v-main app>
+    <v-main class="base" app>
       <TabComponent :tab="tab" />
       <router-view />
     </v-main>

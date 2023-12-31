@@ -1,5 +1,5 @@
 <template>
-  <v-container class="base fill-height" fluid>
+  <v-container class="fill-height" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text v-if="!completed">
         <span class="text-h6 font-weight-bold"
@@ -199,7 +199,6 @@ onMounted(async () => {
   const id = route.params.id;
   const student_id = useAuthModule().student.id;
   if (typeof id === "string" && student_id) {
-    console.log(id);
     const exists = await useModuleModule().check(parseInt(id));
     if (!exists) router.push(`/modules`);
     await useExamModule().fetchQuestion(parseInt(id), student_id);

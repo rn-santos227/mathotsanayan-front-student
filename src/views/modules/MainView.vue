@@ -1,5 +1,5 @@
 <template>
-  <v-container class="base fill-height" fluid>
+  <v-container class="fill-height" fluid>
     <v-card class="mt-8 mx-4" width="100%" height="90%">
       <v-card
         class="rounded-0 rounded-t mb-3 py-2"

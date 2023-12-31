@@ -1,6 +1,6 @@
 <template>
-  <v-container class="base fill-height" fluid>
-    <v-card :class="mdAndUp ? 'ma-4 pb-12' : 'ma-4 pb-12 mt-12'" width="100%">
+  <v-container class="mt-16" fluid>
+    <v-card>
       <v-card
         class="rounded-0 rounded-t mb-3 py-2"
         color="purple-darken-3"
@@ -19,7 +19,4 @@
 
 <script setup lang="ts">
 import ProfileView from "./ProfileView.vue";
-import { useDisplay } from "vuetify";
-
-const { mdAndUp } = useDisplay();
 </script>

@@ -3,6 +3,7 @@
     <v-row>
       <v-col cols="12" sm="6">
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="useAuth.student.full_name"
           label="Student Full Name"
           variant="outlined"
@@ -12,6 +13,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="useAuth.student.email"
           label="Student Email"
           variant="outlined"
@@ -23,6 +25,7 @@
     <v-row>
       <v-col cols="12" sm="6">
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="section"
           label="Student Section"
           variant="outlined"
@@ -32,6 +35,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="teacher"
           label="Teacher Assigned"
           variant="outlined"
@@ -43,6 +47,7 @@
     <v-row>
       <v-col>
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="course"
           label="Student Course"
           variant="outlined"
@@ -54,6 +59,7 @@
     <v-row>
       <v-col>
         <v-text-field
+          class="text-purple-darken-3"
           v-model.trim="school"
           label="Student School"
           variant="outlined"

@@ -111,6 +111,7 @@
   <CorrectDialogComponent ref="correct" @confirm="handleConfirm" />
   <InformationDialogComponent ref="info" />
   <LoadingDialogComponent v-bind:activate="useExamModule().isLoading" />
+  <QuestionDialogComponentVue ref="refSubmit" @confirm="handleSubmit" />
   <WrongDialogComponent ref="wrong" @confirm="timerReset" />
   <ResultView ref="openResult" />
 </template>
@@ -132,6 +133,7 @@ import ResultView from "./result/DialogView.vue";
 import CorrectDialogComponent from "@/components/dialogs/CorrectDialogComponent.vue";
 import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.vue";
 import InformationDialogComponent from "@/components/dialogs/InformationDialogComponent.vue";
+import QuestionDialogComponentVue from "@/components/dialogs/QuestionDialogComponent.vue";
 import WrongDialogComponent from "@/components/dialogs/WrongDialogComponent.vue";
 import ImageComponent from "@/components/ImageComponent.vue";
 
@@ -174,6 +176,12 @@ const wrong = ref({
 const openResult = ref({
   show: () => {
     return true;
+  },
+});
+
+const refSubmit = ref({
+  show: (message: string) => {
+    return message;
   },
 });
 
@@ -243,6 +251,8 @@ const selectAnswer = (answer: string) => {
 
 const skip = () => {
   state.content = "Skipped Question";
+  state.timer = timer.value;
+  state.attempts = tries.value + 1;
   useExamModule()
     .skipQuestion(state)
     .then(() => {
@@ -306,7 +316,17 @@ const answer = async () => {
 };
 
 const submit = async () => {
-  if (!completed.value) return;
+  if (!canSubmit.value) return;
+  if (completed.value) handleSubmit();
+  else {
+    refSubmit.value.show(
+      "Do you want to submit regardless of skipped questions?"
+    );
+  }
+};
+
+const handleSubmit = async () => {
+  if (!canSubmit.value) return;
   const id = examModule.getResult.id;
   if (id) {
     await useExamModule()

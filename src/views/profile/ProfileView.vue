@@ -33,7 +33,7 @@
       <v-col cols="12" sm="6">
         <v-text-field
           v-model.trim="teacher"
-          label="Teacher assigned"
+          label="Teacher Assigned"
           variant="outlined"
           hide-details
           readonly

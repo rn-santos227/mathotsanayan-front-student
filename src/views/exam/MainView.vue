@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height" fluid>
+  <v-container class="mt-6" fluid>
     <v-card class="outlined-border-outer" width="100%" v-if="loaded">
       <v-card-text v-if="!completed">
         <span class="text-h6 font-weight-bold"

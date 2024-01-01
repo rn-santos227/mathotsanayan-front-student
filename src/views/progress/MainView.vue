@@ -1,6 +1,6 @@
 <template>
-  <v-container class="fill-height" fluid>
-    <v-card class="mt-8 mx-4" width="100%" height="90%">
+  <v-container class="mt-6" fluid>
+    <v-card class="mt-8 mx-auto" width="100%">
       <v-card
         class="rounded-0 rounded-t mb-3 py-2"
         color="purple-darken-3"

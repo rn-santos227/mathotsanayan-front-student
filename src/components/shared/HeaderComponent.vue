@@ -6,17 +6,7 @@
       {{ props.title }}
     </v-toolbar-title>
     <div v-if="authModule.isAuthenticated" class="mr-1">
-      <v-menu>
-        <template v-slot:activator="{ props }">
-          <v-btn
-            v-bind="props"
-            density="comfortable"
-            icon="mdi-help-circle-outline"
-            size="x-large"
-          >
-          </v-btn>
-        </template>
-      </v-menu>
+      <HelpView />
       <v-menu v-if="showBack">
         <template v-slot:activator="{ props }">
           <v-btn
@@ -64,6 +54,7 @@ import { useDisplay } from "vuetify";
 
 import QuestionDialogComponent from "../dialogs/QuestionDialogComponent.vue";
 import PasswordView from "@/views/auth/PasswordView.vue";
+import HelpView from "@/views/help/DialogView.vue";
 
 const { mdAndUp } = useDisplay();
 const showBack = ref<boolean>(false);

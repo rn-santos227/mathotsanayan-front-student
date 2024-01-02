@@ -259,9 +259,9 @@ const skip = () => {
       tries.value = 0;
       state.content = "";
       if (index.value < examModule.getQuestions.length - 1) {
+        skipped.value.push(index.value);
         index.value += 1;
         display.value = index.value;
-        skipped.value.push(index.value);
       } else if (skipped.value.length > 0) {
         randomIndex.value = Math.floor(Math.random() * skipped.value.length);
         display.value = skipped.value[randomIndex.value];

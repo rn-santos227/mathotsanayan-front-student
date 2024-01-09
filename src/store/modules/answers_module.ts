@@ -4,7 +4,7 @@ import api from "@/helpers/api";
 import { defineStore } from "pinia";
 import { authenticatedFetch } from "@/services/api";
 
-export const useAnswerModule = defineStore("answers", {
+export const useAnswersModule = defineStore("answers", {
   state: () => ({
     answers: [] as Answer[],
     isLoading: true,
@@ -18,7 +18,10 @@ export const useAnswerModule = defineStore("answers", {
     async read(id: number): Promise<boolean> {
       try {
         this.isLoading = true;
-
+        const response = await authenticatedFetch(`${api.ANSWERS.READ}${id}`);
+        const data = await response.json();
+        const { answers } = data;
+        this.setAnswers(answers);
         return true;
       } catch (error) {
         console.error("Error Answer in:", error);

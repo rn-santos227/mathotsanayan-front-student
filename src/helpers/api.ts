@@ -1,6 +1,10 @@
 const BACKEND = `${process.env.VUE_APP_BACKEND}/api/`;
 
 export default {
+  ANSWERS: {
+    READ: `${BACKEND}student/answers/`,
+  },
+
   AUTH: {
     AUTH: `${BACKEND}auth`,
     LOGIN: `${BACKEND}student`,

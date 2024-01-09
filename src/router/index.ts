@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { useAuthModule } from "@/store";
 
 import AuthView from "@/views/auth/MainView.vue";
 import ExamModule from "@/views/exam/MainView.vue";
 import ModulesView from "@/views/modules/MainView.vue";
 import ProfileView from "@/views/profile/MainView.vue";
 import ProgressView from "@/views/progress/MainView.vue";
-import { useAuthModule } from "@/store";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -60,7 +60,9 @@ router.beforeEach((to, from, next) => {
   if (to.meta.forAuth && !authStore.isAuthenticated) {
     next("/login");
   } else if (to.meta.forVisitors && authStore.isAuthenticated) {
-    next("/login");
+    next("/");
+  } else if (to.matched.length === 0) {
+    next("/");
   } else {
     next();
   }

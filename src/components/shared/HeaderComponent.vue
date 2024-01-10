@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { useAuthModule } from "../../store";
+import { useAuthModule } from "@/store";
 import { useRouter, useRoute } from "vue-router";
 import { useDisplay } from "vuetify";
 

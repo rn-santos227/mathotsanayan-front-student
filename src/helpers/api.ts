@@ -10,7 +10,7 @@ export default {
     LOGIN: `${BACKEND}student`,
     LOGOUT: `${BACKEND}logout`,
     PASSWORD: `${BACKEND}password`,
-    USER: `${BACKEND}user/3`,
+    USER: `${BACKEND}student/user`,
   },
 
   EXAM: {

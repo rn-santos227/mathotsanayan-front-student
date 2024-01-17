@@ -7,7 +7,7 @@ export default {
 
   AUTH: {
     AUTH: `${BACKEND}auth`,
-    LOGIN: `${BACKEND}student`,
+    LOGIN: `${BACKEND}student/login`,
     LOGOUT: `${BACKEND}logout`,
     PASSWORD: `${BACKEND}password`,
     USER: `${BACKEND}student/user`,

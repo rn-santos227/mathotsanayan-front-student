@@ -13,6 +13,10 @@ export default {
     USER: `${BACKEND}student/user`,
   },
 
+  AUDIT: {
+    READ: `${BACKEND}student/audit`,
+  },
+
   EXAM: {
     QUESTIONS: `${BACKEND}student/questions/`,
     ANSWER: `${BACKEND}student/answer/`,

@@ -205,11 +205,10 @@ onMounted(async () => {
 
   await useAuthModule().fetchUserData();
   const id = route.params.id;
-  const student_id = useAuthModule().student.id;
-  if (typeof id === "string" && student_id) {
+  if (typeof id === "string") {
     const exists = await useModuleModule().check(parseInt(id));
     if (!exists) router.push(`/modules`);
-    await useExamModule().fetchQuestion(parseInt(id), student_id);
+    await useExamModule().fetchQuestion(parseInt(id));
     intervalId = setInterval(tickSeconds, 1000);
     examModule.getQuestions[index.value].options = shuffleOptions(
       examModule.getQuestions[index.value].options

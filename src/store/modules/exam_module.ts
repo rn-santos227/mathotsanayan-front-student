@@ -30,12 +30,10 @@ export const useExamModule = defineStore("exam", {
       }
     },
 
-    async fetchQuestion(id: number, student_id: number) {
+    async fetchQuestion(id: number) {
       try {
         this.isLoading = true;
-        const response = await authenticatedFetch(
-          `${api.EXAM.QUESTIONS}${id}?student_id=${student_id}`
-        );
+        const response = await authenticatedFetch(api.EXAM.QUESTIONS + id);
         const data = await response.json();
         const { questions, result } = data;
 

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useSubjectModule, useAuthModule, useModuleModule } from "@/store";
+import { useSubjectModule, useModuleModule } from "@/store";
 
 import TableView from "./TableView.vue";
 
@@ -48,9 +48,8 @@ onMounted(async () => {
 });
 
 const handleUpdateModule = async (subject_id: number | string) => {
-  const student_id = useAuthModule().student.id;
-  if (student_id && typeof subject_id === "number") {
-    await useModuleModule().read(subject_id, student_id);
+  if (typeof subject_id === "number") {
+    await useModuleModule().read(subject_id);
   }
 };
 </script>

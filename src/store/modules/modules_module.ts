@@ -16,12 +16,10 @@ export const useModuleModule = defineStore("modules", {
       this.modules = modules;
     },
 
-    async read(id: number, student_id: number): Promise<boolean> {
+    async read(id: number): Promise<boolean> {
       try {
         this.isTableLoading = true;
-        const response = await authenticatedFetch(
-          `${api.MODULES.READ}${id}?student_id=${student_id}`
-        );
+        const response = await authenticatedFetch(api.MODULES.READ + id);
         const data = await response.json();
         const { modules } = data;
         if (modules) {

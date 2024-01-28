@@ -1,3 +1,6 @@
 <template>
-  <v-card-text> </v-card-text>
+  <v-card-text>
+    <span class="text-h5 font-weight-bold">MatHotSanayan CAA Introduction</span>
+    <v-divider class="my-2" />
+  </v-card-text>
 </template>

@@ -6,7 +6,12 @@
     @click="dialog = true"
   />
 
-  <v-dialog class="ma-auto" width="70%" persistent v-model="dialog">
+  <v-dialog
+    class="ma-auto"
+    :width="mdAndUp ? '70%' : '100%'"
+    persistent
+    v-model="dialog"
+  >
     <v-card>
       <v-card class="rounded-0 rounded-t py-2" color="purple-darken-3" flat>
         <v-card-actions class="mx-4">
@@ -64,10 +69,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useDisplay } from "vuetify";
 import docs from "@/helpers/docs";
 
 import IntroView from "./documentation/IntroView.vue";
 
+const { mdAndUp } = useDisplay();
 const dialog = ref<boolean>(false);
 const page = ref<string>("intro");
 

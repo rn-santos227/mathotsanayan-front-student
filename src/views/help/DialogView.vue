@@ -32,7 +32,7 @@
                   v-if="doc.subpages.length <= 0"
                   prepend-icon="mdi-book-multiple"
                   :title="doc.text"
-                  :value="doc.page"
+                  @click="updatePage(doc.page)"
                 />
                 <v-list-group v-else :key="key_1">
                   <template v-slot:activator="{ props }">
@@ -46,14 +46,16 @@
                     v-for="(subpage, key_2) in doc.subpages"
                     :key="key_2"
                     :title="subpage.text"
-                    :value="subpage.page"
+                    @click="updatePage(subpage.page)"
                   />
                 </v-list-group>
               </template>
             </v-list>
           </v-col>
           <v-divider vertical />
-          <v-col class="flex-grow-1"> </v-col>
+          <v-col class="flex-grow-1">
+            <IntroView v-if="page === 'intro'" />
+          </v-col>
         </v-row>
       </div>
     </v-card>
@@ -64,9 +66,17 @@
 import { ref } from "vue";
 import docs from "@/helpers/docs";
 
+import IntroView from "./documentation/IntroView.vue";
+
 const dialog = ref<boolean>(false);
+const page = ref<string>("intro");
+
 const close = () => {
   dialog.value = !dialog.value;
+};
+
+const updatePage = (newPage: string) => {
+  page.value = newPage;
 };
 </script>
 

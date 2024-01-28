@@ -82,6 +82,7 @@ const page = ref<string>("intro");
 
 const close = () => {
   dialog.value = !dialog.value;
+  page.value = "intro";
 };
 
 const updatePage = (newPage: string) => {

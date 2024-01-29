@@ -59,8 +59,8 @@
           </v-col>
           <v-divider vertical />
           <v-col class="flex-grow-1">
-            <IntroView v-if="page === 'intro'" />
-            <ProfileView v-if="page == 'profile'" />
+            <DocIntroView v-if="page === 'intro'" />
+            <DocProfileView v-else-if="page == 'profile'" />
           </v-col>
         </v-row>
       </div>
@@ -73,8 +73,8 @@ import { ref } from "vue";
 import { useDisplay } from "vuetify";
 import docs from "@/helpers/docs";
 
-import IntroView from "./documentation/IntroView.vue";
-import ProfileView from "./documentation/ProfileView.vue";
+import DocIntroView from "./documentation/DocIntroView.vue";
+import DocProfileView from "./documentation/DocProfileView.vue";
 
 const { mdAndUp } = useDisplay();
 const dialog = ref<boolean>(false);

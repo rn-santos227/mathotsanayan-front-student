@@ -1,7 +1,7 @@
 <template>
   <v-card-text>
     <span class="text-h5 font-weight-bold">
-      MatHotSanayan CAA Examination
+      MatHotSanayan Student Examination
     </span>
     <v-divider class="my-2" />
   </v-card-text>

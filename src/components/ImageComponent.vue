@@ -55,15 +55,7 @@ watch(
 );
 
 onMounted(async () => {
-  loading.value = true;
-  if (typeof props.file === "string") {
-    await imageModule.image(props.file).then((response) => {
-      loading.value = false;
-      url.value = response;
-    });
-  } else {
-    loading.value = false;
-  }
+  getImage();
 });
 
 const getImage = async () => {

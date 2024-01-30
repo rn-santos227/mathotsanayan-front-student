@@ -6,6 +6,7 @@
       max-width="550"
       rounded="lg"
       width="100%"
+      persistent
     >
       <v-card class="rounded-0 rounded-t mb-2" color="error" variant="flat">
         <v-card-text class="text-left">

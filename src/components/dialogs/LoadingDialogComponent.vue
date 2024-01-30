@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog">
+  <v-dialog v-model="dialog" persistent>
     <v-sheet
       class="ma-auto"
       elevation="12"

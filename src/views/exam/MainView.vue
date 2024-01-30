@@ -9,8 +9,8 @@
           {{ examModule.getQuestions[display].content }}
         </p>
         <ImageComponent
+          v-if="examModule.getQuestions[display].file"
           class="mx-auto my-4"
-          v-bind:id="examModule.getQuestions[display].id"
           v-bind:file="examModule.getQuestions[display].file"
           v-bind:height="300"
           v-bind:width="300"
@@ -46,7 +46,6 @@
                 <ImageComponent
                   class="ma-auto"
                   v-if="option.file"
-                  v-bind:id="state.id"
                   v-bind:file="option.file"
                   v-bind:height="200"
                   v-bind:width="250"

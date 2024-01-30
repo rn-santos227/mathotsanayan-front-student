@@ -34,21 +34,18 @@ import { useImageModule } from "@/store";
 
 const imageModule = useImageModule();
 const props = defineProps<{
-  id: number | undefined;
   file: string | File | null;
   height: number;
   width: number;
 }>();
 
 const url = ref<string>("");
-
-const id = ref<number | undefined>(props.id);
 const loading = ref<boolean>(false);
 
 const emit = defineEmits(["update:trigger"]);
 
 watch(
-  () => id.value,
+  () => props.file,
   async () => {
     getImage();
   }

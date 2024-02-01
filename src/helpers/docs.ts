@@ -15,6 +15,11 @@ export default [
     subpages: [],
   },
   {
+    text: "Examination",
+    page: "exam",
+    subpages: [],
+  },
+  {
     text: "Progress",
     page: "progress",
     subpages: [

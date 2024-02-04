@@ -61,6 +61,7 @@
           <v-col class="flex-grow-1 question-height">
             <DocIntroView v-if="page === 'intro'" />
             <DocProfileView v-else-if="page == 'profile'" />
+            <DocMobileView v-else-if="page == 'mobile'" />
             <DocModulesView v-else-if="page == 'module'" />
             <DocExamView v-else-if="page == 'exam'" />
             <DocProgressView
@@ -81,6 +82,7 @@ import docs from "@/helpers/docs";
 
 import DocIntroView from "./documentation/DocIntroView.vue";
 import DocProfileView from "./documentation/DocProfileView.vue";
+import DocMobileView from "./documentation/DocMobileView.vue";
 import DocModulesView from "./documentation/DocModulesView.vue";
 import DocExamView from "./documentation/DocExamView.vue";
 import DocProgressView from "./documentation/DocProgressView.vue";

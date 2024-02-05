@@ -42,4 +42,22 @@ export default [
       },
     ],
   },
+  {
+    text: "Audit Trail",
+    page: "audit",
+    subpages: [
+      {
+        text: "Auidt Trail",
+        page: "audit-main",
+      },
+      {
+        text: "Filter Search",
+        page: "audit-search",
+      },
+      {
+        text: "Audit Details",
+        page: "audit-details",
+      },
+    ],
+  },
 ];

@@ -33,6 +33,13 @@ export const useDashboardModule = defineStore("dashboard", {
       const { dashboard } = data;
       this.setDashboard(dashboard);
     },
+
+    async ratio() {
+      const response = await authenticatedFetch(api.DASHBOARD.RATIO);
+      const data = await response.json();
+      const { graph } = data;
+      this.setGraphPie(graph);
+    },
   },
 
   getters: {

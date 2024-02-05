@@ -68,6 +68,7 @@
               v-else-if="page == 'progress'"
               v-bind:page="page"
             />
+            <DocAuditView v-else-if="page == 'audit'" v-bind:page="page" />
           </v-col>
         </v-row>
       </div>
@@ -86,6 +87,7 @@ import DocMobileView from "./documentation/DocMobileView.vue";
 import DocModulesView from "./documentation/DocModulesView.vue";
 import DocExamView from "./documentation/DocExamView.vue";
 import DocProgressView from "./documentation/DocProgressView.vue";
+import DocAuditView from "./documentation/DocAuditView.vue";
 
 const { mdAndUp } = useDisplay();
 const dialog = ref<boolean>(false);

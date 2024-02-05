@@ -8,7 +8,7 @@
       persistent
       v-model="dialog"
       activator="parent"
-      width="50%"
+      :width="mdAndUp ? '50%' : '100%'"
     >
       <v-card>
         <v-card
@@ -81,9 +81,11 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { padLeft } from "@/helpers/utils";
+import { useDisplay } from "vuetify";
 
 import Audit from "@/types/Audit";
 
+const { mdAndUp } = useDisplay();
 const dialog = ref<boolean>(false);
 const props = defineProps<{
   audit: Audit;

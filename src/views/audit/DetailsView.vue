@@ -3,7 +3,7 @@
     <v-list-item-title class="text-button">
       <v-icon icon="mdi-magnify"></v-icon> Details
     </v-list-item-title>
-    <!-- <v-dialog
+    <v-dialog
       class="ma-auto"
       persistent
       v-model="dialog"
@@ -74,6 +74,22 @@
           </v-row>
         </v-card-text>
       </v-card>
-    </v-dialog> -->
+    </v-dialog>
   </v-list-item>
 </template>
+
+<script setup lang="ts">
+import { reactive, ref } from "vue";
+import { padLeft } from "@/helpers/utils";
+
+import Audit from "@/types/Audit";
+
+const dialog = ref<boolean>(false);
+const props = defineProps<{
+  audit: Audit;
+}>();
+const state = reactive<Audit>({ ...props.audit });
+const close = () => {
+  dialog.value = !dialog.value;
+};
+</script>

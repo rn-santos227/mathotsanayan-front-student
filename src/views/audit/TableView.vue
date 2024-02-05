@@ -120,7 +120,7 @@ const resetSearch = async () => {
 
 <style scoped>
 .table-height {
-  height: calc(100vh - 410px);
+  height: calc(100vh - 490px);
   overflow-y: auto;
 }
 </style>

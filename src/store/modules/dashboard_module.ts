@@ -40,6 +40,13 @@ export const useDashboardModule = defineStore("dashboard", {
       const { graph } = data;
       this.setGraphPie(graph);
     },
+
+    async modules() {
+      const response = await authenticatedFetch(api.DASHBOARD.MODULE);
+      const data = await response.json();
+      const { result_modules } = data;
+      this.setResultModules(result_modules);
+    },
   },
 
   getters: {

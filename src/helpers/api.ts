@@ -17,6 +17,12 @@ export default {
     READ: `${BACKEND}student/audit`,
   },
 
+  DASHBOARD: {
+    MODULE: `${BACKEND}student/dashboard/modules`,
+    RATIO: `${BACKEND}student/dashboard/ratio`,
+    READ: `${BACKEND}student/dashboard`,
+  },
+
   EXAM: {
     QUESTIONS: `${BACKEND}student/questions/`,
     ANSWER: `${BACKEND}student/answer/`,

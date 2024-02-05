@@ -1,7 +1,10 @@
 import Dashboard from "@/interfaces/Dashboard";
 import GraphPie from "@/interfaces/GraphPie";
 import ResultModule from "@/interfaces/ResultModule";
+import api from "@/helpers/api";
+
 import { defineStore } from "pinia";
+import { authenticatedFetch } from "@/services/api";
 
 export const useDashboardModule = defineStore("dashboard", {
   state: () => ({
@@ -22,6 +25,13 @@ export const useDashboardModule = defineStore("dashboard", {
 
     setResultModules(resultModules: ResultModule[]) {
       this.resultModules = resultModules;
+    },
+
+    async read() {
+      const response = await authenticatedFetch(api.DASHBOARD.READ);
+      const data = await response.json();
+      const { dashboard } = data;
+      this.setDashboard(dashboard);
     },
   },
 

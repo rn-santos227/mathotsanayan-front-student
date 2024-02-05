@@ -14,4 +14,9 @@ export default [
     icon: "mdi-chart-histogram",
     route: "/progress",
   },
+  {
+    text: "Audit Tail",
+    icon: "mdi-clipboard-text",
+    route: "/audit",
+  },
 ];

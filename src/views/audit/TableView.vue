@@ -2,8 +2,8 @@
   <v-card-text>
     <v-card variant="flat">
       <v-row class="mt-1">
-        <v-spacer />
-        <v-col class="d-flex">
+        <v-spacer v-if="mdAndUp" />
+        <v-col class="d-flex flex-wrap">
           <v-text-field
             class="mr-4"
             v-model="search"
@@ -85,6 +85,7 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useAuditModule } from "@/store";
 import { formatDate } from "@/helpers/utils";
+import { useDisplay } from "vuetify";
 
 import DetailsView from "./DetailsView.vue";
 
@@ -93,6 +94,7 @@ import LoadingDialogComponent from "@/components/dialogs/LoadingDialogComponent.
 import headers from "@/helpers/headers/header_audit";
 import Audit from "@/types/Audit";
 
+const { mdAndUp } = useDisplay();
 const search = ref<string>("");
 const auditModule = useAuditModule();
 const audit = computed<Audit[]>(() => auditModule.getAudit);

@@ -19,11 +19,19 @@ const moduleCard = ref<DashboardCard>({
   icon: "mdi-text-box-check",
 });
 
+const resultCard = ref<DashboardCard>({
+  count: useDashboardModule().getDashboard.results,
+  title: "Total Results",
+  link: "/reports",
+  color: "light-green",
+  icon: "mdi-sticker-check-outline",
+});
+
 onMounted(async () => {
   useDashboardModule().isLoading = true;
   useDashboardModule().read();
   moduleCard.value.count = useDashboardModule().getDashboard.modules;
-
+  resultCard.value.count = useDashboardModule().getDashboard.results;
   useDashboardModule().isLoading = false;
 });
 </script>

@@ -6,7 +6,7 @@
         color="purple-darken-3"
         variant="flat"
       >
-        <v-card-actions class="mx-4">
+        <v-card-actions class="mx-2">
           <span class="text-h5 font-weight-bold"> My Student Profile </span>
         </v-card-actions>
       </v-card>

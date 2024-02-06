@@ -6,8 +6,10 @@
         color="purple-darken-3"
         variant="flat"
       >
-        <v-card-actions class="mx-4">
-          <span class="`text-h6 font-weight-bold"> {{ props.card.title }}</span>
+        <v-card-actions class="mx-2">
+          <span class="text-h5 font-weight-bold">
+            Student {{ props.card.title }}
+          </span>
         </v-card-actions>
       </v-card>
     </v-card>

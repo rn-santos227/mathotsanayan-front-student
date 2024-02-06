@@ -1,11 +1,18 @@
 <template>
-  <v-card class="ma-4" elevation="3">
-    <v-card-title>
-      <span class="text-h6 font-weight-bold text-purple">
-        Modules Passing-Failure Table
-      </span>
-    </v-card-title>
-    <v-divider />
+  <v-card class="my-2" elevation="3">
+    <v-card>
+      <v-card
+        class="rounded-0 rounded-t"
+        color="purple-darken-3"
+        variant="flat"
+      >
+        <v-card-actions class="mx-2">
+          <span class="text-h5 font-weight-bold">
+            Modules Passing-Failure Table
+          </span>
+        </v-card-actions>
+      </v-card>
+    </v-card>
     <div
       class="d-flex align-center justify-center table-height"
       v-if="useDashboardModule().isLoading"

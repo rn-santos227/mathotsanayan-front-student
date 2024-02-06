@@ -1,74 +1,89 @@
 <template>
-  <div class="pb-8">
-    <v-row>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="useAuth.student.full_name"
-          label="Student Full Name"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="useAuth.student.email"
-          label="Student Email"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="section"
-          label="Student Section"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-      <v-col cols="12" sm="6">
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="teacher"
-          label="Teacher Assigned"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="course"
-          label="Student Course"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-text-field
-          class="text-purple-darken-3"
-          v-model.trim="school"
-          label="Student School"
-          variant="outlined"
-          hide-details
-          readonly
-        />
-      </v-col>
-    </v-row>
-  </div>
+  <v-container fluid>
+    <v-card class="mx-auto" width="100%">
+      <v-card
+        class="rounded-0 rounded-t mb-3 py-2"
+        color="purple-darken-3"
+        variant="flat"
+      >
+        <v-card-actions class="mx-4">
+          <span class="text-h5 font-weight-bold"> My Student Profile </span>
+        </v-card-actions>
+      </v-card>
+      <v-card-text>
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="useAuth.student.full_name"
+              label="Student Full Name"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="useAuth.student.email"
+              label="Student Email"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="section"
+              label="Student Section"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="teacher"
+              label="Teacher Assigned"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="course"
+              label="Student Course"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <v-text-field
+              class="text-purple-darken-3"
+              v-model.trim="school"
+              label="Student School"
+              variant="outlined"
+              hide-details
+              readonly
+            />
+          </v-col>
+        </v-row>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script setup lang="ts">

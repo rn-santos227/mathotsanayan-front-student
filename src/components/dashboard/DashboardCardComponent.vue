@@ -1,36 +1,44 @@
 <template>
-  <v-skeleton-loader
-    class="mx-4 border"
-    v-if="useDashboardModule().isLoading"
-    type="card-avatar, actions"
-    elevation="3"
-  />
-  <v-card v-else class="ma-4" elevation="3">
+  <v-card class="mt-2" elevation="3">
     <v-card-title>
       <span :class="`text-h6 font-weight-bold text-${props.card.color}`">{{
         props.card.title
       }}</span>
     </v-card-title>
     <v-divider />
-    <v-list lines="two">
-      <v-list-item>
-        <template v-slot:prepend>
-          <v-avatar size="75">
-            <v-icon class="larger-icons" :color="props.card.color">{{
-              props.card.icon
-            }}</v-icon>
-          </v-avatar>
-        </template>
-        <template v-slot:append>
-          <div>
-            <span
-              :class="`text-h4 font-weight-bold text-${props.card.color}`"
-              >{{ props.card.count }}</span
-            >
-          </div>
-        </template>
-      </v-list-item>
-    </v-list>
+    <div
+      class="d-flex align-center justify-center"
+      v-if="useDashboardModule().isLoading"
+    >
+      <v-progress-circular
+        class="ma-4"
+        :color="props.card.color"
+        width="10"
+        size="80"
+        indeterminate
+      />
+    </div>
+    <div v-else>
+      <v-list lines="two">
+        <v-list-item>
+          <template v-slot:prepend>
+            <v-avatar size="75">
+              <v-icon class="larger-icons" :color="props.card.color">{{
+                props.card.icon
+              }}</v-icon>
+            </v-avatar>
+          </template>
+          <template v-slot:append>
+            <div>
+              <span
+                :class="`text-h4 font-weight-bold text-${props.card.color}`"
+                >{{ props.card.count }}</span
+              >
+            </div>
+          </template>
+        </v-list-item>
+      </v-list>
+    </div>
     <v-divider />
     <v-card-actions>
       <v-spacer />

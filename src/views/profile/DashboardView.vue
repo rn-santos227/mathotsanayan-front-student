@@ -1,14 +1,15 @@
 <template>
   <v-container fluid>
-    <div class="d-flex justify-space-around flex-wrap"></div>
-    <DashboardCardComponent
-      class="flex-grow-1 card-width"
-      v-bind:card="moduleCard"
-    />
-    <DashboardCardComponent
-      class="flex-grow-1 card-width"
-      v-bind:card="resultCard"
-    />
+    <div class="d-flex justify-space-around flex-wrap">
+      <DashboardCardComponent
+        class="flex-grow-1 card-width"
+        v-bind:card="moduleCard"
+      />
+      <DashboardCardComponent
+        class="flex-grow-1 card-width"
+        v-bind:card="resultCard"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -30,16 +31,22 @@ const moduleCard = ref<DashboardCard>({
 const resultCard = ref<DashboardCard>({
   count: useDashboardModule().getDashboard.results,
   title: "Total Results",
-  link: "/reports",
+  link: "/progress",
   color: "light-green",
   icon: "mdi-sticker-check-outline",
 });
 
 onMounted(async () => {
   useDashboardModule().isLoading = true;
-  useDashboardModule().read();
+  await useDashboardModule().read();
   moduleCard.value.count = useDashboardModule().getDashboard.modules;
   resultCard.value.count = useDashboardModule().getDashboard.results;
   useDashboardModule().isLoading = false;
 });
 </script>
+
+<style scoped>
+.card-width {
+  width: 180px;
+}
+</style>

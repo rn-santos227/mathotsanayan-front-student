@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-2" elevation="3">
+  <v-card class="my-2" elevation="2">
     <v-card-title>
       <span :class="`text-h6 font-weight-bold text-${props.card.color}`">{{
         props.card.title

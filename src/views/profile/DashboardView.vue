@@ -5,6 +5,7 @@
         class="flex-grow-1 card-width"
         v-bind:card="moduleCard"
       />
+      <div v-if="mdAndUp" class="ma-4"></div>
       <DashboardCardComponent
         class="flex-grow-1 card-width"
         v-bind:card="resultCard"
@@ -16,9 +17,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useDashboardModule } from "@/store";
+import { useDisplay } from "vuetify";
 
 import DashboardCardComponent from "@/components/dashboard/DashboardCardComponent.vue";
 import DashboardCard from "@/interfaces/DashboardCard";
+
+const { mdAndUp } = useDisplay();
 
 const moduleCard = ref<DashboardCard>({
   count: useDashboardModule().getDashboard.modules,

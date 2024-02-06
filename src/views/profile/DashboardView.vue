@@ -5,7 +5,7 @@
         class="flex-grow-1 card-width"
         v-bind:card="moduleCard"
       />
-      <div v-if="mdAndUp" class="ma-4"></div>
+      <div v-if="mdAndUp" class="ma-2"></div>
       <DashboardCardComponent
         class="flex-grow-1 card-width"
         v-bind:card="resultCard"

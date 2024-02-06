@@ -1,6 +1,14 @@
 <template>
   <v-container fluid>
     <div class="d-flex justify-space-around flex-wrap"></div>
+    <DashboardCardComponent
+      class="flex-grow-1 card-width"
+      v-bind:card="moduleCard"
+    />
+    <DashboardCardComponent
+      class="flex-grow-1 card-width"
+      v-bind:card="resultCard"
+    />
   </v-container>
 </template>
 

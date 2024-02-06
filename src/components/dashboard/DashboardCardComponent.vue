@@ -1,11 +1,16 @@
 <template>
   <v-card class="my-2" elevation="2">
-    <v-card-title>
-      <span :class="`text-h6 font-weight-bold text-${props.card.color}`">{{
-        props.card.title
-      }}</span>
-    </v-card-title>
-    <v-divider />
+    <v-card>
+      <v-card
+        class="rounded-0 rounded-t"
+        color="purple-darken-3"
+        variant="flat"
+      >
+        <v-card-actions class="mx-4">
+          <span class="`text-h6 font-weight-bold"> {{ props.card.title }}</span>
+        </v-card-actions>
+      </v-card>
+    </v-card>
     <div
       class="d-flex align-center justify-center"
       v-if="useDashboardModule().isLoading"

@@ -28,7 +28,7 @@ const moduleCard = ref<DashboardCard>({
   count: useDashboardModule().getDashboard.modules,
   title: "Total Modules",
   link: "/modules",
-  color: "indigo",
+  color: "purple-darken-3",
   icon: "mdi-text-box-check",
 });
 
@@ -36,7 +36,7 @@ const resultCard = ref<DashboardCard>({
   count: useDashboardModule().getDashboard.results,
   title: "Total Results",
   link: "/progress",
-  color: "light-green",
+  color: "purple-darken-3",
   icon: "mdi-sticker-check-outline",
 });
 

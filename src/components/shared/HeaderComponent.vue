@@ -1,8 +1,6 @@
 <template>
   <v-app-bar color="purple-darken-3" dark elevation="1" app>
-    <v-toolbar-title
-      :class="mdAndUp ? 'text-h5 font-weight-bold' : 'text-6 font-weight-bold'"
-    >
+    <v-toolbar-title :class="mdAndUp ? 'text-h6 font-weight-bold' : ''">
       {{ props.title }}
     </v-toolbar-title>
     <div v-if="authModule.isAuthenticated" class="mr-1">

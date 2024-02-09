@@ -8,6 +8,11 @@
       <div v-if="mdAndUp" class="ma-2"></div>
       <DashboardCardComponent
         class="flex-grow-1 card-width"
+        v-bind:card="subjectCard"
+      />
+      <div v-if="mdAndUp" class="ma-2"></div>
+      <DashboardCardComponent
+        class="flex-grow-1 card-width"
         v-bind:card="resultCard"
       />
     </div>
@@ -32,6 +37,14 @@ const moduleCard = ref<DashboardCard>({
   icon: "mdi-text-box-check",
 });
 
+const subjectCard = ref<DashboardCard>({
+  count: useDashboardModule().getDashboard.results,
+  title: "Total Subjects",
+  link: "/modules",
+  color: "purple-darken-3",
+  icon: "mdi-book",
+});
+
 const resultCard = ref<DashboardCard>({
   count: useDashboardModule().getDashboard.results,
   title: "Total Results",
@@ -44,6 +57,7 @@ onMounted(async () => {
   useDashboardModule().isLoading = true;
   await useDashboardModule().read();
   moduleCard.value.count = useDashboardModule().getDashboard.modules;
+  subjectCard.value.count = useDashboardModule().getDashboard.subjects;
   resultCard.value.count = useDashboardModule().getDashboard.results;
   useDashboardModule().isLoading = false;
 });

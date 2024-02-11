@@ -4,5 +4,12 @@
       MatHotSanayan Student Examination
     </span>
     <v-divider class="my-2" />
+    <p class="ma-6">
+      {{ docs[0] }}
+    </p>
   </v-card-text>
 </template>
+
+<script setup lang="ts">
+import docs from "@/helpers/documentation/doc_exam";
+</script>

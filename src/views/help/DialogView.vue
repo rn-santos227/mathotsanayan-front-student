@@ -65,10 +65,13 @@
             <DocModulesView v-else-if="page == 'module'" />
             <DocExamView v-else-if="page == 'exam'" />
             <DocProgressView
-              v-else-if="page == 'progress'"
+              v-else-if="page.includes('progress')"
               v-bind:page="page"
             />
-            <DocAuditView v-else-if="page == 'audit'" v-bind:page="page" />
+            <DocAuditView
+              v-else-if="page.includes('audit')"
+              v-bind:page="page"
+            />
           </v-col>
         </v-row>
       </div>

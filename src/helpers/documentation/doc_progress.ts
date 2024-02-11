@@ -62,6 +62,40 @@ const docs: string[] = [
   approach to similar assessments in the future. Overall, the Result
   Details section empowers students to take ownership of their learning
   journey, make informed decisions, and strive for continuous improvement.`,
+
+  `The Answers Table in MatHotSanayan provides students with a detailed
+  breakdown of their assessment performance, allowing for a comprehensive
+  analysis of each question and corresponding responses. This segment
+  serves as a valuable tool for students to delve into the intricacies of
+  their answers, facilitating a thorough evaluation of their understanding
+  and proficiency in the assessment material.`,
+
+  `Each entry in the table encompasses several critical components
+  essential for a nuanced assessment review. Firstly, the Evaluation
+  column offers students immediate feedback on the correctness of their
+  answers, aiding in the assessment of their overall performance. This
+  clear distinction between correct and incorrect responses enables
+  students to identify areas of strength and pinpoint concepts requiring
+  further attention.`,
+
+  `Secondly, the Answer Content column presents the responses provided by
+  the student for each question, juxtaposed with the correct solution.
+  This juxtaposition allows students to compare their answers directly
+  with the expected response, facilitating a deeper understanding of any
+  misconceptions or errors. By scrutinizing their answers in this manner,
+  students can identify specific areas for improvement and refine their
+  problem-solving strategies effectively.`,
+
+  `Furthermore, the Question Content column provides the context necessary
+  for students to interpret and analyze each question thoroughly.
+  Understanding the nuances of the question prompts enables students to
+  ensure they have addressed all aspects of the problem and applied the
+  appropriate concepts in their responses. Additionally, the table
+  includes metrics such as Attempt Number and Time Spent, offering
+  insights into students' persistence, engagement, and time management
+  skills during the assessment. This comprehensive view of their
+  performance empowers students to identify patterns, track progress, and
+  make informed decisions to enhance their learning outcomes effectively.`,
 ];
 
 export default docs;

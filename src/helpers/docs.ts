@@ -34,11 +34,11 @@ export default [
       },
       {
         text: "Results Details",
-        page: "reports-details",
+        page: "progress-details",
       },
       {
         text: "Answers List",
-        page: "reports-answers",
+        page: "progress-answers",
       },
     ],
   },

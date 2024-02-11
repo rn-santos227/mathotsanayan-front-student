@@ -33,7 +33,7 @@ export default [
         page: "progress-main",
       },
       {
-        text: "Results Details",
+        text: "Progress Details",
         page: "progress-details",
       },
       {
@@ -47,7 +47,7 @@ export default [
     page: "audit",
     subpages: [
       {
-        text: "Auidt Trail",
+        text: "Audit Trail",
         page: "audit-main",
       },
       {

@@ -29,6 +29,23 @@
         MatHotSanayan Student Progress Details
       </span>
       <v-divider class="my-2" />
+      <p class="ma-6">
+        {{ docs[3] }}
+      </p>
+
+      <v-img
+        class="ma-6"
+        cover
+        :src="require('@/assets/images/help/doc_012.png')"
+      />
+
+      <p class="ma-6">
+        {{ docs[4] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[5] }}
+      </p>
     </div>
 
     <div v-if="focusPage === 'progress-answers'">

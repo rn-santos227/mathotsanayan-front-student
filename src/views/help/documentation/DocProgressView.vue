@@ -8,6 +8,20 @@
       <p class="ma-6">
         {{ docs[0] }}
       </p>
+
+      <v-img
+        class="ma-6"
+        cover
+        :src="require('@/assets/images/help/doc_011.png')"
+      />
+
+      <p class="ma-6">
+        {{ docs[1] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[2] }}
+      </p>
     </div>
 
     <div v-if="focusPage === 'progress-details'">

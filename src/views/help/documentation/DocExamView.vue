@@ -7,6 +7,26 @@
     <p class="ma-6">
       {{ docs[0] }}
     </p>
+
+    <p class="ma-6">
+      {{ docs[1] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[2] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[3] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[4] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[5] }}
+    </p>
   </v-card-text>
 </template>
 

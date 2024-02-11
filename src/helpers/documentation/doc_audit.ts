@@ -23,6 +23,34 @@ const docs: string[] = [
   activities or exploring past interactions, the ability to reset the
   search list ensures a streamlined and efficient experience for students
   in monitoring their progress within the web application.`,
+
+  `The Audit Trail Detail function in MatHotSanayan offers students a
+  deeper insight into their activity history within the web application,
+  providing additional details such as IP addresses and content associated
+  with each action. This feature enhances transparency and enables
+  students to monitor their interactions with greater precision.`,
+
+  `In addition to standard activity records, the Audit Trail Detail
+  function includes information about the IP addresses from which each
+  action occurred. By displaying the IP address associated with each
+  activity, students can track the locations or devices used to access the
+  application. This enhances security and allows students to verify the
+  legitimacy of their own actions while using the web application.`,
+
+  `Moreover, the Audit Trail Detail function provides access to additional
+  content or context related to specific actions. This may include details
+  such as the specific module or assessment accessed, the duration of
+  interaction, or any associated actions performed by the student. By
+  offering more comprehensive information, students can gain deeper
+  insights into their activity history and better understand their
+  engagement with the application.`,
+
+  `Overall, the Audit Trail Detail function empowers students to take a
+  more detailed and informed approach to monitoring their activity within
+  the web application. By providing access to IP addresses and additional
+  content associated with each action, this feature promotes transparency,
+  security, and accountability, ultimately enhancing the student
+  experience.`,
 ];
 
 export default docs;

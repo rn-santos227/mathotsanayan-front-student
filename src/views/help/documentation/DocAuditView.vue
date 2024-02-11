@@ -9,6 +9,12 @@
         {{ docs[0] }}
       </p>
 
+      <v-img
+        class="ma-6"
+        cover
+        :src="require('@/assets/images/help/doc_014.png')"
+      />
+
       <p class="ma-6">
         {{ docs[1] }}
       </p>
@@ -23,6 +29,27 @@
         MatHotSanayan Student Audit Details
       </span>
       <v-divider class="my-2" />
+      <p class="ma-6">
+        {{ docs[3] }}
+      </p>
+
+      <v-img
+        class="ma-6"
+        cover
+        :src="require('@/assets/images/help/doc_015.png')"
+      />
+
+      <p class="ma-6">
+        {{ docs[4] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[5] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[6] }}
+      </p>
     </div>
   </v-card-text>
 </template>

@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `Access the personalized student profile seamlessly within MatHotSanayan's
+  `Access the personalized student profile seamlessly within MatHOTSanayan's
   Student Account Module, offering a detailed overview of the academic
   journey. This feature-rich module showcases essential information such as
   the full name, email, student section, assigned teacher, course, and
@@ -16,7 +16,7 @@ const docs: string[] = [
   passing grade for each accessible module, enabling students to gauge their
   performance on individual assessments.`,
 
-  `With MatHotSanayan's Student Account Module, students have access to
+  `With MatHOTSanayan's Student Account Module, students have access to
   comprehensive tools to manage their academic profile and track their
   progress effectively. Utilize this feature to stay informed about academic
   achievements, identify areas for growth, and take control of the learning

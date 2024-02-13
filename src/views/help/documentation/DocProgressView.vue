@@ -2,7 +2,7 @@
   <v-card-text>
     <div v-if="focusPage === 'progress-main'">
       <span class="text-h5 font-weight-bold">
-        MatHotSanayan Student Progress Table
+        MatHOTSanayan Student Progress Table
       </span>
       <v-divider class="my-2" />
       <p class="ma-6">
@@ -26,7 +26,7 @@
 
     <div v-if="focusPage === 'progress-details'">
       <span class="text-h5 font-weight-bold">
-        MatHotSanayan Student Progress Details
+        MatHOTSanayan Student Progress Details
       </span>
       <v-divider class="my-2" />
       <p class="ma-6">
@@ -50,7 +50,7 @@
 
     <div v-if="focusPage === 'progress-answers'">
       <span class="text-h5 font-weight-bold">
-        MatHotSanayan Student Answers List
+        MatHOTSanayan Student Answers List
       </span>
       <v-divider class="my-2" />
       <p class="ma-6">

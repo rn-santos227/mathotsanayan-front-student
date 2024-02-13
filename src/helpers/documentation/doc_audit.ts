@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `The Student Audit Trail feature in MatHotSanayan provides students with
+  `The Student Audit Trail feature in MatHOTSanayan provides students with
   a comprehensive record of their activities within the web application.
   This feature allows students to track their interactions, including
   accessing modules, submitting assessments, and engaging with learning
@@ -24,7 +24,7 @@ const docs: string[] = [
   search list ensures a streamlined and efficient experience for students
   in monitoring their progress within the web application.`,
 
-  `The Audit Trail Detail function in MatHotSanayan offers students a
+  `The Audit Trail Detail function in MatHOTSanayan offers students a
   deeper insight into their activity history within the web application,
   providing additional details such as IP addresses and content associated
   with each action. This feature enhances transparency and enables

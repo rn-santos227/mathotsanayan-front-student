@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `Navigate through MatHotSanayan's Modules/Exams page to access available
+  `Navigate through MatHOTSanayan's Modules/Exams page to access available
   assessments tailored to your academic progress and chosen subjects. This
   intuitive feature enables students to select exams based on their current
   stage of learning, ensuring that they encounter assessments relevant to
@@ -21,7 +21,7 @@ const docs: string[] = [
   detailed instructions to guide them through the assessment process. These
   instructions provide clarity on how to navigate the exam interface, answer
   questions, and submit responses effectively. By providing comprehensive
-  information upfront, MatHotSanayan's Modules/Exams page empowers students
+  information upfront, MatHOTSanayan's Modules/Exams page empowers students
   to approach assessments with confidence and clarity, ultimately enhancing
   their learning outcomes and academic success.`,
 ];

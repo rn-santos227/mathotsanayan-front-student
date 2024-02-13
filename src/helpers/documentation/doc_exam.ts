@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `Welcome to the Exam Page in MatHotSanayan, the platform designed to
+  `Welcome to the Exam Page in MatHOTSanayan, the platform designed to
   facilitate assessment-taking and progress monitoring. This dynamic page
   provides a user-friendly interface, guiding users through each step of the
   examination process seamlessly.`,
@@ -18,7 +18,7 @@ const docs: string[] = [
   the next question. Alternatively, if unsure about a question, it can be
   skipped and returned to later for further consideration.`,
 
-  `MatHotSanayan recognizes the importance of learning from mistakes and
+  `MatHOTSanayan recognizes the importance of learning from mistakes and
   offers multiple attempts for answering each question. This feature
   encourages a growth mindset, allowing students to refine their
   understanding and problem-solving skills through iterative learning.
@@ -27,7 +27,7 @@ const docs: string[] = [
   exam.`,
 
   `Real-time feedback is integral to the exam-taking experience in
-  MatHotSanayan. Upon submitting an answer to a question, immediate feedback
+  MatHOTSanayan. Upon submitting an answer to a question, immediate feedback
   is provided, indicating whether the response is correct or incorrect. This
   instant validation allows students to monitor their performance in
   real-time, enabling them to adjust their strategy and focus on areas that
@@ -37,7 +37,7 @@ const docs: string[] = [
   students can approach assessments with confidence, optimize their
   exam-taking strategy, and ultimately achieve their academic goals. Whether
   aiming to master course content, track progress, or prepare for upcoming
-  evaluations, MatHotSanayan's Exam Page provides the tools and support
+  evaluations, MatHOTSanayan's Exam Page provides the tools and support
   needed for success.`,
 ];
 

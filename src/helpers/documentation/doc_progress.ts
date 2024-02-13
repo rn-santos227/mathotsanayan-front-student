@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `The Progress Page Table in MatHotSanayan serves as a comprehensive tool
+  `The Progress Page Table in MatHOTSanayan serves as a comprehensive tool
   for students to track their academic journey and assessment outcomes. It
   offers a detailed overview of their performance across various modules
   and exams, providing invaluable insights into their progress within the
@@ -28,7 +28,7 @@ const docs: string[] = [
   achievements, students can take control of their learning journey, make
   informed decisions, and strive towards continual improvement.`,
 
-  `The Result Details section in MatHotSanayan provides a comprehensive
+  `The Result Details section in MatHOTSanayan provides a comprehensive
   breakdown of students' assessment outcomes, offering insights into their
   performance and areas for improvement. This segment begins by presenting
   essential information such as the module name, indicating the specific
@@ -63,7 +63,7 @@ const docs: string[] = [
   Details section empowers students to take ownership of their learning
   journey, make informed decisions, and strive for continuous improvement.`,
 
-  `The Answers Table in MatHotSanayan provides students with a detailed
+  `The Answers Table in MatHOTSanayan provides students with a detailed
   breakdown of their assessment performance, allowing for a comprehensive
   analysis of each question and corresponding responses. This segment
   serves as a valuable tool for students to delve into the intricacies of

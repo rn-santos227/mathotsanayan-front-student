@@ -1,5 +1,5 @@
 const docs: string[] = [
-  `MatHotSanayan stands out as a cutting-edge computer aided assessment (CAA)
+  `MatHOTSanayan stands out as a cutting-edge computer aided assessment (CAA)
   tool designed to elevate students' cognitive abilities through exposure to
   non-routine problems (NRP), fostering higher-order thinking skills (HOTS)
   essential for academic and real-world success. With a primary focus on
@@ -10,7 +10,7 @@ const docs: string[] = [
   mathematical language, symbols, and advanced problem-solving reasoning,
   thus honing their analytical and critical thinking abilities.`,
 
-  `Comprising four distinct modules, MatHotSanayan offers a structured
+  `Comprising four distinct modules, MatHOTSanayan offers a structured
   approach to skill development and mastery in MMW. The initial module is
   dedicated to mastering mathematical language and symbols, providing
   students with a solid foundation for navigating complex mathematical
@@ -24,13 +24,13 @@ const docs: string[] = [
   strategically curated to stimulate cognitive engagement and foster
   analytical thinking. These NRPs are presented in a randomized manner,
   offering students a dynamic learning experience with each session. By
-  exposing students to a variety of problem-solving scenarios, MatHotSanayan
+  exposing students to a variety of problem-solving scenarios, MatHOTSanayan
   encourages exploration, experimentation, and critical reflection,
   empowering them to develop robust problem-solving skills essential for
   academic success and lifelong learning.`,
 
   `Through its modular structure and comprehensive NRP repository,
-  MatHotSanayan provides students with a versatile platform for honing their
+  MatHOTSanayan provides students with a versatile platform for honing their
   mathematical reasoning abilities. Whether grappling with mathematical
   language, symbolic manipulation, or complex problem-solving tasks,
   students have the opportunity to refine their skills and deepen their

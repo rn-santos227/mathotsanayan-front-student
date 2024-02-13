@@ -1,7 +1,7 @@
 <template>
   <v-card-text>
     <span class="text-h5 font-weight-bold">
-      MatHotSanayan Student Profile
+      MatHOTSanayan Student Profile
     </span>
     <v-divider class="my-2" />
     <p class="ma-6">

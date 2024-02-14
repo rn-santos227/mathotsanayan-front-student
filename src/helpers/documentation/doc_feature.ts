@@ -20,6 +20,11 @@ const docs: string[] = [
   ` Engaging with interactive practice problems challenges students'
   critical thinking and problem-solving skills in a dynamic and
   engaging way, fostering deeper learning.`,
+
+  ` Immediate feedback on answers, including sample solutions for
+  correct responses, helps students learn from their mistakes and
+  understand the reasoning behind solutions, facilitating
+  self-assessment and improvement.`,
 ];
 
 export default docs;

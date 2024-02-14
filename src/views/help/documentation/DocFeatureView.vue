@@ -42,6 +42,24 @@
           <span>{{ docs[5] }}</span>
         </p>
       </li>
+      <li class="my-2">
+        <p>
+          <b>Sample Solutions:</b>
+          <span>{{ docs[5] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Triple Try Challenge:</b>
+          <span>{{ docs[5] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Progress Tracking:</b>
+          <span>{{ docs[5] }}</span>
+        </p>
+      </li>
     </ul>
   </v-card-text>
 </template>

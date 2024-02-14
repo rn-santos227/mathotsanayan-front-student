@@ -8,7 +8,7 @@
       >
         <v-card-actions class="mx-2">
           <span class="text-h5 font-weight-bold">
-            Modules Passing-Failure Table
+            Modules Passed-Failed Table
           </span>
         </v-card-actions>
       </v-card>

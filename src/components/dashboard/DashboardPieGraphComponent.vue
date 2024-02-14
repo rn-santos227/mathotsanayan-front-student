@@ -8,7 +8,7 @@
       >
         <v-card-actions class="mx-2">
           <span class="text-h5 font-weight-bold">
-            Module Passed-Failed Ratio
+            Modules Passed-Failed Ratio
           </span>
         </v-card-actions>
       </v-card>

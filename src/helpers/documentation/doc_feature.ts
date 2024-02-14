@@ -12,6 +12,14 @@ const docs: string[] = [
   evaluation, and application, the practice tests encourage deeper
   understanding and mastery of mathematical concepts rather than mere
   rote memorization.`,
+
+  ` Generating randomized problems prevents students from relying on
+  memorization and encourages them to develop a thorough understanding
+  of concepts, promoting true mastery of the material.`,
+
+  ` Engaging with interactive practice problems challenges students'
+  critical thinking and problem-solving skills in a dynamic and
+  engaging way, fostering deeper learning.`,
 ];
 
 export default docs;

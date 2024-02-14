@@ -25,6 +25,16 @@ const docs: string[] = [
   correct responses, helps students learn from their mistakes and
   understand the reasoning behind solutions, facilitating
   self-assessment and improvement.`,
+
+  ` Providing sample solutions accompanying each practice test helps
+  students understand problem-solving strategies, reinforcing their
+  understanding of key mathematical concepts and promoting deeper
+  learning.`,
+
+  ` Offering students three attempts to solve each problem before
+  moving on to the next problem encourages persistence and resilience,
+  fostering a growth mindset and promoting a positive learning
+  experience.`,
 ];
 
 export default docs;

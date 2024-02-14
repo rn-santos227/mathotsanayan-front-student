@@ -22,6 +22,13 @@ const docs: string[] = [
   consistent practice in mastering mathematical concepts. It embodies
   this principle by offering a rich array of practice tests designed
   to refine students' mathematical proficiency.`,
+
+  `MatHOTSanayan is driven by a singular mission: to empower students to
+  excel in mathematics by providing them with a solid platform for
+  practicing high-level problem-solving skills. The belief is that through
+  consistent practice and exposure to diverse mathematical challenges,
+  students can enhance their understanding of mathematical concepts and
+  develop the skills necessary to succeed academically and beyond.`,
 ];
 
 export default docs;

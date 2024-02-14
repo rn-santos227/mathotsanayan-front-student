@@ -34,6 +34,9 @@
     </ol>
 
     <span class="ma-6 font-weight-bold"> Mission: </span>
+    <p class="ma-6">
+      {{ docs[4] }}
+    </p>
   </v-card-text>
 </template>
 

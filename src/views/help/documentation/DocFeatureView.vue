@@ -68,7 +68,7 @@
       </li>
       <li class="my-2">
         <p>
-          <b>Accessible Anytime, Anywhere:</b>
+          <b>Mobile Compatibility:</b>
           <span>{{ docs[10] }}</span>
         </p>
       </li>

@@ -35,6 +35,17 @@ const docs: string[] = [
   moving on to the next problem encourages persistence and resilience,
   fostering a growth mindset and promoting a positive learning
   experience.`,
+
+  ` Being accessible online allows students to practice math at their
+  convenience, whether at home, school, or on the go, fitting learning
+  into their busy schedules and making it easier to stay consistent
+  with their studies.`,
+
+  ` Responsive design ensures that the platform is accessible on
+  various devices, including smartphones and tablets, enabling
+  students to practice math on the go, whether they're at home,
+  school, or traveling, maximizing opportunities for learning and
+  practice.`,
 ];
 
 export default docs;

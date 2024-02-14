@@ -9,37 +9,37 @@
       <li class="my-2">
         <p>
           <b>User-Friendly Interface:</b>
-          <span> {{ docs[1] }}</span>
+          <span>{{ docs[0] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
           <b>Comprehensive Test Bank:</b>
-          <span> {{ docs[2] }}</span>
+          <span>{{ docs[1] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
           <b>HOTS-focused Approach:</b>
-          <span> {{ docs[3] }}</span>
+          <span>{{ docs[2] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
           <b>Randomized Problems:</b>
-          <span> {{ docs[3] }}</span>
+          <span>{{ docs[3] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
           <b>Interactive Practice Problems:</b>
-          <span> {{ docs[3] }}</span>
+          <span>{{ docs[4] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
           <b>Instant Feedback:</b>
-          <span> {{ docs[3] }}</span>
+          <span>{{ docs[5] }}</span>
         </p>
       </li>
     </ul>

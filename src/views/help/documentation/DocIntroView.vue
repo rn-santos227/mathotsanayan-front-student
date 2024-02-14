@@ -7,6 +7,25 @@
     <p class="ma-6">
       {{ docs[0] }}
     </p>
+
+    <span class="ma-6">
+      The name "MatHOTSanayan" is derived from the fusion of three key elements:
+    </span>
+
+    <ol class="mx-10 my-4">
+      <li class="my-2">
+        <p>
+          <b>Mathematics:</b>
+          <span> {{ docs[1] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Higher Order Thinking Skills:</b>
+          <span> {{ docs[1] }}</span>
+        </p>
+      </li>
+    </ol>
   </v-card-text>
 </template>
 

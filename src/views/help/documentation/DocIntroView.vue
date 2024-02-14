@@ -22,7 +22,7 @@
       <li class="my-2">
         <p>
           <b>Higher Order Thinking Skills:</b>
-          <span> {{ docs[1] }}</span>
+          <span> {{ docs[2] }}</span>
         </p>
       </li>
     </ol>

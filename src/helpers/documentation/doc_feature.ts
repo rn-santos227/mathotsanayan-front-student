@@ -36,6 +36,11 @@ const docs: string[] = [
   fostering a growth mindset and promoting a positive learning
   experience.`,
 
+  ` The ability to track progress over time and identify areas for
+  improvement allows students to monitor their growth, set achievable
+  learning goals, and focus their efforts where they need the most
+  improvement.`,
+
   ` Being accessible online allows students to practice math at their
   convenience, whether at home, school, or on the go, fitting learning
   into their busy schedules and making it easier to stay consistent

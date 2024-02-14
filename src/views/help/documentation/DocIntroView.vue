@@ -28,10 +28,12 @@
       <li class="my-2">
         <p>
           <b>Sanayan:</b>
-          <span> {{ docs[2] }}</span>
+          <span> {{ docs[3] }}</span>
         </p>
       </li>
     </ol>
+
+    <span class="ma-6 font-weight-bold"> Mission: </span>
   </v-card-text>
 </template>
 

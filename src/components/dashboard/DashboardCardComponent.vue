@@ -8,7 +8,7 @@
       >
         <v-card-actions class="mx-2">
           <span class="text-h5 font-weight-bold">
-            Student {{ props.card.title }}
+            {{ props.card.title }}
           </span>
         </v-card-actions>
       </v-card>

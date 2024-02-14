@@ -7,7 +7,7 @@
         variant="flat"
       >
         <v-card-actions class="mx-2">
-          <span class="text-h5 font-weight-bold"> My Student Profile </span>
+          <span class="text-h5 font-weight-bold"> My Profile </span>
         </v-card-actions>
       </v-card>
       <v-card-text>

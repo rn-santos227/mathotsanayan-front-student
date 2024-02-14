@@ -73,6 +73,11 @@
         </p>
       </li>
     </ul>
+
+    <span class="mx-6 my-2 font-weight-bold"> Get Started Today! </span>
+    <p class="mx-6 my-2">
+      {{ docs[11] }}
+    </p>
   </v-card-text>
 </template>
 

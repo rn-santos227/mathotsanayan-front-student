@@ -51,6 +51,12 @@ const docs: string[] = [
   students to practice math on the go, whether they're at home,
   school, or traveling, maximizing opportunities for learning and
   practice.`,
+
+  `Whether preparing for standardized tests, aiming for excellence in
+  mathematics coursework, or seeking to sharpen problem-solving skills,
+  MatHOTSanayan is the ultimate destination for comprehensive and effective
+  mathematical practice. Join the journey to mathematical mastery and unlock
+  your full potential with MatHOTSanayan!`,
 ];
 
 export default docs;

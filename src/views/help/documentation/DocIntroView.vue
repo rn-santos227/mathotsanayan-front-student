@@ -33,8 +33,8 @@
       </li>
     </ol>
 
-    <span class="ma-6 font-weight-bold"> Mission: </span>
-    <p class="ma-6">
+    <span class="mx-6 my-2 font-weight-bold"> Mission: </span>
+    <p class="mx-6 my-2">
       {{ docs[4] }}
     </p>
   </v-card-text>

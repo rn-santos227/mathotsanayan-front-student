@@ -1,8 +1,6 @@
 <template>
   <v-card-text>
-    <span class="text-h5 font-weight-bold">
-      MatHOTSanayan Student About Page
-    </span>
+    <span class="text-h5 font-weight-bold"> MatHOTSanayan About Page </span>
     <v-divider class="my-2" />
     <p class="ma-6">
       {{ docs[0] }}

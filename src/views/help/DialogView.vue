@@ -60,6 +60,7 @@
           <v-divider vertical />
           <v-col class="flex-grow-1 question-height">
             <DocIntroView v-if="page === 'intro'" />
+            <DocFeatureView v-else-if="page == 'feature'" />
             <DocProfileView v-else-if="page == 'profile'" />
             <DocMobileView v-else-if="page == 'mobile'" />
             <DocModulesView v-else-if="page == 'module'" />
@@ -85,6 +86,7 @@ import { useDisplay } from "vuetify";
 import docs from "@/helpers/docs";
 
 import DocIntroView from "./documentation/DocIntroView.vue";
+import DocFeatureView from "./documentation/DocFeatureView.vue";
 import DocProfileView from "./documentation/DocProfileView.vue";
 import DocMobileView from "./documentation/DocMobileView.vue";
 import DocModulesView from "./documentation/DocModulesView.vue";

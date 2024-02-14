@@ -25,6 +25,12 @@
           <span> {{ docs[2] }}</span>
         </p>
       </li>
+      <li class="my-2">
+        <p>
+          <b>Sanayan:</b>
+          <span> {{ docs[2] }}</span>
+        </p>
+      </li>
     </ol>
   </v-card-text>
 </template>

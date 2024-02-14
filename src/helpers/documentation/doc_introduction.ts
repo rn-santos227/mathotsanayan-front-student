@@ -16,6 +16,12 @@ const docs: string[] = [
   MatHOTSanayan focuses on providing practice tests that challenge
   students to think beyond rote memorization and apply their knowledge
   to solve complex mathematical problems.`,
+
+  ` “Sanayan” is a Filipino term that embodies the essence of practice
+  or habit formation. MatHOTSanayan acknowledges the significance of
+  consistent practice in mastering mathematical concepts. It embodies
+  this principle by offering a rich array of practice tests designed
+  to refine students' mathematical proficiency.`,
 ];
 
 export default docs;

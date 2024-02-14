@@ -24,6 +24,24 @@
           <span> {{ docs[3] }}</span>
         </p>
       </li>
+      <li class="my-2">
+        <p>
+          <b>Randomized Problems:</b>
+          <span> {{ docs[3] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Interactive Practice Problems:</b>
+          <span> {{ docs[3] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Instant Feedback:</b>
+          <span> {{ docs[3] }}</span>
+        </p>
+      </li>
     </ul>
   </v-card-text>
 </template>

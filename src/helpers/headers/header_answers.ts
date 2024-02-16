@@ -27,7 +27,7 @@ const headers: ReadonlyHeaders = [
     key: "attempts",
   },
   {
-    title: "Tota Time",
+    title: "Total Time",
     align: "start",
     sortable: true,
     key: "timer",

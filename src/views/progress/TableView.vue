@@ -27,6 +27,9 @@
         <td class="text-center">
           {{ secondsToMinutes(item.timer) }}
         </td>
+        <td class="text-center">
+          {{ formatDate(item.created_at) }}
+        </td>
         <td class="text-left">
           <ResultView v-bind:result="item" />
         </td>
@@ -41,6 +44,7 @@ import { useResultModule, useAuthModule } from "@/store";
 import { getModuleName, getModuleStage } from "@/helpers/instance";
 import { evaluateExam } from "@/helpers/evaluation";
 import { secondsToMinutes } from "@/helpers/evaluation";
+import { formatDate } from "@/helpers/utils";
 
 import ResultView from "./result/DialogView.vue";
 

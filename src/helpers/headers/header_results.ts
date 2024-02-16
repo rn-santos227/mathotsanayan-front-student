@@ -12,6 +12,7 @@ const headers: ReadonlyHeaders = [
     align: "start",
     sortable: true,
     key: "module.step",
+    width: "200",
   },
   {
     title: "Score Result",
@@ -25,6 +26,7 @@ const headers: ReadonlyHeaders = [
     align: "start",
     sortable: true,
     key: "grade",
+    width: "100",
   },
   {
     title: "Total Time",
@@ -32,6 +34,13 @@ const headers: ReadonlyHeaders = [
     sortable: true,
     key: "timer",
     width: "140",
+  },
+  {
+    title: "Examination Date",
+    align: "start",
+    sortable: true,
+    key: "created_at",
+    width: "230",
   },
   {
     title: "Action",

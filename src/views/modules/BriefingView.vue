@@ -30,7 +30,7 @@
         <span class="mx-auto"> </span>
         <v-divider class="mb-2 mt-6" />
         <div class="ma-6" v-if="module.description">
-          <span class="h-5 font-weight-bold">Description/Notes:</span>
+          <span class="h-5 font-weight-bold">Description:</span>
           <p class="ma-4">{{ props.module.description }}</p>
         </div>
 
@@ -40,7 +40,7 @@
         </div>
 
         <div class="ma-6" v-if="module.direction">
-          <span class="h-5 font-weight-bold">Instruction:</span>
+          <span class="h-5 font-weight-bold">Instructions:</span>
           <p class="ma-4">{{ props.module.direction }}</p>
         </div>
         <v-divider />

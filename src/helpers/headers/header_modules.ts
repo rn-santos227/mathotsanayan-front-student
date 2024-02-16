@@ -2,7 +2,7 @@ import type { VDataTable } from "vuetify/lib/components/index.mjs";
 type ReadonlyHeaders = InstanceType<typeof VDataTable>["headers"];
 const headers: ReadonlyHeaders = [
   {
-    title: "Module Name",
+    title: "Module Title",
     align: "start",
     sortable: true,
     key: "name",
@@ -20,7 +20,7 @@ const headers: ReadonlyHeaders = [
     key: "questions.length",
   },
   {
-    title: "Module Subject",
+    title: "Subject",
     align: "start",
     sortable: true,
     key: "subject.name",

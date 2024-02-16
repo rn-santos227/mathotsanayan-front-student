@@ -102,6 +102,6 @@ const logout = () => {
 };
 
 const leave = () => {
-  refLeave.value.show("Do you want to leave your curret exam?");
+  refLeave.value.show("Do you want to leave your current exam?");
 };
 </script>

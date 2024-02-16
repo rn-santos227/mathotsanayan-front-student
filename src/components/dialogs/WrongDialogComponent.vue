@@ -21,7 +21,7 @@
         icon="mdi-close-circle"
         size="112"
       ></v-icon>
-      <h2 class="text-h5 mb-6 text-red-darken-4">ANSWER IS WRONG</h2>
+      <h2 class="text-h5 mb-6 text-red-darken-4">THE ANSWER IS WRONG</h2>
       <div class="mx-6">
         <span>
           {{ text }}

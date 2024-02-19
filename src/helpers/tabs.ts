@@ -15,7 +15,7 @@ export default [
     route: "/progress",
   },
   {
-    text: "Audit Tail",
+    text: "Audit Trail",
     icon: "mdi-clipboard-text",
     route: "/audit",
   },

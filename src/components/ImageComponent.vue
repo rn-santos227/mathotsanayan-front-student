@@ -42,8 +42,6 @@ const props = defineProps<{
 const url = ref<string>("");
 const loading = ref<boolean>(false);
 
-const emit = defineEmits(["update:trigger"]);
-
 watch(
   () => props.file,
   async () => {
@@ -61,7 +59,6 @@ const getImage = async () => {
     await imageModule.image(props.file).then((response) => {
       loading.value = false;
       url.value = response;
-      emit("update:trigger", false);
     });
   } else {
     loading.value = false;

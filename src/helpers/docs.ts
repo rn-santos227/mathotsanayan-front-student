@@ -37,7 +37,7 @@ export default [
         page: "progress-details",
       },
       {
-        text: "Answers List",
+        text: "Progress Response Details",
         page: "progress-answers",
       },
     ],

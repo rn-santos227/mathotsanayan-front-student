@@ -9,11 +9,11 @@
         {{ docs[0] }}
       </p>
 
-      <!-- <v-img
+      <v-img
         class="ma-6"
         cover
-        :src="require('@/assets/images/help/doc_011.png')"
-      /> -->
+        :src="require('@/assets/images/help/doc_015.png')"
+      />
 
       <p class="ma-6">
         {{ docs[1] }}

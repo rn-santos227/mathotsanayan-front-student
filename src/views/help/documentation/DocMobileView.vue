@@ -8,7 +8,7 @@
       {{ docs[0] }}
     </p>
 
-    <v-row>
+    <!-- <v-row>
       <v-col>
         <v-img
           class="ma-6"
@@ -30,7 +30,7 @@
           :src="require('@/assets/images/help/doc_005.png')"
         />
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <p class="ma-6">
       {{ docs[1] }}

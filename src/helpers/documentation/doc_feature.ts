@@ -37,7 +37,7 @@ const docs: string[] = [
   experience.`,
 
   ` Requiring students to complete and submit the exams for each
-  module in a predetermined sequence before before accessing the next
+  module in a predetermined sequence before accessing the next
   ensures that students build a strong foundation in the subject
   matter before advancing to more complex topics.`,
 

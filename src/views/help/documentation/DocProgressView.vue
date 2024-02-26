@@ -33,11 +33,11 @@
         {{ docs[3] }}
       </p>
 
-      <!-- <v-img
+      <v-img
         class="ma-6"
         cover
-        :src="require('@/assets/images/help/doc_012.png')"
-      /> -->
+        :src="require('@/assets/images/help/doc_016.png')"
+      />
 
       <p class="ma-6">
         {{ docs[4] }}
@@ -45,6 +45,14 @@
 
       <p class="ma-6">
         {{ docs[5] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[6] }}
+      </p>
+
+      <p class="ma-6">
+        {{ docs[7] }}
       </p>
     </div>
 

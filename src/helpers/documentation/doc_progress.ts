@@ -24,55 +24,38 @@ const docs: string[] = [
   eye on their academic progress, students can take charge of their
   learning, make smart choices, and keep getting better.`,
 
-  `The Result Details section in MatHOTSanayan provides a comprehensive
-  breakdown of students' assessment outcomes, offering insights into their
-  performance and areas for improvement. This segment begins by presenting
-  essential information such as the module name, indicating the specific
-  assessment undertaken by the student, and the result, clearly
-  distinguishing between passing and failing grades. Additionally,
-  students can review the total time taken to complete the assessment and
-  the average time spent per question, providing valuable context for
-  their performance.`,
+  `        The Progress/Result Details section gives students a thorough breakdown
+  of their assessment outcomes, providing valuable insights into their
+  performance and areas for growth. It starts by showing key information
+  like the module title, indicating which assessment the student took, and
+  the results, clearly showing whether they passed or failed. Students can
+  also see how long it took them to finish the exam and the average time
+  spent on each question, giving context to their performance.`,
 
-  `Numerical results further enhance students' understanding of their
-  assessment performance. The section includes details such as the total
-  score achieved over the total number of items, offering a quantitative
-  measure of students' proficiency in the subject matter. The percentage
-  grade provides a standardized assessment of their performance relative
-  to the assessment's grading scale. Moreover, students can assess their
-  engagement and persistence through metrics such as the total number of
-  attempts made across all questions. The accuracy metric, calculated
-  based on the average of total items divided by total attempts plus the
-  percentage grade, offers a nuanced evaluation of students' performance
-  by accounting for both correctness and persistence. Additionally, the
-  number of skips, recorded as mistakes, sheds light on students'
-  decision-making processes during the assessment.`,
+  `        Numerical results, such as the raw score compared to the total number of
+  items, give a quantitative measure of how well they know the topic. The
+  percentage grade shows how their performance compares to the grading
+  scale.`,
 
-  `The third segment of the Result Details section features a detailed
-  table outlining each question and the corresponding responses provided
-  by the student. This granular view allows students to review their
-  answers systematically, identify patterns in their responses, and
-  reflect on their problem-solving strategies. By analyzing individual
-  question responses, students can gain insights into their strengths and
-  weaknesses, enabling targeted improvements in their understanding and
-  approach to similar assessments in the future. Overall, the Result
-  Details section empowers students to take ownership of their learning
-  journey, make informed decisions, and strive for continuous improvement.`,
+  `   Students can gauge their engagement and persistence by looking at
+  metrics like the total number of attempts made on all questions. The
+  accuracy metric, calculated based on the average of total items divided
+  by total attempts plus the percentage grade, gives a detailed evaluation
+  of their performance by considering both correctness and persistence.
+  Additionally, the number of skips, counted as mistakes, shows how
+  students made decisions during the assessment.`,
 
-  `The Answers Table in MatHOTSanayan provides students with a detailed
-  breakdown of their assessment performance, allowing for a comprehensive
-  analysis of each question and corresponding responses. This segment
-  serves as a valuable tool for students to delve into the intricacies of
-  their answers, facilitating a thorough evaluation of their understanding
-  and proficiency in the assessment material.`,
+  `        The third segment of the Progress/Results Details section is a detailed
+  table showing each question and the student's responses. This detailed
+  view lets students review their answers systematically, spot patterns in
+  their responses, and think about their problem-solving strategies. By
+  analyzing individual question responses, students can understand their
+  strengths and weaknesses, making it easier to improve in similar
+  assessments in the future.`,
 
-  `Each entry in the table encompasses several critical components
-  essential for a nuanced assessment review. Firstly, the Evaluation
-  column offers students immediate feedback on the correctness of their
-  answers, aiding in the assessment of their overall performance. This
-  clear distinction between correct and incorrect responses enables
-  students to identify areas of strength and pinpoint concepts requiring
-  further attention.`,
+  `        Overall, the Progress/Results Details section helps students take
+  control of their learning journey, make smart choices, and strive for
+  continuous improvement.`,
 
   `Secondly, the Answer Content column presents the responses provided by
   the student for each question, juxtaposed with the correct solution.

@@ -8,21 +8,21 @@
       {{ docs[0] }}
     </p>
 
-    <v-img
+    <!-- <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_006.png')"
-    />
+    /> -->
 
     <p class="ma-6">
       {{ docs[1] }}
     </p>
 
-    <v-img
+    <!-- <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_007.png')"
-    />
+    /> -->
 
     <p class="ma-6">
       {{ docs[2] }}

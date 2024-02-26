@@ -9,19 +9,11 @@
         {{ docs[0] }}
       </p>
 
-      <!-- <v-img
+      <v-img
         class="ma-6"
         cover
-        :src="require('@/assets/images/help/doc_014.png')"
-      /> -->
-
-      <p class="ma-6">
-        {{ docs[1] }}
-      </p>
-
-      <p class="ma-6">
-        {{ docs[2] }}
-      </p>
+        :src="require('@/assets/images/help/doc_018.png')"
+      />
     </div>
 
     <div v-if="focusPage === 'audit-details'">
@@ -30,26 +22,18 @@
       </span>
       <v-divider class="my-2" />
       <p class="ma-6">
-        {{ docs[3] }}
+        {{ docs[1] }}
       </p>
 
-      <!-- <v-img
+      <p class="ma-6">
+        {{ docs[2] }}
+      </p>
+
+      <v-img
         class="ma-6"
         cover
-        :src="require('@/assets/images/help/doc_015.png')"
-      /> -->
-
-      <p class="ma-6">
-        {{ docs[4] }}
-      </p>
-
-      <p class="ma-6">
-        {{ docs[5] }}
-      </p>
-
-      <p class="ma-6">
-        {{ docs[6] }}
-      </p>
+        :src="require('@/assets/images/help/doc_019.png')"
+      />
     </div>
   </v-card-text>
 </template>

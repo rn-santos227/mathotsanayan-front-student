@@ -15,11 +15,6 @@ export default [
     subpages: [],
   },
   {
-    text: "Mobile View",
-    page: "mobile",
-    subpages: [],
-  },
-  {
     text: "Modules",
     page: "module",
     subpages: [],
@@ -60,5 +55,10 @@ export default [
         page: "audit-details",
       },
     ],
+  },
+  {
+    text: "Mobile View",
+    page: "mobile",
+    subpages: [],
   },
 ];

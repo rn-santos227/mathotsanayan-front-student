@@ -8,11 +8,11 @@
       {{ docs[0] }}
     </p>
 
-    <v-img
+    <!-- <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_008.png')"
-    />
+    /> -->
 
     <p class="ma-6">
       {{ docs[1] }}
@@ -22,11 +22,11 @@
       {{ docs[2] }}
     </p>
 
-    <v-img
+    <!-- <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_009.png')"
-    />
+    /> -->
 
     <p class="ma-6">
       {{ docs[3] }}
@@ -36,11 +36,11 @@
       {{ docs[4] }}
     </p>
 
-    <v-img
+    <!-- <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_010.png')"
-    />
+    /> -->
 
     <p class="ma-6">
       {{ docs[5] }}

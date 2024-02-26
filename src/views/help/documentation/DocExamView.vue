@@ -22,34 +22,46 @@
       {{ docs[2] }}
     </p>
 
-    <!-- <v-img
+    <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_009.png')"
-    /> -->
+    />
 
     <p class="ma-6">
       {{ docs[3] }}
     </p>
 
-    <!-- <v-img
+    <v-img
       class="ma-6"
       cover
       :src="require('@/assets/images/help/doc_010.png')"
-    /> -->
+    />
 
     <p class="ma-6">
       {{ docs[4] }}
     </p>
 
-    <!-- <v-img
+    <v-img
       class="ma-6"
       cover
-      :src="require('@/assets/images/help/doc_010.png')"
-    /> -->
+      :src="require('@/assets/images/help/doc_011.png')"
+    />
 
     <p class="ma-6">
       {{ docs[5] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[6] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[7] }}
+    </p>
+
+    <p class="ma-6">
+      {{ docs[8] }}
     </p>
   </v-card-text>
 </template>

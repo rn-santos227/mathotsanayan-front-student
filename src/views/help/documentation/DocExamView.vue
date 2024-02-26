@@ -52,6 +52,12 @@
       {{ docs[5] }}
     </p>
 
+    <v-img
+      class="ma-6"
+      cover
+      :src="require('@/assets/images/help/doc_012.png')"
+    />
+
     <p class="ma-6">
       {{ docs[6] }}
     </p>
@@ -60,9 +66,21 @@
       {{ docs[7] }}
     </p>
 
+    <v-img
+      class="ma-6"
+      cover
+      :src="require('@/assets/images/help/doc_013.png')"
+    />
+
     <p class="ma-6">
       {{ docs[8] }}
     </p>
+
+    <v-img
+      class="ma-6"
+      cover
+      :src="require('@/assets/images/help/doc_014.png')"
+    />
   </v-card-text>
 </template>
 

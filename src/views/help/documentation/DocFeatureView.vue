@@ -56,20 +56,26 @@
       </li>
       <li class="my-2">
         <p>
-          <b>Progress Tracking:</b>
+          <b>Sequential Module Unlocking:</b>
           <span>{{ docs[8] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
-          <b>Accessible Anytime, Anywhere:</b>
+          <b>Progress Tracking:</b>
           <span>{{ docs[9] }}</span>
         </p>
       </li>
       <li class="my-2">
         <p>
-          <b>Mobile Compatibility:</b>
+          <b>Accessible Anytime, Anywhere:</b>
           <span>{{ docs[10] }}</span>
+        </p>
+      </li>
+      <li class="my-2">
+        <p>
+          <b>Mobile Compatibility:</b>
+          <span>{{ docs[11] }}</span>
         </p>
       </li>
     </ul>

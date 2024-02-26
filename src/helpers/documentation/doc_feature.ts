@@ -36,6 +36,11 @@ const docs: string[] = [
   fostering a growth mindset and promoting a positive learning
   experience.`,
 
+  ` Requiring students to complete and submit the exams for each
+  module in a predetermined sequence before before accessing the next
+  ensures that students build a strong foundation in the subject
+  matter before advancing to more complex topics.`,
+
   ` The ability to track progress over time and identify areas for
   improvement allows students to monitor their growth, set achievable
   learning goals, and focus their efforts where they need the most

@@ -8,7 +8,11 @@
       {{ docs[0] }}
     </p>
 
-    <!-- <v-row>
+    <p class="ma-6">
+      {{ docs[1] }}
+    </p>
+
+    <v-row>
       <v-col>
         <v-img
           class="ma-6"
@@ -30,15 +34,7 @@
           :src="require('@/assets/images/help/doc_005.png')"
         />
       </v-col>
-    </v-row> -->
-
-    <p class="ma-6">
-      {{ docs[1] }}
-    </p>
-
-    <p class="ma-6">
-      {{ docs[2] }}
-    </p>
+    </v-row>
   </v-card-text>
 </template>
 

@@ -91,7 +91,7 @@
           Answer
         </v-btn>
         <v-btn
-          v-if="canSubmit"
+          v-if="canSubmit || tries > 2"
           :class="mdAndUp ? 'mb-2 mr-2' : 'mb-2 mx-auto'"
           variant="elevated"
           :width="mdAndUp ? 200 : '100%'"
@@ -313,17 +313,17 @@ const answer = async () => {
 };
 
 const submit = async () => {
-  if (!canSubmit.value) return;
+  // if (!canSubmit.value) return;
   if (completed.value) handleSubmit();
   else {
     refSubmit.value.show(
-      "Do you want to submit regardless of skipped questions?"
+      "Do you want to submit regardless of not answering other questions?"
     );
   }
 };
 
 const handleSubmit = async () => {
-  if (!canSubmit.value) return;
+  // if (!canSubmit.value) return;
   const id = examModule.getResult.id;
   if (id) {
     await useExamModule()

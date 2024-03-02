@@ -337,6 +337,12 @@ const handleSubmit = async () => {
 const handleBeforeUnload = (event: BeforeUnloadEvent) => {
   event.preventDefault();
   event.returnValue = "";
+
+  if (!completed.value) {
+    refSubmit.value.show(
+      "Are you sure you want to leave? You may submit your current progress."
+    );
+  }
 };
 
 onBeforeUnmount(() => {

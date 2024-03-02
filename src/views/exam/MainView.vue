@@ -333,6 +333,18 @@ const handleSubmit = async () => {
       });
   }
 };
+
+const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+  event.preventDefault();
+  event.returnValue = "";
+};
+
+onBeforeUnmount(() => {
+  clearInterval(intervalId);
+  window.removeEventListener("beforeunload", handleBeforeUnload);
+});
+
+window.addEventListener("beforeunload", handleBeforeUnload);
 </script>
 
 <style scoped>
